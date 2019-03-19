@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: cce6ff499dec5184a9a2bb2f4f2ee7c4
+  - enabled: 1
+    path: Assets/Scenes/CharaSelect.unity
+    guid: b440c1b90c094344292736f83b6c3906
+  - enabled: 1
+    path: Assets/Scenes/talk.unity
+    guid: 5f9e1f77b97fd6044b8ac43d7667d115
   m_configObjects: {}
