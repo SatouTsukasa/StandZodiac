@@ -6,8 +6,11 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    // Spaceshipコンポーネント
+    Spaceship spaceship;
+
     // PlayerBulletプレハブ
-    public GameObject bullet;
+    //public GameObject bullet;
 
     //public GameObject player;
 
@@ -18,12 +21,14 @@ public class Player : MonoBehaviour
     // Startメソッドをコルーチンとして呼び出す
     IEnumerator Start()
     {
+        // Spaceshipコンポーネントを取得
+        spaceship = GetComponent<Spaceship>();
         while (true)
         {
             // 弾をプレイヤーと同じ位置/角度で作成
-            Instantiate(bullet, transform.position, transform.rotation);
-            // 0.05秒待つ
-            yield return new WaitForSeconds(0.05f);
+            spaceship.Shot(transform);
+            // shotDelay秒待つ
+            yield return new WaitForSeconds(spaceship.shotDelay);
         }
     }
 
@@ -112,6 +117,29 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        // レイヤー名を取得
+        string layerName = LayerMask.LayerToName(col.gameObject.layer);
+
+        // レイヤー名がBullet (Enemy)の時は弾を削除
+        if (layerName == "Bullet(Enemy)")
+        {
+            // 弾の削除
+            Destroy(col.gameObject);
+        }
+
+        // レイヤー名がBullet (Enemy)またはEnemyの場合は爆発
+        if (layerName == "Bullet(Enemy)" || layerName == "Enemy")
+        {
+            // 爆発する
+            spaceship.Explosion();
+
+            // プレイヤーを削除
+            Destroy(gameObject);
+        }
     }
 
 }
