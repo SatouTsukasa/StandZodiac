@@ -112,6 +112,27 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        Clamp();
+    }
+
+    void Clamp()
+    {
+        // 画面左下のワールド座標をビューポートから取得
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+
+        // 画面右上のワールド座標をビューポートから取得
+        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        // プレイヤーの座標を取得
+        Vector2 pos = transform.position;
+
+        // プレイヤーの位置が画面内に収まるように制限をかける
+        pos.x = Mathf.Clamp(pos.x, min.x, max.x);
+        pos.y = Mathf.Clamp(pos.y, min.y, max.y);
+
+        // 制限をかけた値をプレイヤーの位置とする
+        transform.position = pos;
     }
 
     private void FixedUpdate()
