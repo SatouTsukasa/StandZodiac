@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 4398710568713742964}
   - component: {fileID: 4455014595790039891}
   - component: {fileID: 1393456060602712727}
+  - component: {fileID: 359949022425425657}
   m_Layer: 0
   m_Name: EnemyTackle
   m_TagString: Untagged
@@ -179,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291c0f9cbddfb2c49816ed36c09c0fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 5
 --- !u!114 &4455014595790039891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +266,25 @@ PolygonCollider2D:
       - {x: -1.1949999, y: -1.8199999}
       - {x: -1.175, y: -1.8299999}
       - {x: -1.025, y: -1.76}
+--- !u!95 &359949022425425657
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4982995170449185150}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 006bfebc2938bd04991956f7839dc503, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8635282619803408593
 GameObject:
   m_ObjectHideFlags: 0
