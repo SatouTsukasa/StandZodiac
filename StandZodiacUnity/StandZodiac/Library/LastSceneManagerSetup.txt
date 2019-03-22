@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Gallery.unity
+- path: Assets/MugicRoom.unity
   isLoaded: 1
   isActive: 1
