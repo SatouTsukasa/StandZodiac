@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MoveScene : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,10 +17,10 @@ public class MoveScene : MonoBehaviour
         
     }
 
-    public void ButtonClicked() {
+    public void ButtonClicked_Title()
+    {
         SceneManager.LoadScene("Title");
     }
-
 
     public void ButtonClicked_CharaSelect()
     {
@@ -33,10 +33,5 @@ public class MoveScene : MonoBehaviour
         SceneManager.LoadScene("talk");
     }
 
-    public void G_CaharaMove()
-    {
-        SceneManager.LoadScene("CharaRoom");
-
-    }
 
 }
