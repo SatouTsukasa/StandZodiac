@@ -57,8 +57,10 @@ public class Player : MonoBehaviour
                 /*Vector3 position = Input.mousePosition;
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", position.x, "y", position.y, "time", 1.0f));*/
 
-                playerPos = this.transform.position;
-                mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                //playerPos = this.transform.position;
+                //mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                Move();
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -74,8 +76,10 @@ public class Player : MonoBehaviour
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", position.x, "y", position.y, "time", 1.0f));*/
                 Debug.Log("クリックしっぱなし");
 
-                Vector3 prePos = this.transform.position;
+                //Vector3 prePos = this.transform.position;
                 Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
+
+                Move();
 
                 //タッチ対応デバイス向け、1本目の指にのみ反応
                 if (Input.touchSupported)
@@ -86,6 +90,7 @@ public class Player : MonoBehaviour
                 diff.z = 0.0f;
                 this.transform.position = playerPos + diff;
             }
+            
         }
         else
         {
@@ -112,6 +117,30 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        Move();
+    }
+
+    void Move()
+    {
+        // 画面左下のワールド座標をビューポートから取得
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+
+        // 画面右上のワールド座標をビューポートから取得
+        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 0.8f));
+
+        // プレイヤーの座標を取得
+        Vector2 pos = transform.position;
+
+        Vector3 prePos = this.transform.position;
+        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
+
+        // プレイヤーの位置が画面内に収まるように制限をかける
+        pos.x = Mathf.Clamp(pos.x, min.x, max.x);
+        pos.y = Mathf.Clamp(pos.y, min.y, max.y);
+
+        // 制限をかけた値をプレイヤーの位置とする
+        transform.position = pos;
     }
 
     private void FixedUpdate()

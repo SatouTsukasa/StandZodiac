@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 700
-  lifeTime: 1
+  lifeTime: 3
 --- !u!1001 &3811420669418634435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,6 +76,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5858748708667439974}
     m_Modifications:
+    - target: {fileID: 2860015389671017473, guid: 8f73ec53f96c83a4991e76436e3b77bc,
+        type: 3}
+      propertyPath: m_Name
+      value: bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 2860015389671017475, guid: 8f73ec53f96c83a4991e76436e3b77bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -131,11 +136,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2860015389671017473, guid: 8f73ec53f96c83a4991e76436e3b77bc,
-        type: 3}
-      propertyPath: m_Name
-      value: bullet
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f73ec53f96c83a4991e76436e3b77bc, type: 3}
 --- !u!4 &1392793434069840064 stripped
@@ -151,6 +151,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5858748708667439974}
     m_Modifications:
+    - target: {fileID: 2860015389671017473, guid: 8f73ec53f96c83a4991e76436e3b77bc,
+        type: 3}
+      propertyPath: m_Name
+      value: bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860015389671017473, guid: 8f73ec53f96c83a4991e76436e3b77bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2860015389671017475, guid: 8f73ec53f96c83a4991e76436e3b77bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -205,16 +215,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2860015389671017473, guid: 8f73ec53f96c83a4991e76436e3b77bc,
-        type: 3}
-      propertyPath: m_Name
-      value: bullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 2860015389671017473, guid: 8f73ec53f96c83a4991e76436e3b77bc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f73ec53f96c83a4991e76436e3b77bc, type: 3}

@@ -21,10 +21,14 @@ public class Spaceship : MonoBehaviour
     // 爆発のPrefab
     public GameObject explosion;
 
+    // アニメーターコンポーネント
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // アニメーターコンポーネントを取得
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -49,5 +53,11 @@ public class Spaceship : MonoBehaviour
     public void Move(Vector2 direction)
     {
         GetComponent<Rigidbody2D>().velocity = direction * speed;
+    }
+
+    // アニメーターコンポーネントの取得
+    public Animator GetAnimator()
+    {
+        return animator;
     }
 }
