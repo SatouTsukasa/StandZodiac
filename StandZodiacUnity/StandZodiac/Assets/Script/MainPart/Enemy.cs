@@ -87,11 +87,13 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0) { 
 
-        // 爆発
-        spaceship.Explosion();
+            // 爆発
+            spaceship.Explosion();
 
-        // エネミーの削除
-        Destroy(gameObject);
+            // エネミーの削除
+            Destroy(gameObject);
+
+            GetComponent<ScoreEnemyManager>().GetPoint();
 
         }
         else

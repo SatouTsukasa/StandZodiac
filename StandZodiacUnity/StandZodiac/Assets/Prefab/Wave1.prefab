@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 5136411284134891085}
   - component: {fileID: 2485028231768466419}
   - component: {fileID: 5304025227379668886}
+  - component: {fileID: 945658337678062598}
   m_Layer: 9
   m_Name: EnemyShot
   m_TagString: Untagged
@@ -345,6 +346,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &945658337678062598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3456431241165733677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7cf3009c057b7498251143d7873854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  POINT: 100
 --- !u!1 &5734214149900312477
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +434,7 @@ GameObject:
   - component: {fileID: 6409409786318221770}
   - component: {fileID: 1865440789558858022}
   - component: {fileID: 8805961990572528197}
+  - component: {fileID: 6450876812266645269}
   m_Layer: 9
   m_Name: EnemyShot
   m_TagString: Untagged
@@ -630,6 +645,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6450876812266645269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704586290480206226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7cf3009c057b7498251143d7873854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  POINT: 100
 --- !u!1 &6793798715897561522
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +673,7 @@ GameObject:
   - component: {fileID: 2791150334586057631}
   - component: {fileID: 592716740784233051}
   - component: {fileID: 2274748690161909301}
+  - component: {fileID: 2062425668523823529}
   m_Layer: 0
   m_Name: EnemyTackle
   m_TagString: Untagged
@@ -855,6 +884,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2062425668523823529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793798715897561522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7cf3009c057b7498251143d7873854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  POINT: 50
 --- !u!1 &6850520056178934653
 GameObject:
   m_ObjectHideFlags: 0
