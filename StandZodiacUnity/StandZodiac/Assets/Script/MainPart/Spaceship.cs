@@ -40,6 +40,7 @@ public class Spaceship : MonoBehaviour
     // 爆発の作成
     public void Explosion()
     {
+        Debug.Log("aaa");
         Instantiate(explosion, transform.position, transform.rotation);
     }
 

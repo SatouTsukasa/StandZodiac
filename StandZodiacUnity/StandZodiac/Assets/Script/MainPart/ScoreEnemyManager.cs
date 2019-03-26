@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreEnemyManager : MonoBehaviour
 {
+    public int POINT = 100;
+
+    private GameObject gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -18,6 +21,6 @@ public class ScoreManager : MonoBehaviour
 
     public void GetPoint()
     {
-
+        gameManager.GetComponent<GameManager>().AddScore(POINT);
     }
 }

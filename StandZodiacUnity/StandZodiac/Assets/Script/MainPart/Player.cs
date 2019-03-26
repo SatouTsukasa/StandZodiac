@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
     void Move()
     {
         // 画面左下のワールド座標をビューポートから取得
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0.11f));
 
         // 画面右上のワールド座標をビューポートから取得
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 0.8f));
