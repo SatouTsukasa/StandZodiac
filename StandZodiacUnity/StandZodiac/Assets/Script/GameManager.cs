@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
             RefreshScore();
         }
-        Debug.Log(score);
+        //Debug.Log(score);
     }
 
     //スコア加算

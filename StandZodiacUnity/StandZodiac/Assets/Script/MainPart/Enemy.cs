@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     //ヒットポイント
     public int hp = 1;
 
+    public float speed;
+
     // Spaceshipコンポーネント
     Spaceship spaceship;
 
@@ -17,7 +19,7 @@ public class Enemy : MonoBehaviour
         spaceship = GetComponent<Spaceship>();
 
         // ローカル座標のY軸のマイナス方向に移動する
-        Move(transform.up * -1);
+        Move(transform.up * -speed);
 
         // canShotがfalseの場合、ここでコルーチンを終了させる
         if (spaceship.canShot == false)
@@ -99,6 +101,7 @@ public class Enemy : MonoBehaviour
         else
         {
             spaceship.GetAnimator().SetTrigger("Damage");
+            
         }
     }
 }
