@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 public class Player : MonoBehaviour
 {
     // Spaceshipコンポーネント
     Spaceship spaceship;
+
+    public float speed = 0;
+
+    Vector3 cashPosition;
 
     // PlayerBulletプレハブ
     //public GameObject bullet;
@@ -27,6 +32,10 @@ public class Player : MonoBehaviour
         {
             // 弾をプレイヤーと同じ位置/角度で作成
             spaceship.Shot(transform);
+
+            // ショット音を鳴らす
+            GetComponent<AudioSource>().Play();
+
             // shotDelay秒待つ
             yield return new WaitForSeconds(spaceship.shotDelay);
         }
@@ -67,7 +76,7 @@ public class Player : MonoBehaviour
             {
                 playerPos = Vector3.zero;
                 mousePos = Vector3.zero;
-                Debug.Log("離した瞬間");
+                Debug.Log("離した瞬間");     
             }
 
             if (Input.GetMouseButton(0))
@@ -75,7 +84,7 @@ public class Player : MonoBehaviour
                 /*Vector3 position = Input.mousePosition;
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", position.x, "y", position.y, "time", 1.0f));*/
                 Debug.Log("クリックしっぱなし");
-
+                
                 //Vector3 prePos = this.transform.position;
                 Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
 
@@ -88,7 +97,10 @@ public class Player : MonoBehaviour
                 }
 
                 diff.z = 0.0f;
-                this.transform.position = playerPos + diff;
+                //this.transform.position = playerPos + diff;
+                this.transform.position = Vector3.MoveTowards(transform.position, playerPos + diff, speed);
+                
+               
             }
             
         }
@@ -141,6 +153,26 @@ public class Player : MonoBehaviour
 
         // 制限をかけた値をプレイヤーの位置とする
         transform.position = pos;
+    }
+
+    public void OnMouseDrag()
+    {
+        Vector3 objectPointInScreen = Camera.main.WorldToScreenPoint(this.transform.position);
+        Vector3 mousePointInScreen = new Vector3(Input.mousePosition.x, Input.mousePosition.y, objectPointInScreen.z);
+        Vector3 mousePointInWorld = Camera.main.ScreenToWorldPoint(mousePointInScreen);
+
+        //mousePointInWorld.z = this.transform.position.z;
+        mousePointInWorld.z = 0;
+
+        cashPosition = mousePointInWorld;
+        this.transform.position = new Vector3(cashPosition.x, cashPosition.y, cashPosition.z);
+    }
+
+    public void OnDrag(PointerEventData data)
+    {
+        Vector3 TargetPos = Camera.main.ScreenToWorldPoint(data.position);
+        TargetPos.z = 0;
+        transform.position = TargetPos;
     }
 
     private void FixedUpdate()
