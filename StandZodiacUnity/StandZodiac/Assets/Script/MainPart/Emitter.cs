@@ -39,7 +39,8 @@ public class Emitter : MonoBehaviour
             // 格納されているWaveを全て実行したらcurrentWaveを0にする（最初から -> ループ）
             if (waves.Length <= ++currentWave)
             {
-                currentWave = 0;
+                //currentWave = 0;
+                yield break;
             }
 
         }
