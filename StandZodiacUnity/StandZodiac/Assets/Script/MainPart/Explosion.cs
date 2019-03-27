@@ -18,7 +18,7 @@ public class Explosion : MonoBehaviour
 
     void OnAnimationFinish()
     {
-        Debug.Log("bbb");
+        //Debug.Log("bbb");
         Destroy(gameObject);
     }
 }

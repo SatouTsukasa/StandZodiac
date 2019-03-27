@@ -18,14 +18,20 @@ public class Enemy : MonoBehaviour
         // Spaceshipコンポーネントを取得
         spaceship = GetComponent<Spaceship>();
 
+        
+
         // ローカル座標のY軸のマイナス方向に移動する
         Move(transform.up * -speed);
+
+        
 
         // canShotがfalseの場合、ここでコルーチンを終了させる
         if (spaceship.canShot == false)
         {
             yield break;
         }
+
+        
 
         while (true)
         {
@@ -64,6 +70,11 @@ public class Enemy : MonoBehaviour
     // 機体の移動
     public void Move(Vector2 direction)
     {
+        if (spaceship.Tackle == true)
+        {
+            spaceship.Compliance();
+            //Debug.Log("ccc");
+        }
         GetComponent<Rigidbody2D>().velocity = direction * spaceship.speed;
     }
 

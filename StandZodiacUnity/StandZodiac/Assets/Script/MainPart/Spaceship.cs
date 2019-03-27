@@ -18,8 +18,12 @@ public class Spaceship : MonoBehaviour
     // 弾を撃つかどうか
     public bool canShot;
 
+    public bool Tackle;
+
     // 爆発のPrefab
     public GameObject explosion;
+
+    public GameObject Player;
 
     // アニメーターコンポーネント
     private Animator animator;
@@ -40,7 +44,7 @@ public class Spaceship : MonoBehaviour
     // 爆発の作成
     public void Explosion()
     {
-        Debug.Log("aaa");
+        //Debug.Log("aaa");
         Instantiate(explosion, transform.position, transform.rotation);
     }
 
@@ -60,5 +64,14 @@ public class Spaceship : MonoBehaviour
     public Animator GetAnimator()
     {
         return animator;
+    }
+
+    public void Compliance()
+    {
+        // ターゲットとの座標間隔を取得
+        Vector3 diff = Player.transform.position - transform.position;
+        // 回転させる　Quaternion.FromToRotation（第1引数 から 第2引数 への回転をさせる）
+        transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
+        
     }
 }
