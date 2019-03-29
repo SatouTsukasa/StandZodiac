@@ -48,7 +48,11 @@ public class Enemy : MonoBehaviour
 
             // shotDelay秒待つ
             yield return new WaitForSeconds(spaceship.shotDelay);
+
+
         }
+
+        
     }
 
     /*// Start is called before the first frame update
@@ -64,17 +68,26 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (spaceship.Tackle == true)
+        {
+            Vector2 v = new Vector3(0, speed * Time.deltaTime);
+            transform.Translate(v);
+            //spaceship.Compliance();
+            //transform.position = Vector3.MoveTowards(spaceship.Player.transform.position, /*spaceship.Player.*/transform.position, speed);
+            // ターゲットとの座標間隔を取得
+            Vector3 diff = (spaceship.Player.transform.position - this.transform.position).normalized;
+            // 回転させる　Quaternion.FromToRotation（第1引数 から 第2引数 への回転をさせる）
+            this.transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
+            Debug.Log("ccc");
+
+            //return;
+        }
     }
 
     // 機体の移動
     public void Move(Vector2 direction)
     {
-        if (spaceship.Tackle == true)
-        {
-            spaceship.Compliance();
-            //Debug.Log("ccc");
-        }
+        
         GetComponent<Rigidbody2D>().velocity = direction * spaceship.speed;
     }
 
@@ -84,19 +97,34 @@ public class Enemy : MonoBehaviour
         string layerName = LayerMask.LayerToName(c.gameObject.layer);
 
         // レイヤー名がBullet (Player)以外の時は何も行わない
-        if (layerName != "Bullet(Player)") return;
+        //if (layerName != "Bullet(Player)") return;
+        if (layerName == "Bullet(Player)") { 
 
-        // PlayerBulletのTransformを取得
-        Transform playerBulletTransform = c.transform.parent;
+            // PlayerBulletのTransformを取得
+            Transform playerBulletTransform = c.transform.parent;
 
-        // Bulletコンポーネントを取得
-        Bullet bullet = playerBulletTransform.GetComponent<Bullet>();
+            // Bulletコンポーネントを取得
+            Bullet bullet = playerBulletTransform.GetComponent<Bullet>();
 
-        // ヒットポイントを減らす
-        hp = hp - bullet.power;
+            // ヒットポイントを減らす
+            hp = hp - bullet.power;
 
-        // 弾の削除
-        Destroy(c.gameObject);
+            // 弾の削除
+            Destroy(c.gameObject);
+
+        }
+
+        //爆発に当たったら(誘爆)
+        if(layerName == "Explosion")
+        {
+            Transform explosionTransform = c.transform;
+
+            Explosion explosion = explosionTransform.GetComponent<Explosion>();
+
+            hp -= explosion.power;
+
+            Debug.Log("ddd");
+        }
 
         if (hp <= 0) { 
 

@@ -12,6 +12,9 @@ public class Spaceship : MonoBehaviour
     // 弾を撃つ間隔
     public float shotDelay;
 
+    //追尾する感覚
+    public float TackleDelay;
+
     // 弾のPrefab
     public GameObject bullet;
 
@@ -28,11 +31,15 @@ public class Spaceship : MonoBehaviour
     // アニメーターコンポーネント
     private Animator animator;
 
+    Enemy enemy;
+
     // Start is called before the first frame update
     void Start()
     {
         // アニメーターコンポーネントを取得
         animator = GetComponent<Animator>();
+
+        enemy = GetComponent<Enemy>();
     }
 
     // Update is called once per frame
@@ -69,9 +76,10 @@ public class Spaceship : MonoBehaviour
     public void Compliance()
     {
         // ターゲットとの座標間隔を取得
-        Vector3 diff = Player.transform.position - transform.position;
+        //Vector3 diff = (Player.transform.position - this.transform.position).normalized;
         // 回転させる　Quaternion.FromToRotation（第1引数 から 第2引数 への回転をさせる）
-        transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
+        //this.transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
+        
         
     }
 }
