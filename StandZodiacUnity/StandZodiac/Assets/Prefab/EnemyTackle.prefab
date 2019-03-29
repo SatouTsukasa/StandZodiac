@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 1393456060602712727}
   - component: {fileID: 359949022425425657}
   - component: {fileID: 4718124210277571289}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyTackle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 12
-  speed: 1.2
+  speed: 1.6
 --- !u!114 &4455014595790039891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   shotDelay: 1
+  TackleDelay: 2
   bullet: {fileID: 4844779840373443755, guid: c8d84776ce6f13e4ea7aeecafb2136c6, type: 3}
   canShot: 0
   Tackle: 1

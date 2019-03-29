@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291c0f9cbddfb2c49816ed36c09c0fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 40
+  hp: 30
   speed: 0.9
 --- !u!114 &1572547885383968026
 MonoBehaviour:
@@ -169,8 +169,10 @@ MonoBehaviour:
   shotDelay: 1
   bullet: {fileID: 4844779840373443755, guid: c8d84776ce6f13e4ea7aeecafb2136c6, type: 3}
   canShot: 1
+  Tackle: 0
   explosion: {fileID: 6525867870753116828, guid: 4f673a56e95eeda45b4d60a4d5b7c8a2,
     type: 3}
+  Player: {fileID: 0}
 --- !u!60 &8009358332474845774
 PolygonCollider2D:
   m_ObjectHideFlags: 0
