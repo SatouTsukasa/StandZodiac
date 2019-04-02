@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MugicRoom : MonoBehaviour
 {
+    /*
     private bool AudioPlay;
 
     //public AudioSource audioSource;
@@ -30,5 +31,5 @@ public class MugicRoom : MonoBehaviour
         audioSource.Play();
         AudioPlay = true;
     }
-
+    */
 }
