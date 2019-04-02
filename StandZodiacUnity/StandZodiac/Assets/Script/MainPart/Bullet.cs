@@ -7,6 +7,9 @@ public class Bullet : MonoBehaviour
     // 弾の移動スピード
     public int speed = 10;
 
+    //旋回速度
+    public int rot;
+
     // ゲームオブジェクト生成から削除するまでの時間
     public float lifeTime = 5;
 
@@ -16,6 +19,10 @@ public class Bullet : MonoBehaviour
     public int power = 1;
 
     public GameObject player;
+
+    public float rad;
+
+    private Vector2 Position;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +34,17 @@ public class Bullet : MonoBehaviour
 
         // lifeTime秒後に削除
         Destroy(gameObject, lifeTime);
+        
+        if(Track == true)
+        {
+            //ラジアンから度に変換
+            rad = Mathf.Atan2((player.transform.position.y - transform.position.y), (player.transform.position.x - transform.position.x)) * Mathf.Rad2Deg;
+            if (rad < 0) rad += 90;
+            //transform.rotation = Quaternion.Slerp(transform.rotation, player.transform.rotation, 0.5f);
+            //transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, 0), speed);
+            Debug.Log(rad);
+        }
+        
     }
 
 
@@ -35,23 +53,12 @@ public class Bullet : MonoBehaviour
     {
         if(Track == true)
         {
-            Debug.Log("fff");
-            //Vector2 diff = (player.transform.position - transform.position).normalized;
-            //transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
-            if(transform.position.y > player.transform.position.y)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, player.transform.rotation, 0.5f);
-                transform.position += transform.up * -speed;
-                //transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, 0), speed);
-            }
-            
-            else if(transform.position.y < player.transform.position.y)
-            {
-                Debug.Log("ggg");
-                transform.position += transform.up * -speed;
-            }
+            Position = transform.position;
+            Position.x += rot * Mathf.Cos(rad);
+            transform.position = Position;
+            //rad = Mathf.Atan2((player.transform.position.y - transform.position.y), (player.transform.position.x - transform.position.x));
         }
-
-        if (player == null) Destroy(gameObject);
+        
     }
+
 }
