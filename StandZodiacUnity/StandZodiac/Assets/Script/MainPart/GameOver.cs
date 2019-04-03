@@ -8,7 +8,7 @@ public class GameOver : MonoBehaviour
 {
 
     public GameObject player_ob;
-    public Text Gameover;
+    public GameObject Gameover;
 
     // Start is called before the first frame update
     void Start()
