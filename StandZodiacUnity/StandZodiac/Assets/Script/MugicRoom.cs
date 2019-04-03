@@ -6,9 +6,7 @@ public class MugicRoom : MonoBehaviour
 {
     private bool AudioPlay;
 
-    AudioSource audioSource;
-
-    //public AudioSource audioSource;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
