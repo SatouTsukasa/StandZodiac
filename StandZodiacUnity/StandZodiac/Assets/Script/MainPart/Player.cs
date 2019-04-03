@@ -201,6 +201,12 @@ public class Player : MonoBehaviour
             // プレイヤーを削除
             Destroy(gameObject);
         }
+
+        if(layerName == "Item")
+        {
+            //Debug.Log("iiiiiiiii");
+            //Destroy(col.gameObject);
+        }
     }
 
 }

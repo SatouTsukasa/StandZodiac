@@ -200,7 +200,7 @@ MonoBehaviour:
   TackleDelay: 2
   bullet: {fileID: 4844779840373443755, guid: c8d84776ce6f13e4ea7aeecafb2136c6, type: 3}
   canShot: 0
-  Tackle: 1
+  Tackle: 0
   explosion: {fileID: 6525867870753116828, guid: 4f673a56e95eeda45b4d60a4d5b7c8a2,
     type: 3}
   Player: {fileID: 6873143357668901443, guid: 592f7c57a824cb74aa565112a7cd5bdb, type: 3}
