@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MugicRoom : MonoBehaviour
 {
+    
     private bool AudioPlay;
 
     public AudioSource audioSource;
@@ -21,7 +24,8 @@ public class MugicRoom : MonoBehaviour
 
     }
 
-    void audioPlay() {
+    private void Button_audioPlay() {
+
         if (AudioPlay == true)
         {
             audioSource.Stop();
@@ -30,5 +34,5 @@ public class MugicRoom : MonoBehaviour
         audioSource.Play();
         AudioPlay = true;
     }
-
+    
 }
