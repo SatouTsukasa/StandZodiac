@@ -13,6 +13,12 @@ public class Enemy : MonoBehaviour
     // Spaceshipコンポーネント
     Spaceship spaceship;
 
+    //PowerUpItemプレハブの格納
+    public GameObject[] PItem;
+
+    //アイテムの種類
+    private int ItemNumber;
+
     IEnumerator Start()
     {
         // Spaceshipコンポーネントを取得
@@ -82,6 +88,7 @@ public class Enemy : MonoBehaviour
 
             //return;
         }
+
     }
 
     // 機体の移動
@@ -126,10 +133,20 @@ public class Enemy : MonoBehaviour
             Debug.Log("ddd");
         }
 
-        if (hp <= 0) { 
+        if (hp <= 0) {
+
+            ItemNumber = Random.Range(0, PItem.Length);
+
+            //Debug.Log(ItemNumber);
+            //Debug.Log("---------------" + PItem[0]);
+
+            // Waveを作成する
+            GameObject item = (GameObject)Instantiate(PItem[ItemNumber], transform.position, Quaternion.identity);
 
             // 爆発
             spaceship.Explosion();
+
+            
 
             // エネミーの削除
             Destroy(gameObject);
