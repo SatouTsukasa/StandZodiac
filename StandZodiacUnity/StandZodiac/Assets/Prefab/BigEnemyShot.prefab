@@ -155,6 +155,7 @@ MonoBehaviour:
   speed: 0.9
   PItem:
   - {fileID: 1418199237998797300, guid: eade9512c9720c64d8bea7de2604d9b3, type: 3}
+  - {fileID: 3948267561832694988, guid: bf0f4de36f124294bad8ada3e2fb2d64, type: 3}
 --- !u!114 &1572547885383968026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +172,10 @@ MonoBehaviour:
   shotDelay: 1
   TackleDelay: 0
   bullet: {fileID: 4844779840373443755, guid: c8d84776ce6f13e4ea7aeecafb2136c6, type: 3}
+  bullet2: {fileID: 0}
+  bullet3: {fileID: 0}
+  bullet4: {fileID: 0}
+  bullet5: {fileID: 0}
   canShot: 1
   Tackle: 0
   explosion: {fileID: 6525867870753116828, guid: 4f673a56e95eeda45b4d60a4d5b7c8a2,

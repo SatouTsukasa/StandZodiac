@@ -18,6 +18,12 @@ public class Spaceship : MonoBehaviour
     // 弾のPrefab
     public GameObject bullet;
 
+    //パワーアップ弾
+    public GameObject bullet2;
+    public GameObject bullet3;
+    public GameObject bullet4;
+    public GameObject bullet5;
+
     // 弾を撃つかどうか
     public bool canShot;
 
@@ -60,6 +66,23 @@ public class Spaceship : MonoBehaviour
     {
         Instantiate(bullet, origin.position, origin.rotation);
         
+    }
+
+    // パワーアップ弾の作成
+    public void ShotPU(Transform origin, bool  PU2, bool PU3, bool PU4, bool PU5)
+    {
+        Instantiate(bullet2, origin.position, origin.rotation);
+        if(PU2 == true)
+        {
+            Instantiate(bullet3, origin.position, origin.rotation);
+            if (PU3 == true)
+            {
+                Instantiate(bullet4, origin.position, origin.rotation);
+                if (PU4 == true){
+                    Instantiate(bullet5, origin.position, origin.rotation);
+                }
+            }
+        }
     }
 
     // 機体の移動
