@@ -8,6 +8,8 @@ public class PowerUpItem : MonoBehaviour
 {
 
     public bool Power = false;
+    public bool Turret = false;
+    public int TurretCount = 0;
 
     RectTransform rect;
     Transform Tf;
@@ -62,6 +64,26 @@ public class PowerUpItem : MonoBehaviour
                     c.GetComponent<Spaceship>().shotDelay = 0.05f;
                 }
                 Destroy(this.gameObject);
+            }
+            else if(Turret == true)
+            {
+                ++TurretCount;
+                if(TurretCount == 1)
+                {
+                    c.GetComponent<Player>().PU2 = true;
+                }
+                else if(TurretCount == 2)
+                {
+                    c.GetComponent<Player>().PU3 = true;
+                }
+                else if (TurretCount == 3)
+                {
+                    c.GetComponent<Player>().PU4 = true;
+                }
+                else if (TurretCount == 4)
+                {
+                    c.GetComponent<Player>().PU5 = true;
+                }
             }
         }
     }

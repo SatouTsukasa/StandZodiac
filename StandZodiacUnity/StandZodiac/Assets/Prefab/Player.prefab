@@ -201,6 +201,10 @@ MonoBehaviour:
   speed: 10
   ShotSound: {fileID: 8300000, guid: f3372cf77d100d549b7fce9f91599e25, type: 3}
   ItemAcquisition: {fileID: 8300000, guid: 1927a95af0ab2f64aafd5fdc9b5645a0, type: 3}
+  PU2: 0
+  PU3: 0
+  PU4: 0
+  PU5: 0
 --- !u!114 &1392689055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +221,10 @@ MonoBehaviour:
   shotDelay: 0.1
   TackleDelay: 0
   bullet: {fileID: 4186128159347721616, guid: ee8a2f994b8e75f4db77002df42fc912, type: 3}
+  bullet2: {fileID: 1979593090944915206, guid: 57a8b0620eedcc54581e197cae02696d, type: 3}
+  bullet3: {fileID: 0}
+  bullet4: {fileID: 0}
+  bullet5: {fileID: 0}
   canShot: 0
   Tackle: 0
   explosion: {fileID: 6525867870753116828, guid: 4f673a56e95eeda45b4d60a4d5b7c8a2,
