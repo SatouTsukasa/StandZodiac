@@ -151,6 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 6
   speed: 0.8
+  PItem:
+  - {fileID: 1418199237998797300, guid: eade9512c9720c64d8bea7de2604d9b3, type: 3}
 --- !u!114 &765321226374423747
 MonoBehaviour:
   m_ObjectHideFlags: 0

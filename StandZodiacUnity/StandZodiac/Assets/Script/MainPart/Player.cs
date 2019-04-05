@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
 
     private Vector3 playerPos;
     private Vector3 mousePos;
+
+    public AudioClip ShotSound;
+    public AudioClip ItemAcquisition;
     // Start is called before the first frame update
 
     // Startメソッドをコルーチンとして呼び出す
@@ -34,7 +37,8 @@ public class Player : MonoBehaviour
             spaceship.Shot(transform);
 
             // ショット音を鳴らす
-            GetComponent<AudioSource>().Play();
+            //GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().PlayOneShot(ShotSound);
 
             // shotDelay秒待つ
             yield return new WaitForSeconds(spaceship.shotDelay);
@@ -204,6 +208,7 @@ public class Player : MonoBehaviour
 
         if(layerName == "Item")
         {
+            GetComponent<AudioSource>().PlayOneShot(ItemAcquisition);
             //Debug.Log("iiiiiiiii");
             //Destroy(col.gameObject);
         }
