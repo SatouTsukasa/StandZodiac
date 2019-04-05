@@ -9,6 +9,10 @@ public class GameOver : MonoBehaviour
 
     public GameObject player_ob;
     public GameObject Gameover;
+    public GameObject Context;
+    public GameObject Button;
+    public GameObject Button2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +27,13 @@ public class GameOver : MonoBehaviour
         if (player_ob == null) {
 
             Gameover.SetActive(true);
+            Context.SetActive(true);
+            Button.SetActive(true);
+            Button2.SetActive(true);
 
         }
 
     }
+
+
 }
