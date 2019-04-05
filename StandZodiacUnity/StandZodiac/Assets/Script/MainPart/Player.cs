@@ -14,18 +14,19 @@ public class Player : MonoBehaviour
 
     Vector3 cashPosition;
 
-    // PlayerBulletプレハブ
-    //public GameObject bullet;
-
-    //public GameObject player;
-
     private Vector3 playerPos;
     private Vector3 mousePos;
 
     public AudioClip ShotSound;
     public AudioClip ItemAcquisition;
-    // Start is called before the first frame update
 
+    //パワーアップbool関数
+
+    public bool PU2;
+    public bool PU3;
+    public bool PU4;
+    public bool PU5;
+    // Start is called before the first frame update
     // Startメソッドをコルーチンとして呼び出す
     IEnumerator Start()
     {
@@ -35,6 +36,12 @@ public class Player : MonoBehaviour
         {
             // 弾をプレイヤーと同じ位置/角度で作成
             spaceship.Shot(transform);
+            if(PU2 == true)
+            {
+                spaceship.ShotPU(transform, PU2, PU3, PU4, PU5);
+            }
+
+            //,PU1,PU2,PU3,PU4
 
             // ショット音を鳴らす
             //GetComponent<AudioSource>().Play();

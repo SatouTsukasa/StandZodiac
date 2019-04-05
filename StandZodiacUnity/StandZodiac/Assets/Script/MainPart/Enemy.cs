@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
     //アイテムの種類
     private int ItemNumber;
 
+    //アイテムを落とす確率
+    private int ItemPar;
+
     IEnumerator Start()
     {
         // Spaceshipコンポーネントを取得
@@ -135,13 +138,17 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0) {
 
+            ItemPar = Random.Range(0, 10);
             ItemNumber = Random.Range(0, PItem.Length);
 
-            //Debug.Log(ItemNumber);
+            Debug.Log(ItemPar);
             //Debug.Log("---------------" + PItem[0]);
 
-            // Waveを作成する
-            GameObject item = (GameObject)Instantiate(PItem[ItemNumber], transform.position, Quaternion.identity);
+            if(ItemPar == 0)
+            {
+                // Waveを作成する
+                GameObject item = (GameObject)Instantiate(PItem[ItemNumber], transform.position, Quaternion.identity);
+            }
 
             // 爆発
             spaceship.Explosion();
