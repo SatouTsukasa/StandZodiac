@@ -9,7 +9,7 @@ public class PowerUpItem : MonoBehaviour
 
     public bool Power = false;
     public bool Turret = false;
-    public int TurretCount = 0;
+    public int TurretCount;
 
     RectTransform rect;
     Transform Tf;
@@ -17,6 +17,8 @@ public class PowerUpItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        TurretCount = 0;
 
         rect = GetComponent<RectTransform>();
 
@@ -67,23 +69,42 @@ public class PowerUpItem : MonoBehaviour
             }
             else if(Turret == true)
             {
-                ++TurretCount;
-                if(TurretCount == 1)
+                //TurretCount += 1;
+                //c.GetComponent<Player>().TurretCount += 1;
+                Debug.Log(TurretCount);
+                if(c.GetComponent<Player>().PU2 == false)
                 {
+                    
                     c.GetComponent<Player>().PU2 = true;
+                    Destroy(this.gameObject);
+                    return;
                 }
-                else if(TurretCount == 2)
+                if(c.GetComponent<Player>().PU3 == false)
                 {
+                    
                     c.GetComponent<Player>().PU3 = true;
+                    Destroy(this.gameObject);
+                    return;
                 }
-                else if (TurretCount == 3)
+                if(c.GetComponent<Player>().PU4 == false)
                 {
+                    Debug.Log("nnnnnnnnnnnnnnnnnnnnnnnnnnnn");
                     c.GetComponent<Player>().PU4 = true;
+                    Destroy(this.gameObject);
+                    return;
                 }
-                else if (TurretCount == 4)
+                if(c.GetComponent<Player>().PU5 == false)
                 {
+                    Debug.Log("mmmmmmmmmmmmmmmmmmmmmmmmmmm");
                     c.GetComponent<Player>().PU5 = true;
+                    Destroy(this.gameObject);
+                    return;
                 }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
+
             }
         }
     }

@@ -1,40 +1,48 @@
-?ｻｿusing System.Collections;
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
 
-    //繝偵ャ繝医?昴う繝ｳ繝?
+    //繝偵ャ繝医・繧､繝ｳ繝・
     public int hp = 1;
 
     public float speed;
 
-    // Spaceship繧ｳ繝ｳ繝昴?ｼ繝阪Φ繝?
+    // Spaceship繧ｳ繝ｳ繝昴・繝阪Φ繝・
     Spaceship spaceship;
 
-    //PowerUpItem繝励Ξ繝上ヶ縺ｮ譬ｼ邏?
+    //PowerUpItem繝励Ξ繝上ヶ縺ｮ譬ｼ邏・
     public GameObject[] PItem;
 
-    //繧｢繧､繝?繝?縺ｮ遞ｮ鬘?
+    //繧｢繧､繝・Β縺ｮ遞ｮ鬘・
     private int ItemNumber;
 
-    //繧｢繧､繝?繝?繧定誠縺ｨ縺咏｢ｺ邇?
+    //繧｢繧､繝・Β繧定誠縺ｨ縺咏｢ｺ邇・
     private int ItemPar;
 
     IEnumerator Start()
     {
-        // Spaceship繧ｳ繝ｳ繝昴?ｼ繝阪Φ繝医ｒ蜿門ｾ?
+        // Spaceship繧ｳ繝ｳ繝昴・繝阪Φ繝医ｒ蜿門ｾ・
         spaceship = GetComponent<Spaceship>();
 
         
 
-        // 繝ｭ繝ｼ繧ｫ繝ｫ蠎ｧ讓吶?ｮY霆ｸ縺ｮ繝槭う繝翫せ譁ｹ蜷代↓遘ｻ蜍輔☆繧?
+        if (LayerMask.LayerToName(gameObject.layer) == "DivEnemy")
+        {
+            Debug.Log("pppppppppppppppppp");
+            this.transform.position = Vector3.MoveTowards(transform.position,
+            new Vector2(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0)), 1f);
+        }
+
+        // 繝ｭ繝ｼ繧ｫ繝ｫ蠎ｧ讓吶・Y霆ｸ縺ｮ繝槭う繝翫せ譁ｹ蜷代↓遘ｻ蜍輔☆繧・
         Move(transform.up * -speed);
 
         
 
-        // canShot縺掲alse縺ｮ蝣ｴ蜷医√％縺薙〒繧ｳ繝ｫ繝ｼ繝√Φ繧堤ｵゆｺ?縺輔○繧?
+        // canShot縺掲alse縺ｮ蝣ｴ蜷医√％縺薙〒繧ｳ繝ｫ繝ｼ繝√Φ繧堤ｵゆｺ・＆縺帙ｋ
         if (spaceship.canShot == false)
         {
             yield break;
@@ -45,7 +53,7 @@ public class Enemy : MonoBehaviour
         while (true)
         {
 
-            // 蟄占ｦ∫ｴ?繧貞?ｨ縺ｦ蜿門ｾ励☆繧?
+            // 蟄占ｦ∫ｴ繧貞・縺ｦ蜿門ｾ励☆繧・
             for (int i = 0; i < transform.childCount; i++)
             {
 
@@ -55,7 +63,7 @@ public class Enemy : MonoBehaviour
                 spaceship.Shot(shotPosition);
             }
 
-            // shotDelay遘貞ｾ?縺､
+            // shotDelay遘貞ｾ・▽
             yield return new WaitForSeconds(spaceship.shotDelay);
 
 
@@ -67,34 +75,21 @@ public class Enemy : MonoBehaviour
     /*// Start is called before the first frame update
     void Start()
     {
-        // Spaceship繧ｳ繝ｳ繝昴?ｼ繝阪Φ繝医ｒ蜿門ｾ?
+        // Spaceship繧ｳ繝ｳ繝昴・繝阪Φ繝医ｒ蜿門ｾ・
         spaceship = GetComponent<Spaceship>();
 
-        // 繝ｭ繝ｼ繧ｫ繝ｫ蠎ｧ讓吶?ｮY霆ｸ縺ｮ繝槭う繝翫せ譁ｹ蜷代↓遘ｻ蜍輔☆繧?
+        // 繝ｭ繝ｼ繧ｫ繝ｫ蠎ｧ讓吶・Y霆ｸ縺ｮ繝槭う繝翫せ譁ｹ蜷代↓遘ｻ蜍輔☆繧・
         spaceship.Move(transform.up * -1);
     }*/
 
     // Update is called once per frame
     void Update()
     {
-        if (spaceship.Tackle == true)
-        {
-            Vector2 v = new Vector3(0, speed * Time.deltaTime);
-            transform.Translate(v);
-            //spaceship.Compliance();
-            //transform.position = Vector3.MoveTowards(spaceship.Player.transform.position, /*spaceship.Player.*/transform.position, speed);
-            // 繧ｿ繝ｼ繧ｲ繝?繝医→縺ｮ蠎ｧ讓咎俣髫斐ｒ蜿門ｾ?
-            Vector3 diff = (spaceship.Player.transform.position - this.transform.position).normalized;
-            // 蝗櫁ｻ｢縺輔○繧九Quaternion.FromToRotation?ｼ育ｬｬ1蠑墓焚 縺九ｉ 隨ｬ2蠑墓焚 縺ｸ縺ｮ蝗櫁ｻ｢繧偵＆縺帙ｋ?ｼ?
-            this.transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
-            Debug.Log("ccc");
-
-            //return;
-        }
+        
 
     }
 
-    // 讖滉ｽ薙?ｮ遘ｻ蜍?
+    // 讖滉ｽ薙・遘ｻ蜍・
     public void Move(Vector2 direction)
     {
         
@@ -103,20 +98,20 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        // 繝ｬ繧､繝､繝ｼ蜷阪ｒ蜿門ｾ?
+        // 繝ｬ繧､繝､繝ｼ蜷阪ｒ蜿門ｾ・
         string layerName = LayerMask.LayerToName(c.gameObject.layer);
 
-        // 繝ｬ繧､繝､繝ｼ蜷阪′Bullet (Player)莉･螟悶?ｮ譎ゅ?ｯ菴輔ｂ陦後ｏ縺ｪ縺?
+        // 繝ｬ繧､繝､繝ｼ蜷阪′Bullet (Player)莉･螟悶・譎ゅ・菴輔ｂ陦後ｏ縺ｪ縺・
         //if (layerName != "Bullet(Player)") return;
         if (layerName == "Bullet(Player)") { 
 
-            // PlayerBullet縺ｮTransform繧貞叙蠕?
+            // PlayerBullet縺ｮTransform繧貞叙蠕・
             Transform playerBulletTransform = c.transform.parent;
 
-            // Bullet繧ｳ繝ｳ繝昴?ｼ繝阪Φ繝医ｒ蜿門ｾ?
+            // Bullet繧ｳ繝ｳ繝昴・繝阪Φ繝医ｒ蜿門ｾ・
             Bullet bullet = playerBulletTransform.GetComponent<Bullet>();
 
-            // 繝偵ャ繝医?昴う繝ｳ繝医ｒ貂帙ｉ縺?
+            // 繝偵ャ繝医・繧､繝ｳ繝医ｒ貂帙ｉ縺・
             hp = hp - bullet.power;
 
             // 蠑ｾ縺ｮ蜑企勁
@@ -124,7 +119,7 @@ public class Enemy : MonoBehaviour
 
         }
 
-        //辷?逋ｺ縺ｫ蠖薙◆縺｣縺溘ｉ(隱倡??)
+        //辷・匱縺ｫ蠖薙◆縺｣縺溘ｉ(隱倡・)
         if(layerName == "Explosion")
         {
             Transform explosionTransform = c.transform;
@@ -141,16 +136,21 @@ public class Enemy : MonoBehaviour
             ItemPar = Random.Range(0, 10);
             ItemNumber = Random.Range(0, PItem.Length);
 
-            Debug.Log(ItemPar);
+            //Debug.Log(ItemPar);
             //Debug.Log("---------------" + PItem[0]);
+
+            if(spaceship.div == true)
+            {
+                spaceship.Division();
+            }
 
             if(ItemPar == 0)
             {
-                // Wave繧剃ｽ懈?舌☆繧?
+                // PowerItem繧剃ｽ懈・縺吶ｋ
                 GameObject item = (GameObject)Instantiate(PItem[ItemNumber], transform.position, Quaternion.identity);
             }
 
-            // 辷?逋ｺ
+            // 辷・匱
             spaceship.Explosion();
 
             
