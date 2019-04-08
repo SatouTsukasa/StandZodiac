@@ -21,4 +21,29 @@ public class MoveScene : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
+
+
+    public void ButtonClicked_CharaSelect()
+    {
+        SceneManager.LoadScene("CharaSelect");
+        Debug.Log("OK?");
+    }
+
+    public void ButtonClicked_Talk()
+    {
+        SceneManager.LoadScene("talk");
+    }
+
+    public void G_CaharaMove()
+    {
+        SceneManager.LoadScene("CharaRoom");
+
+    }
+
+    public void Button_Continue()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+
 }

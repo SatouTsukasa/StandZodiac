@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1572547885383968026}
   - component: {fileID: 8009358332474845774}
   - component: {fileID: 5644366057933229923}
+  - component: {fileID: 2491130026982561541}
   m_Layer: 9
   m_Name: BigEnemyShot
   m_TagString: Untagged
@@ -60,7 +61,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5165103263845170036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 350, y: 950, z: 10}
+  m_LocalPosition: {x: 350, y: 950, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 1}
   m_Children:
   - {fileID: 7474435588966794962}
@@ -150,7 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291c0f9cbddfb2c49816ed36c09c0fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 30
+  speed: 0.9
+  PItem:
+  - {fileID: 1418199237998797300, guid: eade9512c9720c64d8bea7de2604d9b3, type: 3}
+  - {fileID: 3948267561832694988, guid: bf0f4de36f124294bad8ada3e2fb2d64, type: 3}
 --- !u!114 &1572547885383968026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,10 +170,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   shotDelay: 1
+  TackleDelay: 0
   bullet: {fileID: 4844779840373443755, guid: c8d84776ce6f13e4ea7aeecafb2136c6, type: 3}
+  bullet2: {fileID: 0}
+  bullet3: {fileID: 0}
+  bullet4: {fileID: 0}
+  bullet5: {fileID: 0}
   canShot: 1
+  Tackle: 0
   explosion: {fileID: 6525867870753116828, guid: 4f673a56e95eeda45b4d60a4d5b7c8a2,
     type: 3}
+  Player: {fileID: 0}
 --- !u!60 &8009358332474845774
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -255,6 +267,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2491130026982561541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5165103263845170036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7cf3009c057b7498251143d7873854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  POINT: 200
 --- !u!1 &6582994386243435753
 GameObject:
   m_ObjectHideFlags: 0
