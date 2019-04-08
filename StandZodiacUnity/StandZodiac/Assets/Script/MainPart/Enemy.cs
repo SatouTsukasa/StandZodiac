@@ -29,6 +29,13 @@ public class Enemy : MonoBehaviour
 
         
 
+        if (LayerMask.LayerToName(gameObject.layer) == "DivEnemy")
+        {
+            Debug.Log("pppppppppppppppppp");
+            this.transform.position = Vector3.MoveTowards(transform.position,
+            new Vector2(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0)), 1f);
+        }
+
         // ローカル座標のY軸のマイナス方向に移動する
         Move(transform.up * -speed);
 
@@ -77,20 +84,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spaceship.Tackle == true)
-        {
-            Vector2 v = new Vector3(0, speed * Time.deltaTime);
-            transform.Translate(v);
-            //spaceship.Compliance();
-            //transform.position = Vector3.MoveTowards(spaceship.Player.transform.position, /*spaceship.Player.*/transform.position, speed);
-            // ターゲットとの座標間隔を取得
-            Vector3 diff = (spaceship.Player.transform.position - this.transform.position).normalized;
-            // 回転させる　Quaternion.FromToRotation（第1引数 から 第2引数 への回転をさせる）
-            this.transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
-            Debug.Log("ccc");
-
-            //return;
-        }
+        
 
     }
 
@@ -141,12 +135,17 @@ public class Enemy : MonoBehaviour
             ItemPar = Random.Range(0, 10);
             ItemNumber = Random.Range(0, PItem.Length);
 
-            Debug.Log(ItemPar);
+            //Debug.Log(ItemPar);
             //Debug.Log("---------------" + PItem[0]);
+
+            if(spaceship.div == true)
+            {
+                spaceship.Division();
+            }
 
             if(ItemPar == 0)
             {
-                // Waveを作成する
+                // PowerItemを作成する
                 GameObject item = (GameObject)Instantiate(PItem[ItemNumber], transform.position, Quaternion.identity);
             }
 

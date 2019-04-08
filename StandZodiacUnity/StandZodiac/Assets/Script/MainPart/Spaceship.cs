@@ -27,7 +27,9 @@ public class Spaceship : MonoBehaviour
     // 弾を撃つかどうか
     public bool canShot;
 
-    public bool Tackle;
+    public bool div;
+
+    public GameObject divEnemy;
 
     // 爆発のPrefab
     public GameObject explosion;
@@ -69,20 +71,25 @@ public class Spaceship : MonoBehaviour
     }
 
     // パワーアップ弾の作成
-    public void ShotPU(Transform origin, bool  PU2, bool PU3, bool PU4, bool PU5)
+    public void ShotPU(Transform origin, bool PU3, bool PU4, bool PU5,int TurretCount)
     {
         Instantiate(bullet2, origin.position, origin.rotation);
-        if(PU2 == true)
+        if(PU3 == true)
         {
-            Instantiate(bullet3, origin.position, origin.rotation);
-            if (PU3 == true)
-            {
-                Instantiate(bullet4, origin.position, origin.rotation);
-                if (PU4 == true){
-                    Instantiate(bullet5, origin.position, origin.rotation);
-                }
-            }
+            
+            Instantiate(bullet3, origin.position, origin.rotation); 
         }
+        if(PU4 == true)
+        {
+            //Debug.Log("ooooooooooooooooooooooooooo");
+            Instantiate(bullet4, origin.position, origin.rotation);
+
+        }
+        if(PU5 == true)
+        {
+            Instantiate(bullet5, origin.position, origin.rotation);
+        }
+        
     }
 
     // 機体の移動
@@ -105,6 +112,19 @@ public class Spaceship : MonoBehaviour
         // 回転させる　Quaternion.FromToRotation（第1引数 から 第2引数 への回転をさせる）
         //this.transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
         
+        
+    }
+
+    public void Division()
+    {
+        for(int i = 0;i < 2; i++)
+        {
+            Debug.Log(i);
+            GameObject DivEnemy = (GameObject)Instantiate(divEnemy) as GameObject;
+            DivEnemy.layer = LayerMask.NameToLayer("DivEnemy");
+            //DivEnemy.transform.position = Vector3.MoveTowards(transform.position,
+            //new Vector3(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0),transform.position.z), 0.01f); 
+        }
         
     }
 }
