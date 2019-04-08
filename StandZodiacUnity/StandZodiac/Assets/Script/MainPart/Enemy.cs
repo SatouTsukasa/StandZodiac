@@ -1,30 +1,31 @@
-﻿using System.Collections;
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
 
-    //ヒットポイント
+    //ヒット�EインチE
     public int hp = 1;
 
     public float speed;
 
-    // Spaceshipコンポーネント
+    // Spaceshipコンポ�EネンチE
     Spaceship spaceship;
 
-    //PowerUpItemプレハブの格納
+    //PowerUpItemプレハブの格紁E
     public GameObject[] PItem;
 
-    //アイテムの種類
+    //アイチE��の種顁E
     private int ItemNumber;
 
-    //アイテムを落とす確率
+    //アイチE��を落とす確玁E
     private int ItemPar;
 
     IEnumerator Start()
     {
-        // Spaceshipコンポーネントを取得
+        // Spaceshipコンポ�Eネントを取征E
         spaceship = GetComponent<Spaceship>();
 
         
@@ -36,12 +37,12 @@ public class Enemy : MonoBehaviour
             new Vector2(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0)), 1f);
         }
 
-        // ローカル座標のY軸のマイナス方向に移動する
+        // ローカル座標�EY軸のマイナス方向に移動すめE
         Move(transform.up * -speed);
 
         
 
-        // canShotがfalseの場合、ここでコルーチンを終了させる
+        // canShotがfalseの場合、ここでコルーチンを終亁E��せる
         if (spaceship.canShot == false)
         {
             yield break;
@@ -52,7 +53,7 @@ public class Enemy : MonoBehaviour
         while (true)
         {
 
-            // 子要素を全て取得する
+            // 子要素を�Eて取得すめE
             for (int i = 0; i < transform.childCount; i++)
             {
 
@@ -62,7 +63,7 @@ public class Enemy : MonoBehaviour
                 spaceship.Shot(shotPosition);
             }
 
-            // shotDelay秒待つ
+            // shotDelay秒征E��
             yield return new WaitForSeconds(spaceship.shotDelay);
 
 
@@ -74,10 +75,10 @@ public class Enemy : MonoBehaviour
     /*// Start is called before the first frame update
     void Start()
     {
-        // Spaceshipコンポーネントを取得
+        // Spaceshipコンポ�Eネントを取征E
         spaceship = GetComponent<Spaceship>();
 
-        // ローカル座標のY軸のマイナス方向に移動する
+        // ローカル座標�EY軸のマイナス方向に移動すめE
         spaceship.Move(transform.up * -1);
     }*/
 
@@ -88,7 +89,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    // 機体の移動
+    // 機体�E移勁E
     public void Move(Vector2 direction)
     {
         
@@ -97,20 +98,20 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        // レイヤー名を取得
+        // レイヤー名を取征E
         string layerName = LayerMask.LayerToName(c.gameObject.layer);
 
-        // レイヤー名がBullet (Player)以外の時は何も行わない
+        // レイヤー名がBullet (Player)以外�E時�E何も行わなぁE
         //if (layerName != "Bullet(Player)") return;
         if (layerName == "Bullet(Player)") { 
 
-            // PlayerBulletのTransformを取得
+            // PlayerBulletのTransformを取征E
             Transform playerBulletTransform = c.transform.parent;
 
-            // Bulletコンポーネントを取得
+            // Bulletコンポ�Eネントを取征E
             Bullet bullet = playerBulletTransform.GetComponent<Bullet>();
 
-            // ヒットポイントを減らす
+            // ヒット�Eイントを減らぁE
             hp = hp - bullet.power;
 
             // 弾の削除
@@ -118,7 +119,7 @@ public class Enemy : MonoBehaviour
 
         }
 
-        //爆発に当たったら(誘爆)
+        //爁E��に当たったら(誘�E)
         if(layerName == "Explosion")
         {
             Transform explosionTransform = c.transform;
@@ -145,11 +146,11 @@ public class Enemy : MonoBehaviour
 
             if(ItemPar == 0)
             {
-                // PowerItemを作成する
+                // PowerItemを作�Eする
                 GameObject item = (GameObject)Instantiate(PItem[ItemNumber], transform.position, Quaternion.identity);
             }
 
-            // 爆発
+            // 爁E��
             spaceship.Explosion();
 
             
@@ -167,3 +168,4 @@ public class Enemy : MonoBehaviour
         }
     }
 }
+

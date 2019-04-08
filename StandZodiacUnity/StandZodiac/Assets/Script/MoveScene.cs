@@ -22,6 +22,7 @@ public class MoveScene : MonoBehaviour
     }
 
 
+
     public void ButtonClicked_CharaSelect()
     {
         SceneManager.LoadScene("CharaSelect");
@@ -42,5 +43,11 @@ public class MoveScene : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void Button_Continue()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
 
 }
