@@ -1,40 +1,40 @@
-﻿using System.Collections;
+?��using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
 
-    //ヒットポイント
+    //ヒット�?�イン�?
     public int hp = 1;
 
     public float speed;
 
-    // Spaceshipコンポーネント
+    // Spaceshipコンポ�?�ネン�?
     Spaceship spaceship;
 
-    //PowerUpItemプレハブの格納
+    //PowerUpItemプレハブの格�?
     public GameObject[] PItem;
 
-    //アイテムの種類
+    //アイ�?�?の種�?
     private int ItemNumber;
 
-    //アイテムを落とす確率
+    //アイ�?�?を落とす確�?
     private int ItemPar;
 
     IEnumerator Start()
     {
-        // Spaceshipコンポーネントを取得
+        // Spaceshipコンポ�?�ネントを取�?
         spaceship = GetComponent<Spaceship>();
 
         
 
-        // ローカル座標のY軸のマイナス方向に移動する
+        // ローカル座標�?�Y軸のマイナス方向に移動す�?
         Move(transform.up * -speed);
 
         
 
-        // canShotがfalseの場合、ここでコルーチンを終了させる
+        // canShotがfalseの場合、ここでコルーチンを終�?させ�?
         if (spaceship.canShot == false)
         {
             yield break;
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
         while (true)
         {
 
-            // 子要素を全て取得する
+            // 子要�?を�?�て取得す�?
             for (int i = 0; i < transform.childCount; i++)
             {
 
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
                 spaceship.Shot(shotPosition);
             }
 
-            // shotDelay秒待つ
+            // shotDelay秒�?つ
             yield return new WaitForSeconds(spaceship.shotDelay);
 
 
@@ -67,10 +67,10 @@ public class Enemy : MonoBehaviour
     /*// Start is called before the first frame update
     void Start()
     {
-        // Spaceshipコンポーネントを取得
+        // Spaceshipコンポ�?�ネントを取�?
         spaceship = GetComponent<Spaceship>();
 
-        // ローカル座標のY軸のマイナス方向に移動する
+        // ローカル座標�?�Y軸のマイナス方向に移動す�?
         spaceship.Move(transform.up * -1);
     }*/
 
@@ -83,9 +83,9 @@ public class Enemy : MonoBehaviour
             transform.Translate(v);
             //spaceship.Compliance();
             //transform.position = Vector3.MoveTowards(spaceship.Player.transform.position, /*spaceship.Player.*/transform.position, speed);
-            // ターゲットとの座標間隔を取得
+            // ターゲ�?トとの座標間隔を取�?
             Vector3 diff = (spaceship.Player.transform.position - this.transform.position).normalized;
-            // 回転させる　Quaternion.FromToRotation（第1引数 から 第2引数 への回転をさせる）
+            // 回転させる　Quaternion.FromToRotation?��第1引数 から 第2引数 への回転をさせる?�?
             this.transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
             Debug.Log("ccc");
 
@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    // 機体の移動
+    // 機体�?�移�?
     public void Move(Vector2 direction)
     {
         
@@ -103,20 +103,20 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        // レイヤー名を取得
+        // レイヤー名を取�?
         string layerName = LayerMask.LayerToName(c.gameObject.layer);
 
-        // レイヤー名がBullet (Player)以外の時は何も行わない
+        // レイヤー名がBullet (Player)以外�?�時�?�何も行わな�?
         //if (layerName != "Bullet(Player)") return;
         if (layerName == "Bullet(Player)") { 
 
-            // PlayerBulletのTransformを取得
+            // PlayerBulletのTransformを取�?
             Transform playerBulletTransform = c.transform.parent;
 
-            // Bulletコンポーネントを取得
+            // Bulletコンポ�?�ネントを取�?
             Bullet bullet = playerBulletTransform.GetComponent<Bullet>();
 
-            // ヒットポイントを減らす
+            // ヒット�?�イントを減ら�?
             hp = hp - bullet.power;
 
             // 弾の削除
@@ -124,7 +124,7 @@ public class Enemy : MonoBehaviour
 
         }
 
-        //爆発に当たったら(誘爆)
+        //�?発に当たったら(誘�??)
         if(layerName == "Explosion")
         {
             Transform explosionTransform = c.transform;
@@ -146,11 +146,11 @@ public class Enemy : MonoBehaviour
 
             if(ItemPar == 0)
             {
-                // Waveを作成する
+                // Waveを作�?�す�?
                 GameObject item = (GameObject)Instantiate(PItem[ItemNumber], transform.position, Quaternion.identity);
             }
 
-            // 爆発
+            // �?発
             spaceship.Explosion();
 
             
@@ -168,3 +168,4 @@ public class Enemy : MonoBehaviour
         }
     }
 }
+

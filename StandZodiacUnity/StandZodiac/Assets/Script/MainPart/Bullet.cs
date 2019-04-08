@@ -1,21 +1,21 @@
-﻿using System.Collections;
+?��using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // 弾の移動スピード
+    // 弾の移動スピ�?��?
     public int speed = 10;
 
     //旋回速度
     public int rot;
 
-    // ゲームオブジェクト生成から削除するまでの時間
+    // ゲー�?オブジェクト生成から削除するまでの時間
     public float lifeTime = 5;
 
     public bool Track = false;
 
-    //攻撃力
+    //攻�?�?
     public int power = 1;
 
     public GameObject player;
@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
     {
         player = GameObject.Find("Player");
 
-        // ローカル座標のY軸方向に移動する
+        // ローカル座標�?�Y軸方向に移動す�?
         GetComponent<Rigidbody2D>().velocity = transform.up.normalized * speed;
 
         // lifeTime秒後に削除
