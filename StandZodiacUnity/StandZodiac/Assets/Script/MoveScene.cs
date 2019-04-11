@@ -22,6 +22,7 @@ public class MoveScene : MonoBehaviour
     }
 
 
+
     public void ButtonClicked_CharaSelect()
     {
         SceneManager.LoadScene("CharaSelect");
@@ -36,7 +37,6 @@ public class MoveScene : MonoBehaviour
     public void G_CaharaMove()
     {
         SceneManager.LoadScene("CharaRoom");
-
     }
 
     public void Button_Continue()

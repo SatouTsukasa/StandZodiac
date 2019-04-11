@@ -205,6 +205,7 @@ MonoBehaviour:
   PU3: 0
   PU4: 0
   PU5: 0
+  TurretCount: 0
 --- !u!114 &1392689055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,10 +223,10 @@ MonoBehaviour:
   TackleDelay: 0
   bullet: {fileID: 4186128159347721616, guid: ee8a2f994b8e75f4db77002df42fc912, type: 3}
   bullet2: {fileID: 1979593090944915206, guid: 57a8b0620eedcc54581e197cae02696d, type: 3}
-  bullet3: {fileID: 0}
-  bullet4: {fileID: 0}
-  bullet5: {fileID: 0}
-  canShot: 0
+  bullet3: {fileID: 5631733475362180049, guid: 4bbd3c6bf5945fc4eae452813bcb5ce0, type: 3}
+  bullet4: {fileID: 5304729431158391088, guid: 9b570c22795edd544a60d42537a431e9, type: 3}
+  bullet5: {fileID: 140746040212858365, guid: 3c5e058649e1ffc45bbc47aa8dde91d9, type: 3}
+  canShot: 1
   Tackle: 0
   explosion: {fileID: 6525867870753116828, guid: 4f673a56e95eeda45b4d60a4d5b7c8a2,
     type: 3}
