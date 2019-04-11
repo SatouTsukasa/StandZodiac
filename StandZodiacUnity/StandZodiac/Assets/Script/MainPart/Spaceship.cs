@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
+
 // Rigidbody2Dコンポ��Eネントを忁E��にする
 [RequireComponent(typeof(Rigidbody2D))]
 public class Spaceship : MonoBehaviour
@@ -12,19 +14,19 @@ public class Spaceship : MonoBehaviour
     // 弾を撃つ間隔
     public float shotDelay;
 
-    //追尾する感要E
-    public float TackleDelay;
+    //追尾するかどうか
+    public bool Tackle = false;
 
     // 弾のPrefab
     public GameObject bullet;
 
-    //パワーアチE�E弾
+    //パワーアップ弾
     public GameObject bullet2;
     public GameObject bullet3;
     public GameObject bullet4;
     public GameObject bullet5;
 
-    // 弾を撃つかどぁE��
+    // 弾を撃つかどうか
     public bool canShot;
 
     public bool div;
@@ -44,7 +46,7 @@ public class Spaceship : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // アニメーターコンポ��Eネントを取征E
+        // アニメーターコンポーネンネントを取得
         animator = GetComponent<Animator>();
 
         enemy = GetComponent<Enemy>();
@@ -53,7 +55,12 @@ public class Spaceship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        /*if (transform.position.y > Player.transform.position.y)
+        {
+            //Vector2 w = Player.transform.position;
+            //GetComponent<NavMeshAgent2D>().destination = w;
+            transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, speed * -0.01f);
+        }*/
     }
 
     // 爁E��の作��E
@@ -120,10 +127,29 @@ public class Spaceship : MonoBehaviour
         for(int i = 0;i < 2; i++)
         {
             Debug.Log(i);
-            GameObject DivEnemy = (GameObject)Instantiate(divEnemy) as GameObject;
+            GameObject DivEnemy = (GameObject)Instantiate(divEnemy, new Vector2(transform.position.x + Random.Range(-100, 100), transform.position.y + Random.Range(-30, 0)),Quaternion.identity);
             DivEnemy.layer = LayerMask.NameToLayer("DivEnemy");
-            //DivEnemy.transform.position = Vector3.MoveTowards(transform.position,
-            //new Vector3(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0),transform.position.z), 0.01f);
+            Transform Tf = DivEnemy.GetComponent<Transform>();
+            Vector3[] path =
+            {
+                new Vector3(Tf.localPosition.x * Random.Range(1.1f,1.3f),Tf.localPosition.y * Random.Range(1.05f,1.2f),0f),
+                //new Vector3(0f,150f,0f),
+            };
+            //DOTweenを使ったアニメ作成
+            Tf.DOLocalPath(path, 0.5f, PathType.CatmullRom)
+                .SetEase(Ease.OutQuad);
+            //DivEnemy.transform.position = new Vector3(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0),transform.position.z);
+        }
+        
+    }
+
+    public void Track(Vector2 w)
+    {
+        if(transform.position.y > Player.transform.position.y)
+        {
+            //Vector2 w = Player.transform.position;
+            //GetComponent<NavMeshAgent2D>().destination = w;
+            transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, speed * -0.01f);
         }
         
     }

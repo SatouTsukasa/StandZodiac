@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         //画面外判宁E
         if (!GetComponent<SpriteRenderer>().isVisible)
         {
-            Debug.Log("画面夁E);
+
         }
 
         // エチE��タ、実機で処琁E��刁E��めE
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
             // エチE��タで実行中
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("クリチE��した瞬閁E);
+
                 /*Vector3 position = Input.mousePosition;
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", position.x, "y", position.y, "time", 1.0f));*/
 
@@ -93,14 +93,14 @@ public class Player : MonoBehaviour
             {
                 playerPos = Vector3.zero;
                 mousePos = Vector3.zero;
-                Debug.Log("離した瞬閁E);
+
             }
 
             if (Input.GetMouseButton(0))
             {
                 /*Vector3 position = Input.mousePosition;
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", position.x, "y", position.y, "time", 1.0f));*/
-                Debug.Log("クリチE��しっぱなぁE);
+
 
                 //Vector3 prePos = this.transform.position;
                 Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
@@ -132,17 +132,17 @@ public class Player : MonoBehaviour
 
                 if (touch.phase == TouchPhase.Began)
                 {
-                    Debug.Log("押した瞬閁E);
+
                 }
 
                 if (touch.phase == TouchPhase.Ended)
                 {
-                    Debug.Log("離した瞬閁E);
+
                 }
 
                 if (touch.phase == TouchPhase.Moved)
                 {
-                    Debug.Log("押しっぱなぁE);
+
                 }
             }
         }

@@ -23,23 +23,25 @@ public class Enemy : MonoBehaviour
     //繧｢繧､繝・Β繧定誠縺ｨ縺咏｢ｺ邇・
     private int ItemPar;
 
+    Vector2 w;
+
     IEnumerator Start()
     {
         // Spaceship繧ｳ繝ｳ繝昴・繝阪Φ繝医ｒ蜿門ｾ・
         spaceship = GetComponent<Spaceship>();
 
-        
 
-        if (LayerMask.LayerToName(gameObject.layer) == "DivEnemy")
+
+        /*if (LayerMask.LayerToName(gameObject.layer) == "DivEnemy")
         {
             Debug.Log("pppppppppppppppppp");
-            this.transform.position = Vector3.MoveTowards(transform.position,
-            new Vector2(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0)), 1f);
-        }
+            transform.position = new Vector2(transform.position.x + Random.Range(-100, 100), transform.position.y + Random.Range(-30, 0));
+        }*/
 
         // 繝ｭ繝ｼ繧ｫ繝ｫ蠎ｧ讓吶・Y霆ｸ縺ｮ繝槭う繝翫せ譁ｹ蜷代↓遘ｻ蜍輔☆繧・
-        Move(transform.up * -speed);
-
+        
+        
+            Move(transform.up * -speed);
         
 
         // canShot縺掲alse縺ｮ蝣ｴ蜷医√％縺薙〒繧ｳ繝ｫ繝ｼ繝√Φ繧堤ｵゆｺ・＆縺帙ｋ
@@ -53,17 +55,31 @@ public class Enemy : MonoBehaviour
         while (true)
         {
 
-            // 蟄占ｦ∫ｴ繧貞・縺ｦ蜿門ｾ励☆繧・
+            // 
             for (int i = 0; i < transform.childCount; i++)
             {
 
                 Transform shotPosition = transform.GetChild(i);
 
-                // ShotPosition縺ｮ菴咲ｽｮ/隗貞ｺｦ縺ｧ蠑ｾ繧呈茶縺､
+                // ShotPosition
                 spaceship.Shot(shotPosition);
             }
+            if (spaceship.Tackle == true)
+            {
+                //w = spaceship.Player.transform.position;
 
-            // shotDelay遘貞ｾ・▽
+                //spaceship.Track(w);
+                if (transform.position.y > spaceship.Player.transform.position.y)
+                {
+                    Debug.Log("ssssssssssssssssss");
+                    transform.position = Vector3.MoveTowards(transform.position,
+                        spaceship.Player.transform.position, speed * Time.deltaTime);
+                }
+
+
+            }
+
+            // shotDelay
             yield return new WaitForSeconds(spaceship.shotDelay);
 
 
@@ -83,11 +99,29 @@ public class Enemy : MonoBehaviour
     }*/
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
+
+        if (spaceship.Tackle == true)
+        {
+            //w = spaceship.Player.transform.position;
+            
+            //spaceship.Track(w);
+            if(transform.position.y > spaceship.Player.transform.position.y)
+            {
+                Debug.Log("ssssssssssssssssss");
+                transform.position = Vector3.MoveTowards(transform.position,
+                    spaceship.Player.transform.position, speed * 0.8f * Time.deltaTime);
+            }
+            else
+            {
+                Move(transform.up * -speed);
+            }
+
+        }
         
 
-    }
+    }*/
 
     // 讖滉ｽ薙・遘ｻ蜍・
     public void Move(Vector2 direction)

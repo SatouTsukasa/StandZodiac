@@ -44,10 +44,4 @@ public class MoveScene : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    public void Button_Continue()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
-
-
 }
