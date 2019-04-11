@@ -22,7 +22,7 @@ public class Gauge : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        ADDgauge();
+        //ADDgauge();
     }
     //敵に攻撃したときに呼び出す
     public void ADDgauge()

@@ -201,5 +201,11 @@ public class Enemy : MonoBehaviour
             
         }
     }
+
+    private void OnDestroy()
+    {
+        GameObject Gauge = GameObject.Find("Gauge");
+        Gauge.GetComponent<Gauge>().ADDgauge();
+    }
 }
 
