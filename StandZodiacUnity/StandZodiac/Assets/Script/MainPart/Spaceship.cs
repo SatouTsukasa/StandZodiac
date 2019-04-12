@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
+
 // Rigidbody2Dコンポーネントを必須にする
 [RequireComponent(typeof(Rigidbody2D))]
 public class Spaceship : MonoBehaviour
@@ -26,8 +28,10 @@ public class Spaceship : MonoBehaviour
 
     // 弾を撃つかどうか
     public bool canShot;
-
+    //分裂するかどうか
     public bool div;
+    //追尾するかどうか
+    public bool tackle;
 
     public GameObject divEnemy;
 
@@ -122,9 +126,23 @@ public class Spaceship : MonoBehaviour
             Debug.Log(i);
             GameObject DivEnemy = (GameObject)Instantiate(divEnemy, new Vector2(transform.position.x + Random.Range(-100, 100), transform.position.y + Random.Range(-30, 0)),Quaternion.identity);
             DivEnemy.layer = LayerMask.NameToLayer("DivEnemy");
+            Transform Tf = DivEnemy.GetComponent<Transform>();
+            Vector3[] path =
+            {
+                new Vector3(Tf.localPosition.x * Random.Range(1.1f,1.3f),Tf.localPosition.y * Random.Range(1.05f,1.2f),0f),
+                //new Vector3(0f,150f,0f),
+            };
+            //DOTweenを使ったアニメ作成
+            Tf.DOLocalPath(path, 0.5f, PathType.CatmullRom)
+                .SetEase(Ease.OutQuad);
             //DivEnemy.transform.position = Vector3.MoveTowards(transform.position,
             //new Vector3(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0),transform.position.z), 0.01f);
         }
 
+    }
+
+    public void Tackle()
+    {
+        transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0f,0f,transform.rotation.z - 90),1f);
     }
 }
