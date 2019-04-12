@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
-    // Spaceshipコンポ��EネンチE
+    // Spaceshipコンポーネント
     Spaceship spaceship;
 
     public float speed = 0;
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public AudioClip ShotSound;
     public AudioClip ItemAcquisition;
 
-    //パワーアチE�Ebool関数
+    //パワーアップbool関数
 
     public bool PU2 = false;
     public bool PU3 = false;
@@ -29,15 +29,15 @@ public class Player : MonoBehaviour
 
     public int TurretCount = 0;
     // Start is called before the first frame update
-    // StartメソチE��をコルーチンとして呼び出ぁE
+    // Startメソッドをコルーチンとして呼び出す
     IEnumerator Start()
     {
 
-        // Spaceshipコンポ��Eネントを取征E
+        // Spaceshipコンポーネントを取得
         spaceship = GetComponent<Spaceship>();
         while (true)
         {
-            // 弾を��Eレイヤーと同じ位置/角度で作��E
+            // 弾をプレイヤーと同じ位置/角度で作成
             spaceship.Shot(transform);
             if(PU2 == true)
             {
@@ -47,11 +47,11 @@ public class Player : MonoBehaviour
 
             //,PU1,PU2,PU3,PU4
 
-            // ショチE��音を鳴らす
+            // ショット音を鳴らす
             //GetComponent<AudioSource>().Play();
             GetComponent<AudioSource>().PlayOneShot(ShotSound);
 
-            // shotDelay秒征E��
+            // shotDelay秒待つ
             yield return new WaitForSeconds(spaceship.shotDelay);
         }
 
@@ -66,20 +66,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //画面外判宁E
+        //画面外判定
         if (!GetComponent<SpriteRenderer>().isVisible)
         {
-
+            Debug.Log("画面外");
         }
 
-        // エチE��タ、実機で処琁E��刁E��めE
+        // エディタ、実機で処理を分ける
 
         if (Application.isEditor)
         {
-            // エチE��タで実行中
+            // エディタで実行中
             if (Input.GetMouseButtonDown(0))
             {
-
+                Debug.Log("クリックした瞬間");
                 /*Vector3 position = Input.mousePosition;
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", position.x, "y", position.y, "time", 1.0f));*/
 
@@ -93,21 +93,21 @@ public class Player : MonoBehaviour
             {
                 playerPos = Vector3.zero;
                 mousePos = Vector3.zero;
-
+                Debug.Log("離した瞬間");
             }
 
             if (Input.GetMouseButton(0))
             {
                 /*Vector3 position = Input.mousePosition;
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", position.x, "y", position.y, "time", 1.0f));*/
-
+                Debug.Log("クリックしっぱなし");
 
                 //Vector3 prePos = this.transform.position;
                 Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
 
                 Move();
 
-                //タチE��対応デバイス向け、E本目の持E��のみ反忁E
+                //タッチ対応デバイス向け、1本目の指にのみ反応
                 if (Input.touchSupported)
                 {
                     diff = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - mousePos;
@@ -124,25 +124,25 @@ public class Player : MonoBehaviour
         else
         {
             // 実機で実行中
-            // タチE��されてぁE��かチェチE��
+            // タッチされているかチェック
             if (Input.touchCount > 0)
             {
-                // タチE��惁E��の取征E
+                // タッチ情報の取得
                 Touch touch = Input.GetTouch(0);
 
                 if (touch.phase == TouchPhase.Began)
                 {
-
+                    Debug.Log("押した瞬間");
                 }
 
                 if (touch.phase == TouchPhase.Ended)
                 {
-
+                    Debug.Log("離した瞬間");
                 }
 
                 if (touch.phase == TouchPhase.Moved)
                 {
-
+                    Debug.Log("押しっぱなし");
                 }
             }
         }
@@ -154,23 +154,23 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        // 画面左下��Eワールド座標をビューポ��Eトから取征E
+        // 画面左下のワールド座標をビューポートから取得
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0.11f));
 
-        // 画面右上��Eワールド座標をビューポ��Eトから取征E
+        // 画面右上のワールド座標をビューポートから取得
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 0.8f));
 
-        // プレイヤーの座標を取征E
+        // プレイヤーの座標を取得
         Vector2 pos = transform.position;
 
         Vector3 prePos = this.transform.position;
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
 
-        // プレイヤーの位置が画面冁E��収まるよぁE��制限をかけめE
+        // プレイヤーの位置が画面内に収まるように制限をかける
         pos.x = Mathf.Clamp(pos.x, min.x, max.x);
         pos.y = Mathf.Clamp(pos.y, min.y, max.y);
 
-        // 制限をかけた値を��Eレイヤーの位置とする
+        // 制限をかけた値をプレイヤーの位置とする
         transform.position = pos;
     }
 
@@ -201,20 +201,20 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        // レイヤー名を取征E
+        // レイヤー名を取得
         string layerName = LayerMask.LayerToName(col.gameObject.layer);
 
-        // レイヤー名がBullet (Enemy)の時��E弾を削除
+        // レイヤー名がBullet (Enemy)の時は弾を削除
         if (layerName == "Bullet(Enemy)")
         {
             // 弾の削除
             Destroy(col.gameObject);
         }
 
-        // レイヤー名がBullet (Enemy)また��EEnemyの場合��E爁E��
+        // レイヤー名がBullet (Enemy)またはEnemyの場合は爆発
         if (layerName == "Bullet(Enemy)" || layerName == "Enemy")
         {
-            // 爁E��する
+            // 爆発する
             spaceship.Explosion();
 
             // プレイヤーを削除

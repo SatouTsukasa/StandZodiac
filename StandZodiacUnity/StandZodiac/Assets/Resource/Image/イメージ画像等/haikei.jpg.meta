@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a6f3a64dc67786c4cbbcfe973781b179
+guid: a6d24439e4f25a743a154285bbab431e
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -34,15 +34,9 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -100
-<<<<<<< HEAD
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
-=======
     wrapU: 1
     wrapV: 1
     wrapW: 1
->>>>>>> develop
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -75,71 +69,20 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-<<<<<<< HEAD
-  - serializedVersion: 2
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-=======
->>>>>>> develop
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
     physicsShape: []
     bones: []
-<<<<<<< HEAD
-    spriteID: 747d44d36429a714c867d599027b3e73
-=======
-    spriteID: edbbc28c5b07a214caad31ac243ba090
->>>>>>> develop
+    spriteID: 0db9b8fc63979854e8262c99460b7357
     vertices: []
-    indices:
+    indices: 
     edges: []
     weights: []
-  spritePackingTag:
+  spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

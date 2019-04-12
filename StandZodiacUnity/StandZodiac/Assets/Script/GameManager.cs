@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log(score);
     }
 
-    //スコア�?�?
+    //スコア加算
     public void AddScore(int val)
     {
         score += val;
@@ -73,4 +73,3 @@ public class GameManager : MonoBehaviour
 
 
 }
-
