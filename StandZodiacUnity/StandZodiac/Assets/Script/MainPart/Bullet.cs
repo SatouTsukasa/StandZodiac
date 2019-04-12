@@ -1,11 +1,10 @@
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // 弾の移動スピ�EチE
+    // 弾の移動スピード
     public int speed = 10;
 
     //旋回速度
@@ -16,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     public bool Track = false;
 
-    //攻撁E��
+    //攻撃力
     public int power = 1;
 
     public GameObject player;
@@ -30,7 +29,7 @@ public class Bullet : MonoBehaviour
     {
         player = GameObject.Find("Player");
 
-        // ローカル座標�EY軸方向に移動すめE
+        // ローカル座標のY軸方向に移動する
         GetComponent<Rigidbody2D>().velocity = transform.up.normalized * speed;
         //transform.position += transform.up.normalized * speed;
 
@@ -64,7 +63,3 @@ public class Bullet : MonoBehaviour
     }
 
 }
-
-
-
-
