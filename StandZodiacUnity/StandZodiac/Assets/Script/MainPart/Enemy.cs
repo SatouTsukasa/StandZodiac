@@ -204,7 +204,7 @@ public class Enemy : MonoBehaviour
 
         }
     }
-    //必殺ゲージの値をプラス
+    //蠢�谿ｺ繧ｲ繝ｼ繧ｸ縺ｮ蛟､繧偵�励Λ繧ｹ
     private void OnDestroy()
     {
         GameObject Gauge = GameObject.Find("Gauge");

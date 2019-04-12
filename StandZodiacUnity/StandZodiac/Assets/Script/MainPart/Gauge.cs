@@ -24,6 +24,7 @@ public class Gauge : MonoBehaviour {
     {
         //ADDgauge();
     }
+
     //敵に攻撃したときに呼び出す
     public void ADDgauge()
     {
