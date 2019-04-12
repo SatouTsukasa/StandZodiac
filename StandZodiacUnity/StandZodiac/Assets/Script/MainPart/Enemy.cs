@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
 
 
 
-        /*if (LayerMask.LayerToName(gameObject.layer) == "DivEnemy")
+        if (LayerMask.LayerToName(gameObject.layer) == "DivEnemy")
         {
             Debug.Log("pppppppppppppppppp");
             this.transform.position = Vector3.MoveTowards(transform.position,
@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
                 // ShotPosition
                 spaceship.Shot(shotPosition);
             }
-            if (spaceship.Tackle == true)
+            /*if (spaceship.Tackle == true)
             {
                 //w = spaceship.Player.transform.position;
 
@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
                 }
 
 
-            }
+            }*/
 
             // shotDelay秒待つ
             yield return new WaitForSeconds(spaceship.shotDelay);
