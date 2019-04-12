@@ -204,4 +204,10 @@ public class Enemy : MonoBehaviour
 
         }
     }
+    //必殺ゲージの値をプラス
+    private void OnDestroy()
+    {
+        GameObject Gauge = GameObject.Find("Gauge");
+        Gauge.GetComponent<Gauge>().ADDgauge();
+    }
 }
