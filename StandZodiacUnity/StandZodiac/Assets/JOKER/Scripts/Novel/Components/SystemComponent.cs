@@ -117,9 +117,13 @@ name=ラベル名を指定してください
 
 		public override void start ()
 		{
-			this.param ["name"] = this.tagName;
 
-			Macro macro = this.gameManager.scenarioManager.getMacro (this.param ["name"]);
+            this.param ["name"] = this.tagName;
+
+            Debug.Break();
+            Debug.Log("----------------------------------" + this.param["name"]);
+
+            Macro macro = this.gameManager.scenarioManager.getMacro (this.param ["name"]);
 
 			if (macro == null) {
 				this.gameManager.showError ("マクロ「"+this.param["name"]+"」は存在しません。");

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class ScoreEnemyManager : MonoBehaviour
 {
     public int POINT = 100;
@@ -10,7 +11,6 @@ public class ScoreEnemyManager : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
-
     }
 
     // Update is called once per frame
@@ -21,8 +21,6 @@ public class ScoreEnemyManager : MonoBehaviour
 
     public void GetPoint()
     {
-
-        gameManager.GetComponent<GameManager>().AddScore(POINT);
-
+        gameManager.GetComponent<Main.GameManager>().AddScore(POINT);
     }
 }

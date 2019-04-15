@@ -46,7 +46,9 @@ scale=Live2Dモデルの表示サイズを指定できます。つまり2と指�
 
 [_doc]
       --------------------
+<
       */
+
 
     public class Live2d_newComponent:AbstractComponent
 	{
@@ -88,6 +90,7 @@ scale=Live2Dモデルの表示サイズを指定できます。つまり2と指�
 			Debug.Log ("ERROR ! Live2Dタグを使用するにはプラグインをインポートしてください");
 
 		}
+
 	}
 
     /*			
@@ -111,6 +114,7 @@ y=中心からのy位置を指定します
 
 [_doc]
 --------------------
+<
  */
 
     //キャラのポジションを変更する
@@ -128,7 +132,9 @@ y=中心からのy位置を指定します
 
 			base.start ();
 		}
+
 	}
+
 
     /*			
 --------------
@@ -159,6 +165,7 @@ z=中心からのz位置を指定します
 [_doc]
 
 --------------------
+<
  */
 
 
@@ -177,6 +184,7 @@ z=中心からのz位置を指定します
 			this.gameManager.nextOrder ();
 
 		}
+
 	}
 
     /*			
@@ -199,6 +207,7 @@ tag=識別するためのタグを指定します
 
 [_doc]
 --------------------
+<
  */
 
     public class Live2d_hideComponent:Image_hideComponent
@@ -217,10 +226,12 @@ tag=識別するためのタグを指定します
 			this.gameManager.nextOrder ();
 
 		}
+
 	}
 
 
     
+
 
     /*				
 --------------
@@ -243,6 +254,7 @@ name=削除するテキストオブジェクト名 all と入力することで�
 
 [_doc]
 --------------------
+
  */
     //IComponentTextはテキストを流すための機能を保持するためのインターフェース
 	public class Live2d_removeComponent:Image_removeComponent
@@ -275,6 +287,7 @@ name=削除するテキストオブジェクト名 all と入力することで�
 
 
 		}
+
 	}
 
     /*				
@@ -298,6 +311,7 @@ storage=モーションファイル名を指定してください
 
 [_doc]
 --------------------
+
  */
     //IComponentTextはテキストを流すための機能を保持するためのインターフェース
     public class Live2d_motionComponent:AbstractComponent 
@@ -315,6 +329,7 @@ storage=モーションファイル名を指定してください
                 { "name","" },
                 { "tag",""},
                 { "storage",""}
+
 			};
 
         }

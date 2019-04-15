@@ -89,7 +89,8 @@ namespace Novel
 
 
 			//WebPlayer の場合保存方法に変化を入れる
-			if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer) {
+
+            if (Application.platform == RuntimePlatform.WebGLPlayer) {
 
 				PlayerPrefs.SetString("setting.dat", json);
 
@@ -118,7 +119,8 @@ namespace Novel
 		public void loadGlobal(){
 
 			//WebPlayer の場合保存方法に変化を入れる
-			if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer) {
+
+            if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer) {
 
 				if (!PlayerPrefs.HasKey ("setting.dat")) {
 					this.saveGlobal (new SaveGlobalObject ());
@@ -227,7 +229,9 @@ namespace Novel
 			string json = LitJson.JsonMapper.ToJson (obj);
 
 			//WebPlayer の場合保存方法に変化を入れる
-			if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer) {
+
+            if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer)
+            {
 
 				PlayerPrefs.SetString(path, json);
 
@@ -256,7 +260,9 @@ namespace Novel
 		{
 
 			//WebPlayer の場合保存方法に変化を入れる
-			if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer) {
+
+            if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer)
+            {
 
 				string json = PlayerPrefs.GetString (path);
 				SaveObject obj = LitJson.JsonMapper.ToObject<SaveObject> (json);
