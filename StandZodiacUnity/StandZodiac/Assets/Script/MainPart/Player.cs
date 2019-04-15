@@ -224,7 +224,7 @@ public class Player : MonoBehaviour
         if(layerName == "Item")
         {
             GetComponent<AudioSource>().PlayOneShot(ItemAcquisition);
-            //Debug.Log("iiiiiiiii");
+            Debug.Log("iiiiiiiii");
             //Destroy(col.gameObject);
         }
     }

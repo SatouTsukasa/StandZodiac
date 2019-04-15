@@ -31,20 +31,24 @@ public class Enemy : MonoBehaviour
 
 
 
-        if (LayerMask.LayerToName(gameObject.layer) == "DivEnemy")
+        /*if (LayerMask.LayerToName(gameObject.layer) == "DivEnemy")
         {
             Debug.Log("pppppppppppppppppp");
             this.transform.position = Vector3.MoveTowards(transform.position,
             new Vector2(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0)), 1f);
-        }
+        }*/
 
-        // ローカル座標のY軸のマイナス方向に移動する
-        Move(transform.up * -speed);
+            // ローカル座標のY軸のマイナス方向に移動する
+            Move(transform.up * -speed);
+        
+
+
+        
 
         // ローカル座標��EY軸のマイナス方向に移動すめE
 
 
-            Move(transform.up * -speed);
+        Move(transform.up * -speed);
 
 
         // canShotがfalseの場合、ここでコルーチンを終了させる
@@ -57,7 +61,7 @@ public class Enemy : MonoBehaviour
 
         while (true)
         {
-
+            
             // 子要素を全て取得する
             for (int i = 0; i < transform.childCount; i++)
             {
@@ -102,29 +106,18 @@ public class Enemy : MonoBehaviour
     }*/
 
     // Update is called once per frame
-    /*void Update()
+    void Update()
     {
 
-        if (spaceship.Tackle == true)
+
+        if (spaceship.tackle == true)
         {
-            //w = spaceship.Player.transform.position;
-
-            //spaceship.Track(w);
-            if(transform.position.y > spaceship.Player.transform.position.y)
-            {
-                Debug.Log("ssssssssssssssssss");
-                transform.position = Vector3.MoveTowards(transform.position,
-                    spaceship.Player.transform.position, speed * 0.8f * Time.deltaTime);
-            }
-            else
-            {
-                Move(transform.up * -speed);
-            }
-
+            Debug.Log("tttttttttttttttttttttt");
+            transform.position = Vector3.MoveTowards(transform.position, spaceship.Player.transform.position, speed);
         }
 
 
-    }*/
+    }
 
     // 機体の移動
     public void Move(Vector2 direction)
