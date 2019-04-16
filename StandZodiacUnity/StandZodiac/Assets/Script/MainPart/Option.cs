@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using System;
-
+/*
 /// <summary>
 /// Rigidbodyの速度を保存しておくクラス
 /// </summary>
@@ -22,9 +23,10 @@ public class RigidbodyVelocity
     }
 }
 
+
 public class Option : MonoBehaviour
 {
-
+    
     /// <summary>
     /// 現在Pause中か？
     /// </summary>
@@ -132,4 +134,7 @@ public class Option : MonoBehaviour
             monoBehaviour.enabled = true;
         }
     }
+    
 }
+
+*/
