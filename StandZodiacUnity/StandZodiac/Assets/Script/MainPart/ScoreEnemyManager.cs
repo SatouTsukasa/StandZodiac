@@ -21,6 +21,6 @@ public class ScoreEnemyManager : MonoBehaviour
 
     public void GetPoint()
     {
-        gameManager.GetComponent<GameManager>().AddScore(POINT);
+        gameManager.GetComponent<Main.GameManager>().AddScore(POINT);
     }
 }

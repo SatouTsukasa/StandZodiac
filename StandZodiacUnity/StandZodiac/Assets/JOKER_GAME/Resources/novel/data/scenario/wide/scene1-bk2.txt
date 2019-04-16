@@ -1,0 +1,145 @@
+;チュートリアル用スクリプトファイル
+
+;メッセージ表示
+;[showmessage]
+
+;共通ライブラリ
+;セーブ・ロードバックログなど基本的な機能を取り込む 
+[call file=wide/system target="*system_setting_buttons"]
+
+;ゲーム作成で便利なマクロ集
+[call file=wide/libs/utils]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"]
+
+*roop
+[select_new text="左右に動かす" target=*test_a1 ]
+[select_new text="上下に動かす" target=*test_a2 ]
+[select_show ]
+
+*test_a1
+[join move="0"]
+@jump target=*roop
+
+
+*test_a2
+[join move="1"]
+@jump target=*roop
+
+;[jump target="debug1"]
+
+[playbgm storage=garden]
+
+目覚ましが鳴ってる。[r]今日は土曜日・・・[p]
+寝たいだけ寝れるな・・・。[p]
+[wait time=1]
+いや違う![l]今日は友達のジョビ子と[r]
+遊園地に行く約束をしていたんだった！[p]
+急いで待ち合わせの学校に向かわないと!
+
+[closemessage]
+
+[wait time=2]
+
+;背景の新規設定
+[bg_new storage="image4"]
+
+;背景の表示
+;[bg_show]
+#ギャルゲーの主人公
+なんとか間に合った！[p]
+#ギャルゲーの主人公
+うん・・・まてよ[p]
+
+[scene file="JOKER_GAME/Scenes/Test"]
+
+よく考えたら待ち合わせ場所は[p]
+いつもの公園だった[p]
+
+[bg_mod storage="image3" time=3]
+
+#ギャルゲーの主人公
+ごめん！ジョビ子ちゃん！[p]
+
+;キャラクターの宣言 
+[chara_new name=jyobiko storage=chara  scale="2" y=-1 jname=ジョビ子 jcolor="#249390" ]
+[chara_face name=jyobiko face="1" storage="chara_a"]
+[chara_face name=jyobiko face="2" storage="chara_k"]
+[chara_face name=jyobiko face="3" storage="chara_w"]
+
+[chara_new name=kiri storage=kiri  scale="2" y=-1 x=6 jname=自称幼馴染（笑） jcolor="#009999" ]
+[chara_face name=kiri face="1" storage="kiri_a"]
+[chara_face name=kiri face="2" storage="kiri_k"]
+[chara_face name=kiri face="3" storage="kiri_w"]
+
+;画像の変更
+[chara_mod name="jyobiko" face="1"]
+;キャラクターを表示
+[show name=jyobiko]
+
+#jyobiko
+も〜女の子を30分も待たせるなんて[p]
+どういうつもりなの![p]
+
+[chara_mod name="jyobiko" face="3"]
+なんて冗談よ[p]
+早く遊園地に行こ![p]
+
+#ギャルゲーの主人公
+ジョビ子ちゃんまじ天使[p]
+
+#女性の声
+あれれ、偶然だね〜[p]
+
+[show name="kiri"]
+お二人でどこに行くのかな〜[p]
+
+#ギャルゲーの主人公
+嫌な奴に会ってしまった。[p]
+
+*debug1
+
+#kiri
+もしかしてデートかな〜？[p]
+
+
+#ギャルゲーの主人公
+やばい！どうする！！[p]
+[select_new text="「否定する」" target=*select_a1 ]
+[select_new text="「遊園地に誘う」" target=*select_a2 ]
+[select_new text="「他人のふりをする」" target=*select_a3 ]
+
+[select_show ]
+
+*select_a1
+#ギャルゲーの主人公
+いや、偶然会っただけだよ。[p]
+な？ジョビ子？
+
+#jyobiko
+えっ!?うっうん！
+@jump target=*a_common
+
+*select_a2
+#ギャルゲーの主人公
+見つかっちまったか〜[r]
+しょうがない・・・[p]
+お前も遊園地行くか？[p]
+@jump target=*a_common
+
+
+*select_a3
+#ギャルゲーの主人公
+すみません、どなたですか？[p]
+@jump target=*a_common
+
+*a_common
+#kiri
+冗談冗談[p]
+私もこれから用事あるから[p]
+じゃあね〜[p]
+
+
+#ギャルゲーの主人公
+嫌な奴に見つかってしまった。[p]
+これは月曜日言いふらされるな。[p]

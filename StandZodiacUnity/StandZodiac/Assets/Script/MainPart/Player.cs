@@ -22,14 +22,17 @@ public class Player : MonoBehaviour
 
     //パワーアップbool関数
 
-    public bool PU2;
-    public bool PU3;
-    public bool PU4;
-    public bool PU5;
+    public bool PU2 = false;
+    public bool PU3 = false;
+    public bool PU4 = false;
+    public bool PU5 = false;
+
+    public int TurretCount = 0;
     // Start is called before the first frame update
     // Startメソッドをコルーチンとして呼び出す
     IEnumerator Start()
     {
+
         // Spaceshipコンポーネントを取得
         spaceship = GetComponent<Spaceship>();
         while (true)
@@ -38,7 +41,8 @@ public class Player : MonoBehaviour
             spaceship.Shot(transform);
             if(PU2 == true)
             {
-                spaceship.ShotPU(transform, PU2, PU3, PU4, PU5);
+                Debug.Log(TurretCount);
+                spaceship.ShotPU(transform,PU3, PU4, PU5,TurretCount);
             }
 
             //,PU1,PU2,PU3,PU4
@@ -50,11 +54,13 @@ public class Player : MonoBehaviour
             // shotDelay秒待つ
             yield return new WaitForSeconds(spaceship.shotDelay);
         }
+
+
     }
 
     /*void Start()
     {
-        
+
     }*/
 
     // Update is called once per frame
@@ -87,7 +93,7 @@ public class Player : MonoBehaviour
             {
                 playerPos = Vector3.zero;
                 mousePos = Vector3.zero;
-                Debug.Log("離した瞬間");     
+                Debug.Log("離した瞬間");
             }
 
             if (Input.GetMouseButton(0))
@@ -95,7 +101,7 @@ public class Player : MonoBehaviour
                 /*Vector3 position = Input.mousePosition;
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", position.x, "y", position.y, "time", 1.0f));*/
                 Debug.Log("クリックしっぱなし");
-                
+
                 //Vector3 prePos = this.transform.position;
                 Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
 
@@ -110,10 +116,10 @@ public class Player : MonoBehaviour
                 diff.z = 0.0f;
                 //this.transform.position = playerPos + diff;
                 this.transform.position = Vector3.MoveTowards(transform.position, playerPos + diff, speed);
-                
-               
+
+
             }
-            
+
         }
         else
         {
@@ -142,6 +148,8 @@ public class Player : MonoBehaviour
         }
 
         Move();
+
+
     }
 
     void Move()
@@ -188,7 +196,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -216,7 +224,7 @@ public class Player : MonoBehaviour
         if(layerName == "Item")
         {
             GetComponent<AudioSource>().PlayOneShot(ItemAcquisition);
-            //Debug.Log("iiiiiiiii");
+            Debug.Log("iiiiiiiii");
             //Destroy(col.gameObject);
         }
     }

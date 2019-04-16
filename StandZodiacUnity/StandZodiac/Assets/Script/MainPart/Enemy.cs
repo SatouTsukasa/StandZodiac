@@ -22,17 +22,34 @@ public class Enemy : MonoBehaviour
     //アイテムを落とす確率
     private int ItemPar;
 
+    Vector2 w;
+
     IEnumerator Start()
     {
         // Spaceshipコンポーネントを取得
         spaceship = GetComponent<Spaceship>();
 
+
+
+        /*if (LayerMask.LayerToName(gameObject.layer) == "DivEnemy")
+        {
+            Debug.Log("pppppppppppppppppp");
+            this.transform.position = Vector3.MoveTowards(transform.position,
+            new Vector2(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0)), 1f);
+        }*/
+
+            // ローカル座標のY軸のマイナス方向に移動する
+            Move(transform.up * -speed);
         
 
-        // ローカル座標のY軸のマイナス方向に移動する
+
+        
+
+        // ローカル座標��EY軸のマイナス方向に移動すめE
+
+
         Move(transform.up * -speed);
 
-        
 
         // canShotがfalseの場合、ここでコルーチンを終了させる
         if (spaceship.canShot == false)
@@ -40,20 +57,34 @@ public class Enemy : MonoBehaviour
             yield break;
         }
 
-        
+
 
         while (true)
         {
-
+            
             // 子要素を全て取得する
             for (int i = 0; i < transform.childCount; i++)
             {
 
                 Transform shotPosition = transform.GetChild(i);
 
-                // ShotPositionの位置/角度で弾を撃つ
+                // ShotPosition
                 spaceship.Shot(shotPosition);
             }
+            /*if (spaceship.Tackle == true)
+            {
+                //w = spaceship.Player.transform.position;
+
+                //spaceship.Track(w);
+                if (transform.position.y > spaceship.Player.transform.position.y)
+                {
+                    Debug.Log("ssssssssssssssssss");
+                    transform.position = Vector3.MoveTowards(transform.position,
+                        spaceship.Player.transform.position, speed * Time.deltaTime);
+                }
+
+
+            }*/
 
             // shotDelay秒待つ
             yield return new WaitForSeconds(spaceship.shotDelay);
@@ -61,7 +92,7 @@ public class Enemy : MonoBehaviour
 
         }
 
-        
+
     }
 
     /*// Start is called before the first frame update
@@ -77,27 +108,21 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spaceship.Tackle == true)
-        {
-            Vector2 v = new Vector3(0, speed * Time.deltaTime);
-            transform.Translate(v);
-            //spaceship.Compliance();
-            //transform.position = Vector3.MoveTowards(spaceship.Player.transform.position, /*spaceship.Player.*/transform.position, speed);
-            // ターゲットとの座標間隔を取得
-            Vector3 diff = (spaceship.Player.transform.position - this.transform.position).normalized;
-            // 回転させる　Quaternion.FromToRotation（第1引数 から 第2引数 への回転をさせる）
-            this.transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
-            Debug.Log("ccc");
 
-            //return;
+
+        if (spaceship.tackle == true)
+        {
+            Debug.Log("tttttttttttttttttttttt");
+            transform.position = Vector3.MoveTowards(transform.position, spaceship.Player.transform.position, speed);
         }
+
 
     }
 
     // 機体の移動
     public void Move(Vector2 direction)
     {
-        
+
         GetComponent<Rigidbody2D>().velocity = direction * spaceship.speed;
     }
 
@@ -108,7 +133,7 @@ public class Enemy : MonoBehaviour
 
         // レイヤー名がBullet (Player)以外の時は何も行わない
         //if (layerName != "Bullet(Player)") return;
-        if (layerName == "Bullet(Player)") { 
+        if (layerName == "Bullet(Player)") {
 
             // PlayerBulletのTransformを取得
             Transform playerBulletTransform = c.transform.parent;
@@ -141,19 +166,24 @@ public class Enemy : MonoBehaviour
             ItemPar = Random.Range(0, 10);
             ItemNumber = Random.Range(0, PItem.Length);
 
-            Debug.Log(ItemPar);
+            //Debug.Log(ItemPar);
             //Debug.Log("---------------" + PItem[0]);
+
+            if(spaceship.div == true)
+            {
+                spaceship.Division();
+            }
 
             if(ItemPar == 0)
             {
-                // Waveを作成する
+                // PowerItemを作成する
                 GameObject item = (GameObject)Instantiate(PItem[ItemNumber], transform.position, Quaternion.identity);
             }
 
             // 爆発
             spaceship.Explosion();
 
-            
+
 
             // エネミーの削除
             Destroy(gameObject);
@@ -164,7 +194,13 @@ public class Enemy : MonoBehaviour
         else
         {
             spaceship.GetAnimator().SetTrigger("Damage");
-            
+
         }
+    }
+    //必殺ゲージの値をプラス
+    private void OnDestroy()
+    {
+        GameObject Gauge = GameObject.Find("Gauge");
+        Gauge.GetComponent<Gauge>().ADDgauge();
     }
 }

@@ -31,6 +31,7 @@ public class Bullet : MonoBehaviour
 
         // ローカル座標のY軸方向に移動する
         GetComponent<Rigidbody2D>().velocity = transform.up.normalized * speed;
+        //transform.position += transform.up.normalized * speed;
 
         // lifeTime秒後に削除
         Destroy(gameObject, lifeTime);
@@ -42,7 +43,7 @@ public class Bullet : MonoBehaviour
             if (rad < 0) rad += 90;
             //transform.rotation = Quaternion.Slerp(transform.rotation, player.transform.rotation, 0.5f);
             //transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, 0), speed);
-            Debug.Log(rad);
+            //Debug.Log(rad);
         }
         
     }

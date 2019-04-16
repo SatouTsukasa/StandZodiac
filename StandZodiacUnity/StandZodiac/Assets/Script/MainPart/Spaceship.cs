@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
+
 // Rigidbody2Dコンポーネントを必須にする
 [RequireComponent(typeof(Rigidbody2D))]
 public class Spaceship : MonoBehaviour
@@ -26,8 +28,12 @@ public class Spaceship : MonoBehaviour
 
     // 弾を撃つかどうか
     public bool canShot;
+    //分裂するかどうか
+    public bool div;
+    //追尾するかどうか
+    public bool tackle;
 
-    public bool Tackle;
+    public GameObject divEnemy;
 
     // 爆発のPrefab
     public GameObject explosion;
@@ -51,7 +57,7 @@ public class Spaceship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // 爆発の作成
@@ -65,31 +71,36 @@ public class Spaceship : MonoBehaviour
     public void Shot(Transform origin)
     {
         Instantiate(bullet, origin.position, origin.rotation);
-        
+
     }
 
     // パワーアップ弾の作成
-    public void ShotPU(Transform origin, bool  PU2, bool PU3, bool PU4, bool PU5)
+    public void ShotPU(Transform origin, bool PU3, bool PU4, bool PU5,int TurretCount)
     {
         Instantiate(bullet2, origin.position, origin.rotation);
-        if(PU2 == true)
+        if(PU3 == true)
         {
+
             Instantiate(bullet3, origin.position, origin.rotation);
-            if (PU3 == true)
-            {
-                Instantiate(bullet4, origin.position, origin.rotation);
-                if (PU4 == true){
-                    Instantiate(bullet5, origin.position, origin.rotation);
-                }
-            }
         }
+        if(PU4 == true)
+        {
+            //Debug.Log("ooooooooooooooooooooooooooo");
+            Instantiate(bullet4, origin.position, origin.rotation);
+
+        }
+        if(PU5 == true)
+        {
+            Instantiate(bullet5, origin.position, origin.rotation);
+        }
+
     }
 
     // 機体の移動
     public void Move(Vector2 direction)
     {
         GetComponent<Rigidbody2D>().velocity = direction * speed;
-        
+
     }
 
     // アニメーターコンポーネントの取得
@@ -105,6 +116,33 @@ public class Spaceship : MonoBehaviour
         // 回転させる　Quaternion.FromToRotation（第1引数 から 第2引数 への回転をさせる）
         //this.transform.rotation = Quaternion.FromToRotation(Vector3.left, diff);
         
-        
+
+    }
+
+    public void Division()
+    {
+        for(int i = 0;i < 2; i++)
+        {
+            Debug.Log(i);
+            GameObject DivEnemy = (GameObject)Instantiate(divEnemy, new Vector2(transform.position.x + Random.Range(-100, 100), transform.position.y + Random.Range(-30, 0)),Quaternion.identity);
+            DivEnemy.layer = LayerMask.NameToLayer("DivEnemy");
+            Transform Tf = DivEnemy.GetComponent<Transform>();
+            Vector3[] path =
+            {
+                new Vector3(Tf.localPosition.x * Random.Range(1.1f,1.3f),Tf.localPosition.y * Random.Range(1.05f,1.2f),0f),
+                //new Vector3(0f,150f,0f),
+            };
+            //DOTweenを使ったアニメ作成
+            Tf.DOLocalPath(path, 0.5f, PathType.CatmullRom)
+                .SetEase(Ease.OutQuad);
+            //DivEnemy.transform.position = Vector3.MoveTowards(transform.position,
+            //new Vector3(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0),transform.position.z), 0.01f);
+        }
+
+    }
+
+    public void Tackle()
+    {
+        transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(0f,0f,transform.rotation.z - 90),1f);
     }
 }
