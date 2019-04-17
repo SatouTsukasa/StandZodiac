@@ -6,23 +6,26 @@ using UnityEngine.UI;
 
 public class Gauge : MonoBehaviour {
 
+    public GameObject barrier;
+    
+
     float gauge = 0;
     float gaugeMAX = 1;
 
     float addGauge = 0.01f;
 
     GameObject specialGauge;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        this.specialGauge = GameObject.Find("Gauge");   
+        // オブジェクトの取得
+        this.specialGauge = GameObject.Find("Gauge");
+        
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        //ADDgauge();
+        ADDgauge();
     }
 
     //敵に攻撃したときに呼び出す
@@ -38,7 +41,14 @@ public class Gauge : MonoBehaviour {
     {
         if (gauge >= gaugeMAX)
         {
-            Debug.Log("発射完了");
+            //バリア生成
+            Vector3 tmp = GameObject.Find("Player").transform.position;
+            GameObject go = Instantiate(barrier);
+            go.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+
+            //ゲージの初期化
+            this.specialGauge.GetComponent<Image>().fillAmount = 0;
+            gauge = 0;
         }
     }
 
