@@ -1,0 +1,52 @@
+﻿@call file=wide/libs/utils
+[bg_new name="background" storage="room"]
+[bg_show name="background"]
+
+;メッセージを表示
+[showmessage]
+[call file=wide/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+;---牡羊座、勝利。(勝利後会話)---
+
+#牡牛座
+へぇ、やるねぇ。[r]
+牡羊座さん、結構強いね。[p]
+
+#牡羊座
+ありがとうございます。[r]
+それとできればでいいのですが[p]
+
+#牡牛座
+うん？どうしたの？[r]
+何か聞きたいことでも？[p]
+
+#牡羊座
+はい、聞きたいことですが、[r]
+誰に止めるよう頼まれたのですか？[p]
+
+#牡牛座
+残念ながら[r]
+それは言わないという約束なの。[p]
+
+#牡羊座
+分かりました。[r]
+牡牛座さんの意思でないことはわかりました[p]
+
+#牡牛座
+ありがとう。[r]
+お詫びといっては何だけどこれをあげるわ[p]
+
+;---牡牛座のマークを入手---(保留)
+
+#牡羊座
+ありがとうございます。[r]
+大切に使わせていただきます[p]
+
+#牡牛座
+うん、それじゃ[r]
+大変だと思うけど、頑張ってね。[p]
+
+#牡羊座
+はい、ありがとうございます！[p]

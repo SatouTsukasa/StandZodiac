@@ -21,7 +21,6 @@
 
 [evt tag="message_button" act="click" target="*click_system_button" ]
 
-[flag exp="f.is_show=0"]
 
 [return]
 

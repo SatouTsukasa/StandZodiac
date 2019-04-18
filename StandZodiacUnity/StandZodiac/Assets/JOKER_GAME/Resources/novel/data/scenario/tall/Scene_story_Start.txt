@@ -1,0 +1,53 @@
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="王道12星座 (Coll)"]
+[bg_show name="background"]
+
+;メッセージ表示
+[showmessage]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+;-------ストーリー（始まり（プロローグ））
+
+#ナレーション
+YYYY年/MM月/D日[p]
+
+夏と冬の大三角形が突然喧嘩を始めた[p]
+
+ただの喧嘩であればいいが[r]
+４つの大三角形は「季節を表す」[p]
+
+という能力を持っているため[r]
+喧嘩をすると季節のバランスが壊れてしまう[p]
+
+夏と冬の大三角形が喧嘩していることで[r]
+時間帯関係なく季節が変わっているため、[p]
+
+とても暮らすのは難しい状況であった。[p]
+
+;--------北斗七星、登場
+
+#北斗七星
+このままじゃ地球の季節がおかしくなってしまう[p]
+
+
+そのためにもあの２つの大三角形を止めるんだ！[r]
+12星座の力を借りよう！[p]
+
+
+使える12星座は1つだけだけど、[r]
+星座の特性や戦い方を上手く使えば止めれるって！[p]
+
+
+俺は他のことで手伝えないのだ。[p]
+
+
+てなことでよろしく頼んだぞ！[r]
+地球季節の平和は君にかかっている。[p]
+
+
+
+
+
+

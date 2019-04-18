@@ -1,0 +1,21 @@
+﻿@call file=wide/libs/utils
+[bg_new name="background" storage="room"]
+[bg_show name="background"]
+
+;メッセージを表示
+[showmessage]
+[call file=wide/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+;---射手座、勝利。(敗北後会話)---
+#射手座
+あれ？今の、俺が勝ったのか？[r]
+気にしなかったせいか分からなかったよ。[p]
+
+#牡羊座
+くそぉ。[r]
+次は絶対勝ちますからね！[p]
+
+;---敗北後会話終了---
+;---#牡羊座(自分)vs#射手座(相手)---(終了）
