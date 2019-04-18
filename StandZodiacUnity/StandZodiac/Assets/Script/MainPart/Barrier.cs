@@ -5,7 +5,7 @@ using UnityEngine;
 public class Barrier : MonoBehaviour
 {
     public float dTime = 10.0f;
-    
+
     void Start()
     {
         Destroy(gameObject, dTime);
@@ -29,6 +29,5 @@ public class Barrier : MonoBehaviour
             // 弾の削除
             Destroy(col.gameObject);
         }
-        
     }
 }
