@@ -107,7 +107,9 @@ namespace Novel{
 
 		public virtual void show(float time,string easeType){}
 		public virtual void hide(float time,string easeType){}
+
 		public virtual void set(Dictionary<string,string> param){}
+
 
 		public virtual void setMotion(string storage, string idle) { }
 	}

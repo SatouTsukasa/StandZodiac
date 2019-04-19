@@ -290,6 +290,7 @@ namespace Novel{
 //// macro ///////
 
 		public void addMacro(string macro_name,string file_name, int index){
+
 			this.dicMacro[macro_name] = new Macro(macro_name,file_name,index);
 
 		}
