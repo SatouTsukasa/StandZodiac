@@ -17,8 +17,8 @@ public class Specalskill : MonoBehaviour
     //ボタンを押したときの関数呼び出し
     public void GetBotton()
     {
-        GameObject Gauge = GameObject.Find("Gauge");
-        Gauge.GetComponent<Gauge>().Specialskil();
+        GameObject ob_Gauge = GameObject.Find("Gauge");
+        ob_Gauge.GetComponent<Gauge>().Specialskil();
     }
     
 }

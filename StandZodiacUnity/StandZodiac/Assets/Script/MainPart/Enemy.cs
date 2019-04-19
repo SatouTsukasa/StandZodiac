@@ -185,8 +185,8 @@ public class Enemy : MonoBehaviour
             spaceship.Explosion();
 
             //必殺ゲージの値をプラス
-            GameObject Gauge = GameObject.Find("Gauge");
-            Gauge.GetComponent<Gauge>().ADDgauge();
+            GameObject ob_Gauge = GameObject.Find("Gauge");
+            ob_Gauge.GetComponent<Gauge>().ADDgauge();
 
             // エネミーの削除
             Destroy(gameObject);

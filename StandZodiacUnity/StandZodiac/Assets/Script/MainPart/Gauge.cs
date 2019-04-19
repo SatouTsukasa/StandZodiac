@@ -9,18 +9,17 @@ public class Gauge : MonoBehaviour {
     public GameObject barrier;
     
 
-    float gauge = 0;
+    float n_gauge = 0;
     float gaugeMAX = 1;
 
     float addGauge = 0.01f;
 
-    GameObject specialGauge;
+    GameObject special_Gauge;
     
     void Start()
     {
         // オブジェクトの取得
-        this.specialGauge = GameObject.Find("Gauge");
-        
+        this.special_Gauge = GameObject.Find("Gauge");
     }
     
     void Update()
@@ -31,24 +30,26 @@ public class Gauge : MonoBehaviour {
     //敵に攻撃したときに呼び出す
     public void ADDgauge()
     {
-        if (gauge <= gaugeMAX) {
-            gauge = gauge + addGauge;
-            this.specialGauge.GetComponent<Image>().fillAmount += addGauge;
+        if (n_gauge <= gaugeMAX) {
+            n_gauge = n_gauge + addGauge;
+            this.special_Gauge.GetComponent<Image>().fillAmount += addGauge;
         }
     }
+
     //必殺技の処理
     public void Specialskil()
     {
-        if (gauge >= gaugeMAX)
+        if (n_gauge >= gaugeMAX)
         {
             //バリア生成
-            Vector3 tmp = GameObject.Find("Player").transform.position;
-            GameObject go = Instantiate(barrier);
-            go.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+            Vector3 p_pos = GameObject.Find("Player").transform.position;
+
+            GameObject sc_barrier = Instantiate(barrier);
+            sc_barrier.transform.position = new Vector3(p_pos.x, p_pos.y, p_pos.z);
 
             //ゲージの初期化
-            this.specialGauge.GetComponent<Image>().fillAmount = 0;
-            gauge = 0;
+            this.special_Gauge.GetComponent<Image>().fillAmount = 0;
+            n_gauge = 0;
         }
     }
 
