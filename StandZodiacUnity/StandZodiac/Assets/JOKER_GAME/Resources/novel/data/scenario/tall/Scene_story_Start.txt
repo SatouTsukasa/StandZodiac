@@ -5,7 +5,7 @@
 ;メッセージ表示
 [showmessage]
 [call file=tall/system target="*system_setting_buttons"]
-[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_new name=_sp_chara_name layer=ui x="-50" y=-120 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
 
 ;-------ストーリー（始まり（プロローグ））
@@ -27,6 +27,7 @@ YYYY年/MM月/D日[p]
 とても暮らすのは難しい状況であった。[p]
 
 ;--------北斗七星、登場
+
 
 #北斗七星
 このままじゃ地球の季節がおかしくなってしまう[p]
