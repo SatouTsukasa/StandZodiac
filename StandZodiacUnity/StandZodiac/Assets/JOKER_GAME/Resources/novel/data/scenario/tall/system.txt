@@ -3,7 +3,7 @@
 
 
 
-@button_new name="button_menu" tag="message_button" x=120 y=240 scale=0.3 sort=5 layer=ui storage="menu" 
+@button_new name="button_menu" tag="message_button" x=120 y=240 scale=0.4 sort=5 layer=ui storage="menu" 
 
 @button_new name="button_save" tag="message_button" x=200 y=190 scale=1 sort=5 layer=ui storage="save" 
 @button_new name="button_load" tag="message_button" x=200 y=150 scale=1 sort=5 layer=ui storage="load" 
@@ -21,7 +21,6 @@
 
 [evt tag="message_button" act="click" target="*click_system_button" ]
 
-[flag exp="f.is_show=0"]
 
 [return]
 
