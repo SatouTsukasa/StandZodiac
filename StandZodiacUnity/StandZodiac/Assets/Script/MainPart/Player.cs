@@ -68,7 +68,11 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        
+        int m = 2;
+        m *= 3 * 4;
+        m -= 5 - 6;
+        Debug.Log(m);
+
 
 
         //画面外判定
