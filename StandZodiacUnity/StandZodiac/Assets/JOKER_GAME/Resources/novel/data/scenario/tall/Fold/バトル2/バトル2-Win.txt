@@ -1,0 +1,45 @@
+﻿@call file=wide/libs/utils
+[bg_new name="background" storage="room"]
+[bg_show name="background"]
+
+;メッセージを表示
+[showmessage]
+[call file=wide/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+;---牡羊座、勝利。(勝利後会話)---
+
+#双子座
+（右）いやぁ、すごいや！[r]
+（左）牡羊座さん、お見事！[p]
+
+#牡羊座
+危なかった、正直ぎりぎりだったよ。[r]
+息が合いすぎたから、勝てないかと思った[p]
+
+#双子座
+（右）ちなみに誰かに頼まれたって話だけど、[r]
+（左）申し訳ないが答えることはできないよ。[p]
+
+#牡羊座
+そうか。[r]
+やっぱり色々と事情が？[p]
+
+#双子座
+（右）まぁそんなところ、説明できなくてごめんね。[r]
+（左）お詫びにこれあげるね。[p]
+
+;---双子座のマークを入手---(保留)
+
+#牡羊座
+ありがとうございます。[r]
+大切に使わせていただきます[p]
+
+#双子座
+（右）じゃあね！頑張って！[r]
+（左）じゃあね！また遊ぼうね！[p]
+
+#牡羊座
+うん！ありがとう！[r]
+（正直、双子との戦いは避けたい）[p]

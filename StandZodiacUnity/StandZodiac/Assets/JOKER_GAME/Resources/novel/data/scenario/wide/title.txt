@@ -1,10 +1,8 @@
 
 *title
 ;タイトル画面
-[bg_new name="background" layer="background" storage="title2"]
+[bg_new name="background" layer="background" storage="title"]
 [bg_show name="background"]
-
-@change name="Test"
 
 ;開始ボタンとロードボタンを実装
 @image_new name="button_start" tag="button" x=4 y=-1.0  storage="title_start" scale=2

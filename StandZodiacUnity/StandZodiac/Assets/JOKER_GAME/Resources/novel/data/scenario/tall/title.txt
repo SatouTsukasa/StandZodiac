@@ -29,7 +29,7 @@
 @bg_hide name="background" time=1.5
 
 [wait time=2]
-@jump file=tall/scene1 scene=new
+@jump file=tall/Scene_story_Start scene=new
 
 *click_load
 [playse storage="start"]

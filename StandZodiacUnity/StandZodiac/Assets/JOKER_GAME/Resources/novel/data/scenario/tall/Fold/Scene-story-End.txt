@@ -1,0 +1,28 @@
+﻿@call file=wide/libs/utils
+[bg_new name="background" storage="room"]
+[bg_show name="background"]
+
+;---メッセージを表示---
+[showmessage]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+;------------最高難易度限定-----------------
+#北斗七星
+ほう...。この私を倒すのか。[r]
+ここまでやれたことを誉めてやろう。[p]
+
+だが、これより先は己との戦いだ[r]
+私を倒して終わりと思わないことだ[p]
+
+※ここから先は（ステージ限定）の裏ボスです。
+;-------------------------------------------
+
+#   
+こうして夏と冬の大三角形の喧嘩は[r]
+終わりを迎えることができた[p]
+
+2体とも仲直りをし、[r]
+喧嘩を止めてくれた星座に感謝と[p]
+迷惑をかけたことによる謝罪をしました。[r]
