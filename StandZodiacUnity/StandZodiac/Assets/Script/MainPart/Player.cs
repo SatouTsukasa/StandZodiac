@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityStandardAssets.CrossPlatformInput;
 
 
 public class Player : MonoBehaviour
@@ -66,6 +67,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
+
+
         //画面外判定
         if (!GetComponent<SpriteRenderer>().isVisible)
         {
@@ -76,15 +81,11 @@ public class Player : MonoBehaviour
 
         if (Application.isEditor)
         {
+            
             // エディタで実行中
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("クリックした瞬間");
-                /*Vector3 position = Input.mousePosition;
-                iTween.MoveTo(this.gameObject, iTween.Hash("x", position.x, "y", position.y, "time", 1.0f));*/
-
-                //playerPos = this.transform.position;
-                //mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 Move();
             }
@@ -98,8 +99,7 @@ public class Player : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
-                /*Vector3 position = Input.mousePosition;
-                iTween.MoveTo(this.gameObject, iTween.Hash("x", position.x, "y", position.y, "time", 1.0f));*/
+
                 Debug.Log("クリックしっぱなし");
 
                 //Vector3 prePos = this.transform.position;
@@ -123,6 +123,17 @@ public class Player : MonoBehaviour
         }
         else
         {
+            //Debug.Log("uuuuuuuuuuuuuuuuuuuu");
+            // 右・左
+            float x = CrossPlatformInputManager.GetAxisRaw("Horizontal");
+
+            // 上・下
+            float y = CrossPlatformInputManager.GetAxisRaw("Vertical");
+
+            // 移動する向きを求める
+            Vector2 direction = new Vector2(x, y);
+
+            JoyMove(direction);
             // 実機で実行中
             // タッチされているかチェック
             if (Input.touchCount > 0)
@@ -172,6 +183,13 @@ public class Player : MonoBehaviour
 
         // 制限をかけた値をプレイヤーの位置とする
         transform.position = pos;
+    }
+
+    // バーチャルパッドでの機体の移動
+    public void JoyMove(Vector2 direction)
+    {
+
+        GetComponent<Rigidbody2D>().velocity = direction * spaceship.speed;
     }
 
     public void OnMouseDrag()
