@@ -17,7 +17,7 @@ public class MoveScene : MonoBehaviour
 
     }
 
-    public void ButtonClicked() {
+    public void ButtonClicked_Title() {
         SceneManager.LoadScene("Title");
     }
 
