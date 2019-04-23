@@ -66,15 +66,16 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {/*
+        //Debug.Log("uuuuuuuuuuuuuuuuuuuu");
+        // 右・左
+        float x = CrossPlatformInputManager.GetAxis("Horizontal");
 
-        int m = 2;
-        m *= 3 * 4;
-        m -= 5 - 6;
-        Debug.Log(m);
+        // 上・下
+        float y = CrossPlatformInputManager.GetAxis("Vertical");
 
-
-
+        // 移動する向きを求める
+        Vector2 direction = new Vector2(x, y);
         //画面外判定
         if (!GetComponent<SpriteRenderer>().isVisible)
         {
@@ -82,8 +83,8 @@ public class Player : MonoBehaviour
         }
 
         // エディタ、実機で処理を分ける
-
-        if (Application.isEditor)
+        */
+        /*if (Application.isEditor)
         {
             
             // エディタで実行中
@@ -126,42 +127,46 @@ public class Player : MonoBehaviour
 
         }
         else
-        {
+        {*/
             //Debug.Log("uuuuuuuuuuuuuuuuuuuu");
             // 右・左
-            float x = CrossPlatformInputManager.GetAxisRaw("Horizontal");
+            float x = Input.GetAxisRaw("Horizontal");
 
             // 上・下
-            float y = CrossPlatformInputManager.GetAxisRaw("Vertical");
+            float y = Input.GetAxisRaw("Vertical");
 
             // 移動する向きを求める
-            Vector2 direction = new Vector2(x, y);
+            Vector2 direction = new Vector2(x, y).normalized;
+            Debug.Log(direction);
+            //transform.position += (Vector3.right * X + Vector3.up * Y) * Time.deltaTime;
 
-            JoyMove(direction);
-            // 実機で実行中
-            // タッチされているかチェック
-            if (Input.touchCount > 0)
+            spaceship.Move(direction);
+        // 実機で実行中
+        // タッチされているかチェック
+        /*
+        if (Input.touchCount > 0)
+        {
+            // タッチ情報の取得
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
             {
-                // タッチ情報の取得
-                Touch touch = Input.GetTouch(0);
+                Debug.Log("押した瞬間");
+            }
 
-                if (touch.phase == TouchPhase.Began)
-                {
-                    Debug.Log("押した瞬間");
-                }
+            if (touch.phase == TouchPhase.Ended)
+            {
+                Debug.Log("離した瞬間");
+            }
 
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    Debug.Log("離した瞬間");
-                }
-
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    Debug.Log("押しっぱなし");
-                }
+            if (touch.phase == TouchPhase.Moved)
+            {
+                Debug.Log("押しっぱなし");
             }
         }
-
+        */
+        //}
+        GetComponent<Rigidbody2D>().velocity = direction * speed;
         Move();
 
 
