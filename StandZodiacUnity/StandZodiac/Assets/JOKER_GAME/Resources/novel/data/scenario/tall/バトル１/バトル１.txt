@@ -8,6 +8,9 @@
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
 
+*select_a1
+
+
 ;---#牡羊座(自分)vs#牡牛座(相手)---
 ;---戦闘前会話---
 
@@ -51,5 +54,7 @@
 私にはやることがあるので！[p]
 
 ;---戦闘開始---
-//--------------------------------
+;//--------------------------------
 ;---戦闘終了---
+
+@jump file=tall/Scene_story_Start target=*a_common
