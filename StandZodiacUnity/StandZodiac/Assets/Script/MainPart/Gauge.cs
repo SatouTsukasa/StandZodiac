@@ -8,10 +8,12 @@ public class Gauge : MonoBehaviour {
 
     public GameObject barrier;
 
+    Barrier b_script;
+
     bool dec_Flag = false;
 
     float oneTime;
-    float n_gauge = 0;
+    float n_gauge;
     float gaugeMAX = 1;
 
     float addGauge = 0.1f;
@@ -22,16 +24,23 @@ public class Gauge : MonoBehaviour {
     {
         // オブジェクトの取得
         this.special_Gauge = GameObject.Find("Gauge");
+        //ゲージの値を取得
+        n_gauge = this.GetComponent<Image>().fillAmount;
+        //スクリプトの取得
+        b_script = barrier.GetComponent<Barrier>();
     }
     
     void Update()
     {
         //ADDgauge();
-        
+
+        //ゲージの初期化
         if (dec_Flag == true)
         {
-            //ゲージの初期化
-            n_gauge -= 0.001666667f;
+            //制限時間の取得
+            float c_dTime = b_script.dTime;
+            //ゲージを減らす
+            n_gauge -= 1 / (60 * c_dTime);
             this.special_Gauge.GetComponent<Image>().fillAmount = n_gauge;
             if (n_gauge == 0)
             {
@@ -59,7 +68,7 @@ public class Gauge : MonoBehaviour {
 
             GameObject sc_barrier = Instantiate(barrier);
             sc_barrier.transform.position = new Vector3(p_pos.x, p_pos.y, p_pos.z);
-
+            
             dec_Flag = true;
         }
     }
