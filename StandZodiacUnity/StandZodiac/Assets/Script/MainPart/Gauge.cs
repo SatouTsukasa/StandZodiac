@@ -6,39 +6,61 @@ using UnityEngine.UI;
 
 public class Gauge : MonoBehaviour {
 
-    float gauge = 0;
+    public GameObject barrier;
+
+    bool dec_Flag = false;
+
+    float oneTime;
+    float n_gauge = 0;
     float gaugeMAX = 1;
 
-    float addGauge = 0.01f;
+    float addGauge = 0.1f;
 
-    GameObject specialGauge;
-
-    // Start is called before the first frame update
+    GameObject special_Gauge;
+    
     void Start()
     {
-        this.specialGauge = GameObject.Find("Gauge");   
+        // オブジェクトの取得
+        this.special_Gauge = GameObject.Find("Gauge");
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         //ADDgauge();
+        
+        if (dec_Flag == true)
+        {
+            //ゲージの初期化
+            n_gauge -= 0.001666667f;
+            this.special_Gauge.GetComponent<Image>().fillAmount = n_gauge;
+            if (n_gauge == 0)
+            {
+                dec_Flag = false;
+            }
+        }
     }
 
     //敵に攻撃したときに呼び出す
     public void ADDgauge()
     {
-        if (gauge <= gaugeMAX) {
-            gauge = gauge + addGauge;
-            this.specialGauge.GetComponent<Image>().fillAmount += addGauge;
+        if (n_gauge <= gaugeMAX && dec_Flag == false) {
+            n_gauge = n_gauge + addGauge;
+            this.special_Gauge.GetComponent<Image>().fillAmount += addGauge;
         }
     }
+
     //必殺技の処理
     public void Specialskil()
     {
-        if (gauge >= gaugeMAX)
+        if (n_gauge >= gaugeMAX)
         {
-            Debug.Log("発射完了");
+            //バリア生成
+            Vector3 p_pos = GameObject.Find("Player").transform.position;
+
+            GameObject sc_barrier = Instantiate(barrier);
+            sc_barrier.transform.position = new Vector3(p_pos.x, p_pos.y, p_pos.z);
+
+            dec_Flag = true;
         }
     }
 
