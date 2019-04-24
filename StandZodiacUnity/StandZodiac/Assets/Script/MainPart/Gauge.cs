@@ -11,9 +11,8 @@ public class Gauge : MonoBehaviour {
     Barrier b_script;
 
     bool dec_Flag = false;
-
-    float oneTime;
-    float n_gauge;
+    
+    float n_gauge = 0;
     float gaugeMAX = 1;
 
     float addGauge = 0.1f;
@@ -42,7 +41,7 @@ public class Gauge : MonoBehaviour {
             //ゲージを減らす
             n_gauge -= 1 / (60 * c_dTime);
             this.special_Gauge.GetComponent<Image>().fillAmount = n_gauge;
-            if (n_gauge == 0)
+            if (n_gauge <= 0)
             {
                 dec_Flag = false;
             }
