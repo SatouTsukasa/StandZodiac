@@ -125,30 +125,9 @@ public class Enemy : MonoBehaviour
     {
         
         GetComponent<Rigidbody2D>().velocity = direction * spaceship.speed;
-
+        
     }
-
-    void UFO_move()
-    {
-        //UFOの現在地
-        Vector3 ufo_pos = GameObject.Find("UFO").transform.position;
-
-        if (spaceship.meander == true)
-        {
-            if (spaceship.mea_flg == true)
-            {
-                this.transform.Translate(this.transform.right * 0.1f);
-                if (ufo_pos.x >= 630)
-                    spaceship.mea_flg = false;
-            }
-            else
-            {
-                this.transform.Translate(this.transform.right * -0.1f);
-                if (ufo_pos.x <= 80)
-                    spaceship.mea_flg = true;
-            }
-        }
-    }
+    
 
     void OnTriggerEnter2D(Collider2D c)
     {

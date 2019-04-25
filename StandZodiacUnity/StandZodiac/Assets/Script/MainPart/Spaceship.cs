@@ -34,9 +34,7 @@ public class Spaceship : MonoBehaviour
     public bool tackle;
     //蛇行するかどうか
     public bool meander;
-
-    [System.NonSerialized]
-    public bool mea_flg = true; 
+    bool mea_flg;
 
     public GameObject divEnemy;
 
@@ -62,7 +60,11 @@ public class Spaceship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //UFOの時に実行
+        if (meander == true)
+        {
+            UFO_move();
+        }
     }
 
     // 爆発の作成
@@ -105,28 +107,26 @@ public class Spaceship : MonoBehaviour
     public void Move(Vector2 direction)
     {
         GetComponent<Rigidbody2D>().velocity = direction * speed;
-        
+
     }
 
-    void UFO_move()
+    //UFOの移動処理
+    public void UFO_move()
     {
         //UFOの現在地
-        Vector3 ufo_pos = GameObject.Find("UFO").transform.position;
+        Vector2 ufo_pos = this.transform.position;
 
-        if (meander == true)
+        if (ufo_pos.x >= 720)  mea_flg = true;
+
+        if (ufo_pos.x <= 0)  mea_flg = false;
+
+        if (mea_flg)
         {
-            if (mea_flg == true)
-            {
-                this.transform.Translate(this.transform.right * 0.1f);
-                if (ufo_pos.x >= 630)
-                    mea_flg = false;
-            }
-            else
-            {
-                this.transform.Translate(this.transform.right * -0.1f);
-                if (ufo_pos.x <= 80)
-                    mea_flg = true;
-            }
+            this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+        }
+        else
+        {
+            this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
         }
     }
 
