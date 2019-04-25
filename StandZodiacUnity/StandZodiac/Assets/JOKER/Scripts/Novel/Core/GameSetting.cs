@@ -11,7 +11,7 @@ namespace Novel
 		public static string PATH_PREFAB = "novel/data/prefab/";
 
 		public static string PATH_IMAGE = "novel/data/images/image/";
-        public static string PATH_CHARA_IMAGE = "Resource/Player";                                  //"novel/data/images/character/";
+        public static string PATH_CHARA_IMAGE ="novel/data/images/character/";   //"Assets/Resource/Player/";  
 		public static string PATH_BG_IMAGE = "novel/data/images/background/";
 		public static string PATH_SYSTEM_IMAGE = "novel/data/images/system/";
 		public static string PATH_SD_OBJECT = "novel/data/sd/";
