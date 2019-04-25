@@ -49,8 +49,8 @@ YYYY年/MM月/D日[p]
 てなことでよろしく頼んだぞ。[r]
 地球の平和は君にかかっている！[p]
 
-;キャラクターを非表示にする
-[chara_remove name=chara time=0.5]
+;キャラクターをゆっくり非表示にする
+[chara_hide name=chara time=1.5]
 
 ;背景を非表示にする
 [bg_remove name="background"time=2]
@@ -59,7 +59,7 @@ YYYY年/MM月/D日[p]
 [bg_new name="background1" storage="Black"]
 
 ;背景を表示する
-[bg_show name="background1"time=0.5]
+[bg_show name="background1"time=2]
 
 ;[select_new text="無限の彼方へ...さぁ行くぞ！" target=*select_a1 ]
 ;[select_show sound=click ]
