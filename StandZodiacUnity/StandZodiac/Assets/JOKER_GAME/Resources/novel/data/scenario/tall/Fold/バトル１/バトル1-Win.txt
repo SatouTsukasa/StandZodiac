@@ -8,6 +8,7 @@
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
 
+*select_a2
 ;---牡羊座、勝利。(勝利後会話)---
 
 #牡牛座
@@ -50,3 +51,6 @@
 
 #牡羊座
 はい、ありがとうございます！[p]
+
+*select_b1
+@jump file="tall/Fold/バトル１/バトル１" target=select_b1
