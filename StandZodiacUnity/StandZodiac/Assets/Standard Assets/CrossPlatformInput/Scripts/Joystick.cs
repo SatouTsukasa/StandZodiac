@@ -25,14 +25,14 @@ namespace UnityStandardAssets.CrossPlatformInput
 		CrossPlatformInputManager.VirtualAxis m_HorizontalVirtualAxis; // Reference to the joystick in the cross platform input
 		CrossPlatformInputManager.VirtualAxis m_VerticalVirtualAxis; // Reference to the joystick in the cross platform input
 
-		void OnEnable()
+		/*void OnEnable()
 		{
 			CreateVirtualAxes();
-		}
+		}*/
 
         void Start()
         {
-            //CreateVirtualAxes();
+            CreateVirtualAxes();
             m_StartPos = transform.position;
         }
 
@@ -54,22 +54,30 @@ namespace UnityStandardAssets.CrossPlatformInput
 
 		void CreateVirtualAxes()
 		{
-			// set axes to use
-			m_UseX = (axesToUse == AxisOption.Both || axesToUse == AxisOption.OnlyHorizontal);
-			m_UseY = (axesToUse == AxisOption.Both || axesToUse == AxisOption.OnlyVertical);
+            // set axes to use
+            m_UseX = (axesToUse == AxisOption.Both || axesToUse == AxisOption.OnlyHorizontal);
+            m_UseY = (axesToUse == AxisOption.Both || axesToUse == AxisOption.OnlyVertical);
 
-			// create new axes based on axes to use
-			if (m_UseX)
-			{
-				m_HorizontalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(horizontalAxisName);
-				CrossPlatformInputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
-			}
-			if (m_UseY)
-			{
-				m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(verticalAxisName);
-				CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
-			}
-		}
+            // create new axes based on axes to use
+            if (m_UseX)
+            {
+                if (CrossPlatformInputManager.AxisExists(horizontalAxisName))
+                {
+                    CrossPlatformInputManager.UnRegisterVirtualAxis(horizontalAxisName);
+                }
+                m_HorizontalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(horizontalAxisName);
+                CrossPlatformInputManager.RegisterVirtualAxis(m_HorizontalVirtualAxis);
+            }
+            if (m_UseY)
+            {
+                if (CrossPlatformInputManager.AxisExists(verticalAxisName))
+                {
+                    CrossPlatformInputManager.UnRegisterVirtualAxis(verticalAxisName);
+                }
+                m_VerticalVirtualAxis = new CrossPlatformInputManager.VirtualAxis(verticalAxisName);
+                CrossPlatformInputManager.RegisterVirtualAxis(m_VerticalVirtualAxis);
+            }
+        }
 
 
 		public void OnDrag(PointerEventData data)

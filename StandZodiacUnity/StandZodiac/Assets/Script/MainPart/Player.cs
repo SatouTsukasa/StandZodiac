@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public AudioClip ShotSound;
     public AudioClip ItemAcquisition;
 
+    public Tap tapController;
+
     //パワーアップbool関数
 
     public bool PU2 = false;
@@ -84,63 +86,64 @@ public class Player : MonoBehaviour
 
         // エディタ、実機で処理を分ける
         */
-        /*if (Application.isEditor)
-        {
-            
-            // エディタで実行中
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("クリックした瞬間");
+     /*if (Application.isEditor)
+     {
 
-                Move();
-            }
+         // エディタで実行中
+         if (Input.GetMouseButtonDown(0))
+         {
+             Debug.Log("クリックした瞬間");
 
-            if (Input.GetMouseButtonUp(0))
-            {
-                playerPos = Vector3.zero;
-                mousePos = Vector3.zero;
-                Debug.Log("離した瞬間");
-            }
+             Move();
+         }
 
-            if (Input.GetMouseButton(0))
-            {
+         if (Input.GetMouseButtonUp(0))
+         {
+             playerPos = Vector3.zero;
+             mousePos = Vector3.zero;
+             Debug.Log("離した瞬間");
+         }
 
-                Debug.Log("クリックしっぱなし");
+         if (Input.GetMouseButton(0))
+         {
 
-                //Vector3 prePos = this.transform.position;
-                Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
+             Debug.Log("クリックしっぱなし");
 
-                Move();
+             //Vector3 prePos = this.transform.position;
+             Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
 
-                //タッチ対応デバイス向け、1本目の指にのみ反応
-                if (Input.touchSupported)
-                {
-                    diff = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - mousePos;
-                }
+             Move();
 
-                diff.z = 0.0f;
-                //this.transform.position = playerPos + diff;
-                this.transform.position = Vector3.MoveTowards(transform.position, playerPos + diff, speed);
+             //タッチ対応デバイス向け、1本目の指にのみ反応
+             if (Input.touchSupported)
+             {
+                 diff = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - mousePos;
+             }
+
+             diff.z = 0.0f;
+             //this.transform.position = playerPos + diff;
+             this.transform.position = Vector3.MoveTowards(transform.position, playerPos + diff, speed);
 
 
-            }
+         }
 
-        }
-        else
-        {*/
-            //Debug.Log("uuuuuuuuuuuuuuuuuuuu");
-            // 右・左
-            float x = Input.GetAxisRaw("Horizontal");
+     }
+     else
+     {*/
+     //Debug.Log("uuuuuuuuuuuuuuuuuuuu");
+     // 右・左
+     // float x = CrossPlatformInputManager.GetAxis("Horizontal");
 
-            // 上・下
-            float y = Input.GetAxisRaw("Vertical");
+        // 上・下
+        // float y = CrossPlatformInputManager.GetAxis("Vertical");
 
-            // 移動する向きを求める
-            Vector2 direction = new Vector2(x, y).normalized;
-            Debug.Log(direction);
+        // 移動する向きを求める
+        // Vector2 direction = new Vector2(x, y).normalized;
+        Vector2 direction = tapController.outPutPos;
+            //Debug.Log(direction);
             //transform.position += (Vector3.right * X + Vector3.up * Y) * Time.deltaTime;
 
-            spaceship.Move(direction);
+        spaceship.Move(direction);
         // 実機で実行中
         // タッチされているかチェック
         /*
@@ -174,8 +177,9 @@ public class Player : MonoBehaviour
 
     void Move()
     {
+        
         // 画面左下のワールド座標をビューポートから取得
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0.11f));
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0.02f, 0.11f));
 
         // 画面右上のワールド座標をビューポートから取得
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 0.8f));
