@@ -33,6 +33,7 @@ public class Spaceship : MonoBehaviour
     //追尾するかどうか
     public bool tackle;
 
+
     public GameObject divEnemy;
 
     // 爆発のPrefab
