@@ -36,6 +36,7 @@ public class Spaceship : MonoBehaviour
     public bool meander;
     bool mea_flg;
 
+
     public GameObject divEnemy;
 
     // 爆発のPrefab
