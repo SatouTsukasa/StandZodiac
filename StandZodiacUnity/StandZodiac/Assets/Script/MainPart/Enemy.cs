@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     private int ItemPar;
 
     Vector2 w;
+    
 
     IEnumerator Start()
     {
@@ -122,9 +123,11 @@ public class Enemy : MonoBehaviour
     // 機体の移動
     public void Move(Vector2 direction)
     {
-
+        
         GetComponent<Rigidbody2D>().velocity = direction * spaceship.speed;
+        
     }
+    
 
     void OnTriggerEnter2D(Collider2D c)
     {
@@ -183,7 +186,9 @@ public class Enemy : MonoBehaviour
             // 爆発
             spaceship.Explosion();
 
-
+            //必殺ゲージの値をプラス
+            GameObject ob_Gauge = GameObject.Find("Gauge");
+            ob_Gauge.GetComponent<Gauge>().ADDgauge();
 
             // エネミーの削除
             Destroy(gameObject);
@@ -196,11 +201,5 @@ public class Enemy : MonoBehaviour
             spaceship.GetAnimator().SetTrigger("Damage");
 
         }
-    }
-    //必殺ゲージの値をプラス
-    private void OnDestroy()
-    {
-        GameObject Gauge = GameObject.Find("Gauge");
-        Gauge.GetComponent<Gauge>().ADDgauge();
     }
 }

@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public AudioClip ShotSound;
     public AudioClip ItemAcquisition;
 
+    public Tap tapController;
+
     //パワーアップbool関数
 
     public bool PU2 = false;
@@ -66,11 +68,16 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {/*
+        //Debug.Log("uuuuuuuuuuuuuuuuuuuu");
+        // 右・左
+        float x = CrossPlatformInputManager.GetAxis("Horizontal");
 
-        
+        // 上・下
+        float y = CrossPlatformInputManager.GetAxis("Vertical");
 
-
+        // 移動する向きを求める
+        Vector2 direction = new Vector2(x, y);
         //画面外判定
         if (!GetComponent<SpriteRenderer>().isVisible)
         {
@@ -78,86 +85,91 @@ public class Player : MonoBehaviour
         }
 
         // エディタ、実機で処理を分ける
+        */
+     /*if (Application.isEditor)
+     {
 
-        if (Application.isEditor)
+         // エディタで実行中
+         if (Input.GetMouseButtonDown(0))
+         {
+             Debug.Log("クリックした瞬間");
+
+             Move();
+         }
+
+         if (Input.GetMouseButtonUp(0))
+         {
+             playerPos = Vector3.zero;
+             mousePos = Vector3.zero;
+             Debug.Log("離した瞬間");
+         }
+
+         if (Input.GetMouseButton(0))
+         {
+
+             Debug.Log("クリックしっぱなし");
+
+             //Vector3 prePos = this.transform.position;
+             Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
+
+             Move();
+
+             //タッチ対応デバイス向け、1本目の指にのみ反応
+             if (Input.touchSupported)
+             {
+                 diff = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - mousePos;
+             }
+
+             diff.z = 0.0f;
+             //this.transform.position = playerPos + diff;
+             this.transform.position = Vector3.MoveTowards(transform.position, playerPos + diff, speed);
+
+
+         }
+
+     }
+     else
+     {*/
+     //Debug.Log("uuuuuuuuuuuuuuuuuuuu");
+     // 右・左
+     // float x = CrossPlatformInputManager.GetAxis("Horizontal");
+
+        // 上・下
+        // float y = CrossPlatformInputManager.GetAxis("Vertical");
+
+        // 移動する向きを求める
+        // Vector2 direction = new Vector2(x, y).normalized;
+        Vector2 direction = tapController.outPutPos;
+            //Debug.Log(direction);
+            //transform.position += (Vector3.right * X + Vector3.up * Y) * Time.deltaTime;
+
+        spaceship.Move(direction);
+        // 実機で実行中
+        // タッチされているかチェック
+        /*
+        if (Input.touchCount > 0)
         {
-            
-            // エディタで実行中
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("クリックした瞬間");
+            // タッチ情報の取得
+            Touch touch = Input.GetTouch(0);
 
-                Move();
+            if (touch.phase == TouchPhase.Began)
+            {
+                Debug.Log("押した瞬間");
             }
 
-            if (Input.GetMouseButtonUp(0))
+            if (touch.phase == TouchPhase.Ended)
             {
-                playerPos = Vector3.zero;
-                mousePos = Vector3.zero;
                 Debug.Log("離した瞬間");
             }
 
-            if (Input.GetMouseButton(0))
+            if (touch.phase == TouchPhase.Moved)
             {
-
-                Debug.Log("クリックしっぱなし");
-
-                //Vector3 prePos = this.transform.position;
-                Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mousePos;
-
-                Move();
-
-                //タッチ対応デバイス向け、1本目の指にのみ反応
-                if (Input.touchSupported)
-                {
-                    diff = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - mousePos;
-                }
-
-                diff.z = 0.0f;
-                //this.transform.position = playerPos + diff;
-                this.transform.position = Vector3.MoveTowards(transform.position, playerPos + diff, speed);
-
-
-            }
-
-        }
-        else
-        {
-            //Debug.Log("uuuuuuuuuuuuuuuuuuuu");
-            // 右・左
-            float x = CrossPlatformInputManager.GetAxisRaw("Horizontal");
-
-            // 上・下
-            float y = CrossPlatformInputManager.GetAxisRaw("Vertical");
-
-            // 移動する向きを求める
-            Vector2 direction = new Vector2(x, y);
-
-            JoyMove(direction);
-            // 実機で実行中
-            // タッチされているかチェック
-            if (Input.touchCount > 0)
-            {
-                // タッチ情報の取得
-                Touch touch = Input.GetTouch(0);
-
-                if (touch.phase == TouchPhase.Began)
-                {
-                    Debug.Log("押した瞬間");
-                }
-
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    Debug.Log("離した瞬間");
-                }
-
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    Debug.Log("押しっぱなし");
-                }
+                Debug.Log("押しっぱなし");
             }
         }
-
+        */
+        //}
+        GetComponent<Rigidbody2D>().velocity = direction * speed;
         Move();
 
 
@@ -165,8 +177,9 @@ public class Player : MonoBehaviour
 
     void Move()
     {
+        
         // 画面左下のワールド座標をビューポートから取得
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0.11f));
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0.02f, 0.11f));
 
         // 画面右上のワールド座標をビューポートから取得
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 0.8f));

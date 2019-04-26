@@ -20,6 +20,7 @@ namespace Main
         void Start()
         {
             RefreshScore();
+            Invoke("ChangeScene", 1.5f);
         }
 
         // Update is called once per frame
@@ -73,6 +74,10 @@ namespace Main
             SceneManager.LoadScene("talk");
         }
 
+        public void ChangeScene()
+        {
+            SceneManager.LoadScene("Player");
+        }
 
     }
 }
