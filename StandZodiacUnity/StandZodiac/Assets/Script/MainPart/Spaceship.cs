@@ -30,6 +30,7 @@ public class Spaceship : MonoBehaviour
     public bool canShot;
     //分裂するかどうか
     public bool div;
+
     //追尾するかどうか
     public bool tackle;
 
