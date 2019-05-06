@@ -7,3 +7,17 @@
 [call file=tall/system target="*system_setting_buttons"]
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
+
+;バトル3が終わってバトル4に行く道中
+
+#ナレーション
+蟹座の必殺技に驚くも[r]
+それを華麗にかわし、勝利[p]
+
+頼まれたのか、それとも[r]
+自らの意思なのか、[r]
+邪魔をする理由があやふやだが[p]
+
+先を急ぐためにも、[r]
+第3地点を後にし、[r]
+第4地点へと足を運んだ[p]
