@@ -13,6 +13,10 @@ public class BossEnemy : MonoBehaviour
     public bool Hutago;
     public GameObject HutagoSister;
 
+    //かに座
+    public bool Kani;
+    public GameObject Bubble;
+
     private bool HutagoH;
 
     ///HutagoSister用--------------
@@ -26,6 +30,9 @@ public class BossEnemy : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
         HutagoH = true;
+
+        if(Kani == true)
+            GetComponent<Rigidbody2D>().velocity = transform.right;
 
     }
 
@@ -49,6 +56,18 @@ public class BossEnemy : MonoBehaviour
             float y = transform.position.y + Mathf.Sin(Time.time * enemy.speed * radius);
             float z = 0f;
             transform.position = new Vector3(x, y, z);
+        }
+
+        if(Kani == true)
+        {
+            //現在地
+            Vector2 kani_pos = this.transform.position;
+
+            if (kani_pos.x >= 720)
+                GetComponent<Rigidbody2D>().velocity = transform.right * -1;
+
+            if (kani_pos.x <= 0)
+                GetComponent<Rigidbody2D>().velocity = transform.right;
         }
 
     }
