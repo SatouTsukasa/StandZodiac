@@ -161,7 +161,7 @@ public class Enemy : MonoBehaviour
 
             hp -= explosion.power;
 
-            Debug.Log("ddd");
+            //Debug.Log("ddd");
         }
 
         if (hp <= 0) {
