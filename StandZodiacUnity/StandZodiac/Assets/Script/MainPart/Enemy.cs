@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
     private int ItemPar;
 
     Vector2 w;
+
+    public bool Mlength;
+    public bool Mwide;
     
 
     IEnumerator Start()
@@ -39,17 +42,14 @@ public class Enemy : MonoBehaviour
             new Vector2(transform.position.x + Random.Range(-200, 200), transform.position.y + Random.Range(-30, 0)), 1f);
         }*/
 
-            // ローカル座標のY軸のマイナス方向に移動する
+        // ローカル座標のY軸のマイナス方向に移動する
+        //Move(transform.up * -speed);
+
+        if(Mlength == true)
+        {
             Move(transform.up * -speed);
+        }
         
-
-
-        
-
-        // ローカル座標��EY軸のマイナス方向に移動すめE
-
-
-        Move(transform.up * -speed);
 
 
         // canShotがfalseの場合、ここでコルーチンを終了させる
@@ -199,7 +199,6 @@ public class Enemy : MonoBehaviour
         else
         {
             spaceship.GetAnimator().SetTrigger("Damage");
-
         }
     }
 }
