@@ -1,0 +1,27 @@
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="room"]
+[bg_show name="background"]
+
+;メッセージを表示
+[showmessage]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"]
+
+
+;バトル1が終わってバトル2に行く道中
+
+*select_b1
+
+#ナレーション
+最初の難関であった牡牛座との対決[p]
+
+何とか突破することに成功した。[r]
+しかし、まだまだこのような事が[r]
+起こるかもしれない[p]
+
+そう思いつつも第1地点を後にし[r]
+すぐさま第2地点へと運んだ[p]
+
+*select_b2
+@jump file="tall/Fold/バトル１/バトル１" target=select_b2

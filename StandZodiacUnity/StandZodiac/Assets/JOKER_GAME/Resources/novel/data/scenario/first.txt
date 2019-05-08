@@ -11,7 +11,6 @@
 
 ;縦バージョン読み込み
 @jump file=tall/Scene_story_Start
-
 [s]
 
 ;-------------------------
