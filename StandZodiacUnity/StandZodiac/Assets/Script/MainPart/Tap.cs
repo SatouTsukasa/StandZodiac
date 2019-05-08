@@ -33,56 +33,65 @@ public class Tap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (GameObject.Find("Player") == true)
         {
-            // 初回タップ
-            if (Input.GetMouseButtonDown(0))
+
+
+            if (Input.GetMouseButton(0))
             {
-                tapStartPos = Input.mousePosition;
+                // 初回タップ
+                if (Input.GetMouseButtonDown(0))
+                {
+                    tapStartPos = Input.mousePosition;
 
-                // 画像の表示切替と座標設定
-                ButtonObj.SetActive(true);
-                ButtonBackObj.SetActive(true);
-                btnObjRect.anchoredPosition = tapStartPos;
-                btnBackObjRect.anchoredPosition = tapStartPos;
-            }
+                    // 画像の表示切替と座標設定
+                    ButtonObj.SetActive(true);
+                    ButtonBackObj.SetActive(true);
+                    btnObjRect.anchoredPosition = tapStartPos;
+                    btnBackObjRect.anchoredPosition = tapStartPos;
+                }
 
 
-            // 画像の座標設定と範囲制御
-            nowTapPos = Input.mousePosition;
+                // 画像の座標設定と範囲制御
+                nowTapPos = Input.mousePosition;
 
+                if (Vector2.Distance(tapStartPos, nowTapPos) < BUTTON_MAX_RANGE)
+                {
+                    // ボタンの移動処理
+                    btnObjRect.anchoredPosition = new Vector2(nowTapPos.x, nowTapPos.y);
+                }
+                else
+                {
+                    // ボタンの移動処理
+                    // tapStartPosから見たnowTapPosへの角度を計算する
+                    Vector2 dif = nowTapPos - tapStartPos;
+                    float radian = Mathf.Atan2(dif.y, dif.x);
+                    float rxMax = Mathf.Cos(radian) * BUTTON_MAX_RANGE;
+                    float ryMax = Mathf.Sin(radian) * BUTTON_MAX_RANGE;
+                    btnObjRect.anchoredPosition = new Vector2(rxMax + tapStartPos.x, ryMax + tapStartPos.y);
+                }
 
-            // tapStartPosから見たnowTapPosへの角度を計算する
-            Vector2 dif = nowTapPos - tapStartPos;
-            float radian = Mathf.Atan2(dif.y, dif.x);
-
-            float rxMax = Mathf.Cos(radian) * BUTTON_MAX_RANGE;
-            float ryMax = Mathf.Sin(radian) * BUTTON_MAX_RANGE;
-
-            float x = Mathf.Clamp(nowTapPos.x ,0,rxMax + tapStartPos.x);
-            float y = Mathf.Clamp(nowTapPos.y , 0 , ryMax + tapStartPos.y);
-
-            //float x = Mathf.Clamp(nowTapPos.x, -BUTTON_MAX_RANGE + tapStartPos.x,  BUTTON_MAX_RANGE + tapStartPos.x);
-            //float y = Mathf.Clamp(nowTapPos.y, -BUTTON_MAX_RANGE + tapStartPos.y,  BUTTON_MAX_RANGE + tapStartPos.y);
-
-            if (Vector2.Distance(tapStartPos, nowTapPos) < BUTTON_MAX_RANGE)
-            {
-                // ボタンの移動処理
-                btnObjRect.anchoredPosition = new Vector2(x, y);
-
+                // 出力する値の設定
                 Vector2 diff = btnObjRect.anchoredPosition - tapStartPos;
                 outPutPos = new Vector2(diff.x / BUTTON_MAX_RANGE, diff.y / BUTTON_MAX_RANGE);
+
+
+
             }
-            
+            else
+            {
+                outPutPos = Vector2.zero;
+                // 画像の表示切替と座標設定
+                ButtonObj.SetActive(false);
+                ButtonBackObj.SetActive(false);
+            }
+
         }
         else
         {
-            // 画像の表示切替と座標設定
             ButtonObj.SetActive(false);
             ButtonBackObj.SetActive(false);
         }
-
-
 
         //this.BeginPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z));
         //transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z));
