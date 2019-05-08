@@ -79,9 +79,3 @@ YYYY年/MM月/D日[p]
 *select_a1
 ;@jump file="tall/Fold/バトル１/バトル１" target=select_a1
 @jump file="tall/Fold/バトル2/バトル２" target=select_a2
-
-
-
-
-
-
