@@ -14,11 +14,11 @@
 ;---戦闘前会話---
 
 ;キャラクターの宣言 
-[chara_new name=chara1 storage=ohituzi scale="0.5" x=-2 y=-1 z=-3.5 ]
+[chara_new name=chara1 storage=ohituzi scale="0.3" x=-2 y=-1 z=-3.5 ]
 [chara_face name=chara1 face="ai" storage="ohituzi_a" ]
 [chara_face name=chara1 face="do" storage="ohituzi_b" ]
 [chara_face name=chara1 face="ki" storage="ohituzi_c" ]
-[chara_new name=chara2 storage=oushi scale="0.5" x=2 y=-1 z=-3.5 ]
+[chara_new name=chara2 storage=oushi scale="0.3" x=2 y=-1 z=-3.5 ]
 [chara_face name=chara2 face="ai" storage="oushi_a" ]
 [chara_face name=chara2 face="do" storage="oushi_b" ]
 [chara_face name=chara2 face="ki" storage="oushi_c" ]
@@ -75,13 +75,16 @@
 [wait time=1]
 
 ;キャラクターを退場させる
-[chara_hide name=chara1 time=1 wait=false]
-[chara_hide name=chara2 time=1 wait=false]
+[chara_hide name=chara1]
+[chara_hide name=chara2]
 
 ;キャラクターの削除
-[chara_remove name="all"]
+[chara_remove name="chara1"]
+[chara_remove name="chara2"]
 
 
 ;---戦闘開始---
-//--------------------------------
+;//--------------------------------
 ;---戦闘終了---
+*select_a2
+@jump file="tall/Fold/バトル１/バトル1-Win" target=select_a2
