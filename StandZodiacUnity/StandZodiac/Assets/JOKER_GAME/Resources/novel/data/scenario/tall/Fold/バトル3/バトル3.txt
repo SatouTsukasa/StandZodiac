@@ -8,27 +8,12 @@
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
 
-*select_a3
-
 ;---#牡羊座(自分)vs#蟹座(相手)---
 ;---戦闘前会話---
 
-;キャラクターの宣言 
-[chara_new name=chara1 storage=ohituzi scale="0.3" x=-2 y=-1 z=-3.5 ]
-[chara_face name=chara1 face="ai" storage="ohituzi_a" ]
-[chara_face name=chara1 face="do" storage="ohituzi_b" ]
-[chara_face name=chara1 face="ki" storage="ohituzi_c" ]
-[chara_new name=chara2 storage=kani scale="0.3" x=2 y=-1 z=-3.5 ]
-[chara_face name=chara2 face="ai" storage="kani_a" ]
-[chara_face name=chara2 face="do" storage="kani_b" ]
-[chara_face name=chara2 face="ki" storage="kani_c" ]
-
-[show name=chara2]
 #蟹座
 おう、やっと来たか。[p]
 
-[chara_mod name="chara1" face="ai"][wait time=1]
-[show name=chara1]
 #牡羊座
 やっとって、あんたもですか[r]
 蟹座さん[p]
@@ -41,7 +26,6 @@
 今のところ、牡牛座さんと双子座さんにしか[r]
 会っていません、それに「他も」って...。[p]
 
-[chara_mod name="chara2" face="ki"]
 #蟹座
 みんなそれぞれの意思で相手してるの[r]
 もちろん私もね。[p]
@@ -50,35 +34,21 @@
 え！？だって牡牛座さんと双子座さんは[r]
 頼まれたって。[p]
 
-[chara_mod name="chara2" face="default"]
 #蟹座
 まぁ頼まれたけどあまり興味はなくて[r]
 みんな自らの意思で戦ってるの。[p]
 
-[chara_mod name="chara1" face="do"]
 #牡羊座
 みんな自らの意思...ですか。[r]
 だからといって頼まれたのには変わりないです！[p]
 
-[chara_mod name="chara2" face="do"]
 #蟹座
 まぁあんたならそういうよね[r]
 いいわ！かかってきなさい！[p]
 
-[chara_mod name="chara1" face="default"]
 #牡羊座
 いくら同じ星座だからって[r]
 容赦はしませんからね！[p]
-
-[wait time=1]
-
-;キャラクターを退場させる
-[chara_hide name=chara1]
-[chara_hide name=chara2]
-
-;キャラクターの削除
-[chara_remove name="chara1"]
-[chara_remove name="chara2"]
 
 ;---戦闘開始---
 //--------------------------------

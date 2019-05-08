@@ -8,32 +8,13 @@
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"]
 
-*select_a2
-
-;キャラクターの宣言 
-[chara_new name=chara1 storage=ohituzi_a scale="0.3" x=-2 y=-1 z=-3.5 ]
-[chara_new name=chara2 storage=oushi scale="0.3" x=2 y=-1 z=-3.5 ]
-
 ;---牡牛座、勝利。(敗北後会話)---
-
-[show name=chara2]
 #牡牛座
 やっぱり、相性が悪ければ[r]
 戦闘も不利なのか。[p]
 
-[show name=chara1]
 #牡羊座
 くそぉ。[r]
 次は絶対勝ちますからね！[p]
-
-[wait time=1]
-
-;キャラクターを退場させる
-[chara_hide name=chara1]
-[chara_hide name=chara2]
-
-;キャラクターの削除
-[chara_remove name="chara1"]
-[chara_remove name="chara2"]
 
 //---#牡羊座(自分)vs#牡牛座(相手)---(終了)
