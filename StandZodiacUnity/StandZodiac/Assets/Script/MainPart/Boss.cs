@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Random.Range;
 
 
 public class Boss : MonoBehaviour
@@ -17,30 +16,43 @@ public class Boss : MonoBehaviour
 
     private float BossX;
     private float BossY;
+    private float step = 2f;
+
+    Vector3 target;
 
     //private Vector3 Bosspos = transform.position;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        BossMove();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        BossX = transform.position.x;
-        BossY = transform.position.y;
+        BossMove();
+        //BossX = transform.position.x;
+        //BossY = transform.position.y;
 
-        
     }
 
     void BossMove() {
 
+        Debug.Log("ababa");
+
         BossMove_X = Random.Range(650f, 45f);
         BossMove_Y = Random.Range(1040f, 850f);
 
-        transform.position = new Vector3(BossMove_X, BossMove_Y, 0);
+        target.x = BossMove_X;
+        target.y = BossMove_Y;
+
+
+        transform.position = Vector3.MoveTowards(transform.position, target, step * Time.deltaTime);
+
+        if(target.x < 45f && target.y > )
+
     }
 
     void BossShot() {
