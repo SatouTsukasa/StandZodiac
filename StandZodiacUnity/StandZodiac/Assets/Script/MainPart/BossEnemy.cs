@@ -73,18 +73,10 @@ public class BossEnemy : MonoBehaviour
         float z = 0f;
         transform.position = new Vector3(x, y, z);
 
+
         if (Kani == true)
         {
-            //現在地
-            Vector2 kani_pos = this.transform.position;
-
-            if (kani_pos.x >= 720)
-                GetComponent<Rigidbody2D>().velocity = transform.right * -1;
-
-            if (kani_pos.x <= 0)
-                GetComponent<Rigidbody2D>().velocity = transform.right;
-
-           
+            
         }
 
     }
