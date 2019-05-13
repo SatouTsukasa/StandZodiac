@@ -16,9 +16,9 @@ public class Boss : MonoBehaviour
 
     private float BossX;
     private float BossY;
-    private float step = 2f;
+    private float step = 100f;
 
-    Vector3 target;
+    Vector2 target;
 
     //private Vector3 Bosspos = transform.position;
 
@@ -26,7 +26,11 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        BossMove_X = Random.Range(650f, 45f);
+        BossMove_Y = Random.Range(1040f, 850f);
+
+        target.x = BossMove_X;
+        target.y = BossMove_Y;
     }
 
     // Update is called once per frame
@@ -38,20 +42,27 @@ public class Boss : MonoBehaviour
 
     }
 
-    void BossMove() {
 
-        Debug.Log("ababa");
+    void BossMoveTarget() {
 
         BossMove_X = Random.Range(650f, 45f);
         BossMove_Y = Random.Range(1040f, 850f);
 
         target.x = BossMove_X;
         target.y = BossMove_Y;
+    }
+    
 
+    void BossMove() {
 
-        transform.position = Vector3.MoveTowards(transform.position, target, step * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, target, step * Time.deltaTime);
+        
+        if (1f > Vector2.Distance(transform.position,target))
+        {
+            BossMoveTarget();
+        }
 
-        if(target.x < 45f && target.y > )
+Debug.Log(transform.position);
 
     }
 
