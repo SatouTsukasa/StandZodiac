@@ -8,12 +8,26 @@
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
 
+*select_a5
+
 ;---#牡羊座(自分)vs#乙女座(相手)---
 ;---戦闘前会話---
 
+;キャラクターの宣言 
+[chara_new name=chara1 storage=ohituzi scale="0.3" x=-2 y=-1 z=-3.5 ]
+[chara_face name=chara1 face="ai" storage="ohituzi_a" ]
+[chara_face name=chara1 face="do" storage="ohituzi_b" ]
+[chara_face name=chara1 face="ki" storage="ohituzi_c" ]
+[chara_new name=chara2 storage=otome scale="0.3" x=2 y=-1 z=-3.5 ]
+[chara_face name=chara2 face="ai" storage="otome_a" ]
+[chara_face name=chara2 face="do" storage="otome_b" ]
+[chara_face name=chara2 face="ki" storage="otome_c" ]
+
+[show name=chara2]
 #乙女座
 あら？ここまで遥々ご苦労さん。[p]
 
+[show name=chara1]
 #牡羊座
 その言葉遣い、乙女座さんですか。[r]
 僕以外の皆さんは他の何かを伝えられたのですね[p]
@@ -30,18 +44,22 @@
 それじゃぁ。[r]
 始めに何が聞きたいの？[p]
 
+[chara_mod name="chara1" face="ai"]
 #牡羊座
 そうですね、では聞くとしたら[r]
 何のために僕の目的の邪魔をするのか[p]
 
+[chara_mod name="chara2" face="ai"]
 #乙女座
 目的といえば、[r]
 夏と冬の大三角形の喧嘩を止めることだよね？[p]
 
+[chara_mod name="chara1" face="do"]
 #牡羊座
 そうです、私は急いで解決しなければいけないのに[r]
 どうして皆さんは私の邪魔をするのですか？[p]
 
+[chara_mod name="chara2" face="default"]
 #乙女座
 そうね。強いて言うなら、[r]
 私の場合はただ勝ちたいだけ[p]
@@ -54,6 +72,7 @@
 そう？誰だってそうじゃない？[r]
 勝ちたい相手がいるってときとか[p]
 
+[chara_mod name="chara1" face="default"]
 #牡羊座
 それはそうですが、[r]
 口にして言うことが滅多にないので[p]
@@ -66,6 +85,7 @@
 なるほど、そうですか。[r]
 ですが、今は退いてくれませんか？[p]
 
+[chara_mod name="chara2" face="do"]
 #乙女座
 悪いけど、どうしても通るなら[r]
 力ずくで追い返してあげる！[p]
@@ -73,6 +93,16 @@
 #牡羊座
 こちらも使命があるので、[r]
 手加減はできませんよ！[p]
+
+[wait time=1]
+
+;キャラクターを退場させる
+[chara_hide name=chara1]
+[chara_hide name=chara2]
+
+;キャラクターの削除
+[chara_remove name="chara1"]
+[chara_remove name="chara2"]
 
 ;---戦闘開始---
 //--------------------------------

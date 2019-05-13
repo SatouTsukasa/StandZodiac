@@ -16,10 +16,13 @@ namespace Main
         private int score = 0;//スコア
         private int displayScore = 0;//表示用スコア
 
+        public int SceneNumber;
+
         // Start is called before the first frame update
-        void Start()
+        void Start(int number)
         {
             RefreshScore();
+            Invoke("ChangeScene", 1.5f);
         }
 
         // Update is called once per frame
@@ -60,7 +63,6 @@ namespace Main
         public void ButtonClicked_Title()
         {
             SceneManager.LoadScene("Title");
-            Invoke("ChangeScene", 1.5f);
         }
 
         public void ButtonClicked_CharaSelect()
@@ -78,6 +80,8 @@ namespace Main
         {
             SceneManager.LoadScene("Player");
         }
+
+        
 
     }
 }
