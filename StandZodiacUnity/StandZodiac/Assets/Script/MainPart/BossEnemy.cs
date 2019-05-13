@@ -18,8 +18,10 @@ public class BossEnemy : MonoBehaviour
     public GameObject HutagoSister;
 
     private bool HutagoH;
+    private bool mea_flg;
 
     ///HutagoSister用--------------
+    GameObject HSister;
     public bool HutagoS;
     //半径
     public float radius;
@@ -40,6 +42,7 @@ public class BossEnemy : MonoBehaviour
 
     }
 
+    /*
     // Update is called once per frame
     void Update()
     {
@@ -73,6 +76,84 @@ public class BossEnemy : MonoBehaviour
         float z = 0f;
         transform.position = new Vector3(x, y, z);
 
+        
+
+    }
+    */
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
+        if (enemy.hp <= Hp / 2)
+        {
+            if (Hutago == true)
+            {
+                if (HutagoH == true)
+                {
+                    HutagoPower();
+                    HutagoH = false;
+                }
+                //transform.position = new Vector3(transform.position.x + (Mathf.Sin(Time.time * enemy.speed) * 2f), transform.position.y, 0);
+
+                //ふたご座（男）の現在地
+                Vector2 ufo_pos = this.transform.position;
+
+                if (ufo_pos.x >= 640) mea_flg = true;
+
+                if (ufo_pos.x <= 80) mea_flg = false;
+
+                if (mea_flg)
+                {
+                    this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                }
+                else
+                {
+                    this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+                }
+            }
+            if (enemy.hp <= 0)
+            {
+                //Destroy(GameObject.Find("EnemyHutagoSister"));
+                Destroy(HSister);
+            }
+        }
+        else
+        {
+            //ふたご座（男）の現在地
+            Vector2 ufo_pos = this.transform.position;
+
+            if (ufo_pos.x >= 640) mea_flg = true;
+
+            if (ufo_pos.x <= 80) mea_flg = false;
+
+            if (mea_flg)
+            {
+                this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+            }
+            else
+            {
+                this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+            }
+        }
+
+        if (HutagoS == true)
+        {
+
+            GameObject HutagoT = GameObject.Find("EnemyHutago");
+            if (HutagoT == null)
+            {
+                Debug.Log("asdfghj");
+                Destroy(gameObject);
+            }
+            float x = HutagoT.transform.position.x + (Mathf.Cos(Time.time * enemy.speed) * radius);
+            float y = HutagoT.transform.position.y + (Mathf.Sin(Time.time * enemy.speed) * radius);
+            float z = 0f;
+            transform.position = new Vector3(x, y, z);
+
+        }
+
         if (Kani == true)
         {
             //現在地
@@ -84,7 +165,7 @@ public class BossEnemy : MonoBehaviour
             if (kani_pos.x <= 0)
                 GetComponent<Rigidbody2D>().velocity = transform.right;
 
-           
+
         }
 
     }
