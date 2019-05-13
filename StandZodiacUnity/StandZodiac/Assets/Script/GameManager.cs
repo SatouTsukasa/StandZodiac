@@ -22,9 +22,7 @@ namespace Main
         void Start(int number)
         {
             RefreshScore();
-
-            //Debug.Log(number);
-
+            Invoke("ChangeScene", 1.5f);
         }
 
         // Update is called once per frame
@@ -65,7 +63,6 @@ namespace Main
         public void ButtonClicked_Title()
         {
             SceneManager.LoadScene("Title");
-            Invoke("ChangeScene", 1.5f);
         }
 
         public void ButtonClicked_CharaSelect()
