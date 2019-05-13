@@ -75,4 +75,4 @@ YYYY年/MM月/D日[p]
 
 
 
-@change name="Stage1"
+@change name="Stage2"
