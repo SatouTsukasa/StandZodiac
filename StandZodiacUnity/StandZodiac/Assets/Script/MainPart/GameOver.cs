@@ -25,7 +25,7 @@ public class GameOver : MonoBehaviour
     {
 
         if (player_ob == null) {
-
+            Time.timeScale = 0;
             Gameover.SetActive(true);
             Context.SetActive(true);
             Button.SetActive(true);
