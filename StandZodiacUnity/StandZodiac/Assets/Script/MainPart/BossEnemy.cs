@@ -8,7 +8,11 @@ public class BossEnemy : MonoBehaviour
 {
 
     Enemy enemy;
+    
+    public float width;
 
+    int Hp;
+    
     //ふたご座
     public bool Hutago;
     public GameObject HutagoSister;
@@ -34,6 +38,8 @@ public class BossEnemy : MonoBehaviour
         if(Kani == true)
             GetComponent<Rigidbody2D>().velocity = transform.right;
 
+        Hp = enemy.hp;
+
     }
 
     // Update is called once per frame
@@ -41,7 +47,7 @@ public class BossEnemy : MonoBehaviour
     {
         
 
-        if (enemy.hp <= 25)
+        if (enemy.hp <= Hp / 2)
         {
             if (Hutago == true && HutagoH == true)
             {
@@ -68,6 +74,18 @@ public class BossEnemy : MonoBehaviour
 
             if (kani_pos.x <= 0)
                 GetComponent<Rigidbody2D>().velocity = transform.right;
+
+            GameObject HutagoT = GameObject.Find("EnemyHutago");
+            if (HutagoT == null)
+            {
+                Debug.Log("asdfghj");
+                Destroy(gameObject);
+            }
+            float x = HutagoT.transform.position.x + (Mathf.Cos(Time.time * enemy.speed) * radius);
+            float y = HutagoT.transform.position.y + (Mathf.Sin(Time.time * enemy.speed) * radius);
+            float z = 0f;
+            transform.position = new Vector3(x, y, z);
+          
         }
 
     }
@@ -76,6 +94,9 @@ public class BossEnemy : MonoBehaviour
     {
         Debug.Log("asdfghj");
         GameObject HSister = (GameObject)Instantiate(HutagoSister, new Vector2(transform.position.x, transform.position.y - 10), Quaternion.identity);
+        
+        HSister = (GameObject)Instantiate(HutagoSister, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
+        //HSister.transform.parent = transform;
         Transform Tf = HSister.GetComponent<Transform>();
         Vector3[] path =
         {
