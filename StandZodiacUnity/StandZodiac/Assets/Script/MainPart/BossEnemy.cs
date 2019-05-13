@@ -17,10 +17,6 @@ public class BossEnemy : MonoBehaviour
     public bool Hutago;
     public GameObject HutagoSister;
 
-    //かに座
-    public bool Kani;
-    public GameObject Bubble;
-
     private bool HutagoH;
 
     ///HutagoSister用--------------
@@ -29,14 +25,16 @@ public class BossEnemy : MonoBehaviour
     public float radius;
     ///----------------------------
 
+    //かに座
+    public bool Kani;
+    public GameObject Bubble;
+
     // Start is called before the first frame update
     void Start()
     {
         enemy = GetComponent<Enemy>();
         HutagoH = true;
-
-        if(Kani == true)
-            GetComponent<Rigidbody2D>().velocity = transform.right;
+        
 
         Hp = enemy.hp;
 
@@ -64,7 +62,18 @@ public class BossEnemy : MonoBehaviour
             transform.position = new Vector3(x, y, z);
         }
 
-        if(Kani == true)
+        GameObject HutagoT = GameObject.Find("EnemyHutago");
+        if (HutagoT == null)
+        {
+            Debug.Log("asdfghj");
+            Destroy(gameObject);
+        }
+        float x = HutagoT.transform.position.x + (Mathf.Cos(Time.time * enemy.speed) * radius);
+        float y = HutagoT.transform.position.y + (Mathf.Sin(Time.time * enemy.speed) * radius);
+        float z = 0f;
+        transform.position = new Vector3(x, y, z);
+
+        if (Kani == true)
         {
             //現在地
             Vector2 kani_pos = this.transform.position;
@@ -75,17 +84,7 @@ public class BossEnemy : MonoBehaviour
             if (kani_pos.x <= 0)
                 GetComponent<Rigidbody2D>().velocity = transform.right;
 
-            GameObject HutagoT = GameObject.Find("EnemyHutago");
-            if (HutagoT == null)
-            {
-                Debug.Log("asdfghj");
-                Destroy(gameObject);
-            }
-            float x = HutagoT.transform.position.x + (Mathf.Cos(Time.time * enemy.speed) * radius);
-            float y = HutagoT.transform.position.y + (Mathf.Sin(Time.time * enemy.speed) * radius);
-            float z = 0f;
-            transform.position = new Vector3(x, y, z);
-          
+           
         }
 
     }
@@ -106,5 +105,10 @@ public class BossEnemy : MonoBehaviour
         //DOTweenを使ったアニメ作成
         Tf.DOLocalPath(path, 0.5f, PathType.CatmullRom)
             .SetEase(Ease.OutQuad);
+    }
+
+    void Kani_shot()
+    {
+
     }
 }
