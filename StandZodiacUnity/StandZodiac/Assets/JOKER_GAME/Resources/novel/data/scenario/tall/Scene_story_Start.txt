@@ -74,19 +74,5 @@ YYYY年/MM月/D日[p]
 場所へと急ぐのだった[p]
 
 
-;[select_new text="無限の彼方へ...さぁ行くぞ！" target=*select_a1 ]
-;[select_show sound=click ]
-*select_a1
 
-;@jump file="tall/Fold/バトル１/バトル１" target=select_a1
-;@jump file="tall/Fold/バトル2/バトル２" target=select_a2
-;@jump file="tall/Fold/バトル3/バトル3" target=select_a3
-;@jump file="tall/Fold/バトル4/バトル4" target=select_a4
-;@jump file="tall/Fold/バトル5/バトル5" target=select_a5
-;@jump file="tall/Fold/バトル6/バトル6" target=select_a6
-
-
-
-
-
-
+@change name="Stage1"
