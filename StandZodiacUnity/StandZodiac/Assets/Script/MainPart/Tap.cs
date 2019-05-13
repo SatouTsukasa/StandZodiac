@@ -43,6 +43,8 @@ public class Tap : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     tapStartPos = Input.mousePosition;
+                    if (tapStartPos.y >= 1140) tapStartPos.y = 1140;
+                    if (tapStartPos.y <= 100) tapStartPos.y = 100;
 
                     // 画像の表示切替と座標設定
                     ButtonObj.SetActive(true);
