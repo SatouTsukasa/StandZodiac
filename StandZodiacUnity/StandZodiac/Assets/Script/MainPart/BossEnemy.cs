@@ -8,14 +8,18 @@ public class BossEnemy : MonoBehaviour
 {
 
     Enemy enemy;
-    
+
     public float width;
 
     int Hp;
-    
+
     //ふたご座
     public bool Hutago;
     public GameObject HutagoSister;
+
+    //かに座
+    public bool Kani;
+    public GameObject Bubble;
 
     private bool HutagoH;
 
@@ -25,16 +29,14 @@ public class BossEnemy : MonoBehaviour
     public float radius;
     ///----------------------------
 
-    //かに座
-    public bool Kani;
-    public GameObject Bubble;
-
     // Start is called before the first frame update
     void Start()
     {
         enemy = GetComponent<Enemy>();
         HutagoH = true;
-        
+
+        if(Kani == true)
+            GetComponent<Rigidbody2D>().velocity = transform.right;
 
         Hp = enemy.hp;
 
@@ -56,35 +58,24 @@ public class BossEnemy : MonoBehaviour
 
         if (HutagoS == true)
         {
-            float x = transform.position.x + Mathf.Cos(Time.time * enemy.speed * radius);
-            float y = transform.position.y + Mathf.Sin(Time.time * enemy.speed * radius);
+
+            GameObject HutagoT = GameObject.Find("EnemyHutago");
+            if (HutagoT == null)
+            {
+                Debug.Log("asdfghj");
+                Destroy(gameObject);
+            }
+            float x = HutagoT.transform.position.x + (Mathf.Cos(Time.time * enemy.speed) * radius);
+            float y = HutagoT.transform.position.y + (Mathf.Sin(Time.time * enemy.speed) * radius);
             float z = 0f;
             transform.position = new Vector3(x, y, z);
-        }
-
-        GameObject HutagoT = GameObject.Find("EnemyHutago");
-        if (HutagoT == null)
-        {
-            Debug.Log("asdfghj");
-            Destroy(gameObject);
-        }
-        float x = HutagoT.transform.position.x + (Mathf.Cos(Time.time * enemy.speed) * radius);
-        float y = HutagoT.transform.position.y + (Mathf.Sin(Time.time * enemy.speed) * radius);
-        float z = 0f;
-        transform.position = new Vector3(x, y, z);
-
-
-        if (Kani == true)
-        {
-            
+          
         }
 
     }
 
     void HutagoPower()
     {
-        Debug.Log("asdfghj");
-        GameObject HSister = (GameObject)Instantiate(HutagoSister, new Vector2(transform.position.x, transform.position.y - 10), Quaternion.identity);
         
         HSister = (GameObject)Instantiate(HutagoSister, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
         //HSister.transform.parent = transform;
@@ -97,10 +88,5 @@ public class BossEnemy : MonoBehaviour
         //DOTweenを使ったアニメ作成
         Tf.DOLocalPath(path, 0.5f, PathType.CatmullRom)
             .SetEase(Ease.OutQuad);
-    }
-
-    void Kani_shot()
-    {
-
     }
 }

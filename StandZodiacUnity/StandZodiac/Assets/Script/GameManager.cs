@@ -19,7 +19,7 @@ namespace Main
         public int SceneNumber;
 
         // Start is called before the first frame update
-        void Start(int number)
+        void Start()
         {
             RefreshScore();
             Invoke("ChangeScene", 1.5f);
