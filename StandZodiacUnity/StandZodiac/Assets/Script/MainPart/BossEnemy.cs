@@ -12,7 +12,8 @@ public class BossEnemy : MonoBehaviour
     public float width;
 
     int Hp;
-
+    GameObject Player;
+    
     //ふたご座
     public bool Hutago;
     public GameObject HutagoSister;
@@ -36,22 +37,71 @@ public class BossEnemy : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
         HutagoH = true;
-
         Hp = enemy.hp;
-
+        Player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(Player);
         if (enemy.hp <= Hp / 2)
         {
-            if (Hutago == true && HutagoH == true)
+            if (Hutago == true)
             {
-                HutagoPower();
-                HutagoH = false;
+                if (HutagoH == true)
+                {
+                    HutagoPower();
+                    HutagoH = false;
+                }
+                //transform.position = new Vector3(transform.position.x + (Mathf.Sin(Time.time * enemy.speed) * 2f), transform.position.y, 0);
+
+                //ふたご座（男）の現在地
+                Vector2 ufo_pos = this.transform.position;
+
+                if (ufo_pos.x >= 640) mea_flg = true;
+
+                if (ufo_pos.x <= 80) mea_flg = false;
+
+                if(Player != null)
+                {
+                    if (mea_flg)
+                    {
+                        this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+                    }
+                }
+                
             }
+            if (enemy.hp <= 0)
+            {
+                //Destroy(GameObject.Find("EnemyHutagoSister"));
+                Destroy(HSister);
+            }
+        }
+        else
+        {
+            //ふたご座（男）の現在地
+            Vector2 ufo_pos = this.transform.position;
+
+            if (ufo_pos.x >= 640) mea_flg = true;
+
+            if (ufo_pos.x <= 80) mea_flg = false;
+
+            if(Player != null)
+            {
+                if (mea_flg)
+                {
+                    this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                }
+                else
+                {
+                    this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+                }
+            } 
         }
 
         if (HutagoS == true)

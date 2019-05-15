@@ -17,6 +17,7 @@ public class Stop : MonoBehaviour
         pauseObject.SetActive(false);
         pausePlayer.GetComponent<Player>().enabled = true;
         Time.timeScale = 1f;
+    
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class Stop : MonoBehaviour
     public void Button_ReStart()
     {
 
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Stage1");
     }
 
     public void Button_OP_Title()
