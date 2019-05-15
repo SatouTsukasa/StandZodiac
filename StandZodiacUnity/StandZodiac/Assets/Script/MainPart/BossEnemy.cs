@@ -17,26 +17,25 @@ public class BossEnemy : MonoBehaviour
     public bool Hutago;
     public GameObject HutagoSister;
 
-    //かに座
-    public bool Kani;
-    public GameObject Bubble;
-
     private bool HutagoH;
 
     ///HutagoSister用--------------
+    GameObject HSister;
     public bool HutagoS;
     //半径
     public float radius;
     ///----------------------------
+
+    //かに座
+    public bool Kani;
+    public GameObject Bubble;
+    private float rate;
 
     // Start is called before the first frame update
     void Start()
     {
         enemy = GetComponent<Enemy>();
         HutagoH = true;
-
-        if(Kani == true)
-            GetComponent<Rigidbody2D>().velocity = transform.right;
 
         Hp = enemy.hp;
 
@@ -45,7 +44,6 @@ public class BossEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
         if (enemy.hp <= Hp / 2)
         {
@@ -70,6 +68,22 @@ public class BossEnemy : MonoBehaviour
             float z = 0f;
             transform.position = new Vector3(x, y, z);
           
+        }
+
+        if (Kani == true)
+        {
+            rate += Time.deltaTime;
+
+            if (rate > 0.01f)
+            {
+                Vector3 pos = this.transform.position;
+                Vector3 kani_pos = new Vector3(pos.x, pos.y - 10, pos.z);
+                Quaternion kani_rot = Quaternion.Euler(0, 0, Random.Range(0, 360));
+
+                Instantiate(Bubble, kani_pos, kani_rot);
+
+                rate = 0;
+            }
         }
 
     }
