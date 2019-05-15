@@ -7,6 +7,9 @@ public class Emitter : MonoBehaviour
     //Waveプレハブの格納
     public GameObject[] waves;
 
+    //ノーマルかボスか
+    public bool Boss;
+
     //現在のWave
     private int currentWave;
 
@@ -40,8 +43,12 @@ public class Emitter : MonoBehaviour
             // 格納されているWaveを全て実行したらcurrentWaveを0にする（最初から -> ループ）
             if (waves.Length <= ++currentWave)
             {
-                
-                //currentWave = 0;
+                if(Boss == true)
+                {
+                    Debug.Log("qwedfgtghuj");
+                    currentWave = 0;
+                }
+
                 yield break;
             }
 

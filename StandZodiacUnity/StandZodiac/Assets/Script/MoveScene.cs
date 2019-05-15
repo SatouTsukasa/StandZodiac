@@ -40,7 +40,7 @@ public class MoveScene : MonoBehaviour
 
     public void Button_Continue()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Stage1");
     }
 
 }

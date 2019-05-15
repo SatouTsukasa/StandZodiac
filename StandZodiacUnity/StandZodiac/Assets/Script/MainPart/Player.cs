@@ -129,7 +129,6 @@ public class Player : MonoBehaviour
      }
      else
      {*/
-     //Debug.Log("uuuuuuuuuuuuuuuuuuuu");
      // 右・左
      // float x = CrossPlatformInputManager.GetAxis("Horizontal");
 
@@ -139,8 +138,7 @@ public class Player : MonoBehaviour
         // 移動する向きを求める
         // Vector2 direction = new Vector2(x, y).normalized;
         Vector2 direction = tapController.outPutPos;
-            //Debug.Log(direction);
-            //transform.position += (Vector3.right * X + Vector3.up * Y) * Time.deltaTime;
+
 
         spaceship.Move(direction);
         // 実機で実行中
