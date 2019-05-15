@@ -16,6 +16,8 @@ public class Tap : MonoBehaviour
     Vector2 tapStartPos;
     Vector2 nowTapPos;
 
+    bool inside;
+
    public Vector2 outPutPos; // 最大1 基本0 最小-1
 
     // Start is called before the first frame update
@@ -28,6 +30,8 @@ public class Tap : MonoBehaviour
         ButtonBackObj.SetActive(false);
         btnObjRect = ButtonObj.GetComponent<RectTransform>();
         btnBackObjRect = ButtonBackObj.GetComponent<RectTransform>();
+
+        inside = true;
     }
 
     // Update is called once per frame
@@ -36,19 +40,26 @@ public class Tap : MonoBehaviour
         if (GameObject.Find("Player") == true)
         {
 
-
+            
             if (Input.GetMouseButton(0))
             {
                 // 初回タップ
                 if (Input.GetMouseButtonDown(0))
                 {
                     tapStartPos = Input.mousePosition;
-
-                    // 画像の表示切替と座標設定
-                    ButtonObj.SetActive(true);
-                    ButtonBackObj.SetActive(true);
-                    btnObjRect.anchoredPosition = tapStartPos;
-                    btnBackObjRect.anchoredPosition = tapStartPos;
+                    //画面範囲内のみ反応
+                    if (tapStartPos.y >= 1140 || tapStartPos.y <= 100) inside = false;
+                    else inside = true;
+                    
+                    if(inside == true)
+                    {
+                        // 画像の表示切替と座標設定
+                        ButtonObj.SetActive(true);
+                        ButtonBackObj.SetActive(true);
+                        btnObjRect.anchoredPosition = tapStartPos;
+                        btnBackObjRect.anchoredPosition = tapStartPos;
+                    }
+                    
                 }
 
 

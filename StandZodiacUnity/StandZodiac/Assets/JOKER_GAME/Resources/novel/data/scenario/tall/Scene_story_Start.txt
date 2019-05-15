@@ -74,9 +74,9 @@ YYYY年/MM月/D日[p]
 場所へと急ぐのだった[p]
 
 
-;[select_new text="無限の彼方へ...さぁ行くぞ！" target=*select_a1 ]
-;[select_show sound=click ]
-;*select_a1
-;@jump file="tall/Fold/バトル１/バトル１" target=select_a1
 
-@change name="SampleScene"
+@change name="Stage2"
+*select_a1
+@jump file=tall/Fold/"バトル1"/"バトル1"
+
+[autosave]

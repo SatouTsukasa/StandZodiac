@@ -8,7 +8,19 @@
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
 
-*select_a1
+*select_a1 
+
+
+;autoという変数にオートセーブのデータを代入
+@get_autosave var=auto
+
+;オートセーブされたデータが存在するなら
+[if exp="{auto.date}!=''"]
+
+オートセーブファイル：{auto.name}[r]
+オートセーブ日時：{auto.date}[r]
+オートセーブタイトル：{auto.title}[r]
+
 
 ;---#牡羊座(自分)vs#牡牛座(相手)---
 ;---戦闘前会話---
@@ -86,5 +98,4 @@
 ;---戦闘開始---
 ;//--------------------------------
 ;---戦闘終了---
-*select_a2
-@jump file="tall/Fold/バトル１/バトル1-Win" target=select_a2
+

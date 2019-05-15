@@ -16,10 +16,13 @@ namespace Main
         private int score = 0;//スコア
         private int displayScore = 0;//表示用スコア
 
+        public int SceneNumber;
+
         // Start is called before the first frame update
         void Start()
         {
             RefreshScore();
+            
         }
 
         // Update is called once per frame
@@ -78,6 +81,8 @@ namespace Main
         {
             SceneManager.LoadScene("Player");
         }
+
+        
 
     }
 }

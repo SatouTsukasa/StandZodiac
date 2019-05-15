@@ -8,15 +8,18 @@ public class BossEnemy : MonoBehaviour
 {
 
     Enemy enemy;
-
+    
     public float width;
 
+    int Hp;
+    GameObject Player;
+    
     //ふたご座
     public bool Hutago;
     public GameObject HutagoSister;
 
     private bool HutagoH;
-    bool mea_flg;
+    private bool mea_flg;
 
     ///HutagoSister用--------------
     GameObject HSister;
@@ -25,26 +28,28 @@ public class BossEnemy : MonoBehaviour
     public float radius;
     ///----------------------------
 
+    //かに座
+    public bool Kani;
+    public GameObject Bubble;
+
     // Start is called before the first frame update
     void Start()
     {
         enemy = GetComponent<Enemy>();
         HutagoH = true;
-
-        width = 720;
-
+        Hp = enemy.hp;
+        Player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
-        if (enemy.hp <= 25)
+        Debug.Log(Player);
+        if (enemy.hp <= Hp / 2)
         {
             if (Hutago == true)
             {
-                if(HutagoH == true)
+                if (HutagoH == true)
                 {
                     HutagoPower();
                     HutagoH = false;
@@ -58,16 +63,20 @@ public class BossEnemy : MonoBehaviour
 
                 if (ufo_pos.x <= 80) mea_flg = false;
 
-                if (mea_flg)
+                if(Player != null)
                 {
-                    this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                    if (mea_flg)
+                    {
+                        this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+                    }
                 }
-                else
-                {
-                    this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
-                }
+                
             }
-            if(enemy.hp <= 0)
+            if (enemy.hp <= 0)
             {
                 //Destroy(GameObject.Find("EnemyHutagoSister"));
                 Destroy(HSister);
@@ -82,24 +91,47 @@ public class BossEnemy : MonoBehaviour
 
             if (ufo_pos.x <= 80) mea_flg = false;
 
-            if (mea_flg)
+            if(Player != null)
             {
-                this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
-            }
-            else
-            {
-                this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
-            }
+                if (mea_flg)
+                {
+                    this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                }
+                else
+                {
+                    this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+                }
+            } 
         }
 
         if (HutagoS == true)
         {
-            Transform HutagoT = GameObject.Find("EnemyHutago").transform;
-            float x = HutagoT.position.x + (Mathf.Cos(Time.time * enemy.speed) * radius);
-            float y = HutagoT.position.y + (Mathf.Sin(Time.time * enemy.speed) * radius);
+
+            GameObject HutagoT = GameObject.Find("EnemyHutago");
+            if (HutagoT == null)
+            {
+                Debug.Log("asdfghj");
+                Destroy(gameObject);
+            }
+            float x = HutagoT.transform.position.x + (Mathf.Cos(Time.time * enemy.speed) * radius);
+            float y = HutagoT.transform.position.y + (Mathf.Sin(Time.time * enemy.speed) * radius);
             float z = 0f;
             transform.position = new Vector3(x, y, z);
-            
+
+        }
+
+        if (Kani == true)
+        {
+            //現在地
+            Vector2 kani_pos = this.transform.position;
+
+            if (kani_pos.x >= 720)
+                GetComponent<Rigidbody2D>().velocity = transform.right * -1;
+
+            if (kani_pos.x <= 0)
+                GetComponent<Rigidbody2D>().velocity = transform.right;
+
+
         }
 
     }
@@ -107,16 +139,23 @@ public class BossEnemy : MonoBehaviour
     void HutagoPower()
     {
         Debug.Log("asdfghj");
+        GameObject HSister = (GameObject)Instantiate(HutagoSister, new Vector2(transform.position.x, transform.position.y - 10), Quaternion.identity);
+        
         HSister = (GameObject)Instantiate(HutagoSister, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
         //HSister.transform.parent = transform;
         Transform Tf = HSister.GetComponent<Transform>();
         Vector3[] path =
         {
-                new Vector3(Tf.localPosition.x,Tf.localPosition.y * 0.9f,1f),
+                new Vector3(Tf.localPosition.x,Tf.localPosition.y * 1.1f,0f),
                 //new Vector3(0f,150f,0f),
             };
         //DOTweenを使ったアニメ作成
         Tf.DOLocalPath(path, 0.5f, PathType.CatmullRom)
             .SetEase(Ease.OutQuad);
+    }
+
+    void Kani_shot()
+    {
+
     }
 }
