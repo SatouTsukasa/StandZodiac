@@ -45,6 +45,7 @@ public class Emitter : MonoBehaviour
             {
                 if(Boss == true)
                 {
+                    Debug.Log("qwedfgtghuj");
                     currentWave = 0;
                 }
 
