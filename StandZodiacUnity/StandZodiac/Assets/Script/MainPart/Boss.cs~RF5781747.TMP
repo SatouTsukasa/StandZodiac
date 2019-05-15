@@ -7,30 +7,24 @@ public class Boss : MonoBehaviour
 {
 
     Enemy enemy;
-    
+
     public GameObject player;
 
 
     private float BossMove_X;
     private float BossMove_Y;
     private float step = 100f;
+//    private float Tackle = 500f;
 
     const float NOMALMOVE = 100f;
-    const float TACKLEMOVE = 500f;
+    const float TACKLEMOVE = 500f
 
-    const float TACKLE_TIME_N = 8;
+    const float TACKLE_TIME_N = 5;
     private float Tackle_time = TACKLE_TIME_N;
 
-    enum STATUS {
-        MOVE,
-        ATTACK,
-        BACK
-    };
-
-    private STATUS Status = STATUS.MOVE;
 
     Vector2 target;
-    Vector2 TacklePos;
+    Vector2 PlayerPos;
 
 
     // Start is called before the first frame update
@@ -65,13 +59,12 @@ public class Boss : MonoBehaviour
 
         Tackle_time -= Time.deltaTime;
 
-        if(Tackle_time < 0 && Status == STATUS.MOVE) {
+        if(Tackle_time < 0) {
           Debug.Log("ababa");
-            
-          TacklePos = transform.position;
-            target = player.transform.position;
-            step = TACKLEMOVE;
-            Status = STATUS.ATTACK;
+          Tackle_time = TACKLE_TIME_N;
+
+          target = player.transform.position;
+          step = TACKLEMOVE;
 
         }
 
@@ -97,41 +90,17 @@ public class Boss : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, target, step * Time.deltaTime);
 
-        if (1f > Vector2.Distance(transform.position, target))
+        if (1f > Vector2.Distance(transform.position,target))
         {
-            switch (Status)
-            {
-                case STATUS.MOVE:
-                   
-                    BossMoveTarget();
-                    
-
-                    break;
-
-                case STATUS.ATTACK:
-                    target = TacklePos;
-                    Status = STATUS.BACK;
-                    Debug.Log("aaaaaaaaa");
-                    break;
-
-
-                case STATUS.BACK:
-                    
-                    Status = STATUS.MOVE;
-                    Tackle_time = TACKLE_TIME_N;
-                    step = NOMALMOVE;
-
-                    break;
-
-            }
-            
+            //target = player.transform.position;
+            step = NOMALMOVE;
+            BossMoveTarget();
         }
 
 //Debug.Log(transform.position);
 
     }
-    /*
-
+/*
     void Oushi_Tackle() {
 
         transform.position = Vector2.MoveTowards(transform.position, PlayerPos, Tackle * Time.deltaTime);
@@ -144,5 +113,5 @@ public class Boss : MonoBehaviour
 
 
     }
-    */
+*/
 }
