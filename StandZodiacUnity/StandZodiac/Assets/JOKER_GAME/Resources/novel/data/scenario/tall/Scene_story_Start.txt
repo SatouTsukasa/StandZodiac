@@ -75,7 +75,7 @@ YYYY年/MM月/D日[p]
 
 
 [autosave]
-@change name=Stage2
+@change name="Stage2"
 ;*select_a1
 ;@jump file=tall/Fold/バトル1/バトル1
 
