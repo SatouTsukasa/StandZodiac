@@ -12,6 +12,7 @@ public class BossEnemy : MonoBehaviour
     public float width;
 
     int Hp;
+    GameObject Player;
     
     //ふたご座
     public bool Hutago;
@@ -36,56 +37,14 @@ public class BossEnemy : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
         HutagoH = true;
-        
-
         Hp = enemy.hp;
-
+        Player = GameObject.Find("Player");
     }
-
-    /*
-    // Update is called once per frame
-    void Update()
-    {
-        
-
-        if (enemy.hp <= Hp / 2)
-        {
-            if (Hutago == true && HutagoH == true)
-            {
-                HutagoPower();
-                HutagoH = false;
-            }
-        }
-
-        if (HutagoS == true)
-        {
-            float x = transform.position.x + Mathf.Cos(Time.time * enemy.speed * radius);
-            float y = transform.position.y + Mathf.Sin(Time.time * enemy.speed * radius);
-            float z = 0f;
-            transform.position = new Vector3(x, y, z);
-        }
-
-        GameObject HutagoT = GameObject.Find("EnemyHutago");
-        if (HutagoT == null)
-        {
-            Debug.Log("asdfghj");
-            Destroy(gameObject);
-        }
-        float x = HutagoT.transform.position.x + (Mathf.Cos(Time.time * enemy.speed) * radius);
-        float y = HutagoT.transform.position.y + (Mathf.Sin(Time.time * enemy.speed) * radius);
-        float z = 0f;
-        transform.position = new Vector3(x, y, z);
-
-        
-
-    }
-    */
 
     // Update is called once per frame
     void Update()
     {
-
-
+        Debug.Log(Player);
         if (enemy.hp <= Hp / 2)
         {
             if (Hutago == true)
@@ -104,14 +63,18 @@ public class BossEnemy : MonoBehaviour
 
                 if (ufo_pos.x <= 80) mea_flg = false;
 
-                if (mea_flg)
+                if(Player != null)
                 {
-                    this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                    if (mea_flg)
+                    {
+                        this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+                    }
                 }
-                else
-                {
-                    this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
-                }
+                
             }
             if (enemy.hp <= 0)
             {
@@ -128,14 +91,17 @@ public class BossEnemy : MonoBehaviour
 
             if (ufo_pos.x <= 80) mea_flg = false;
 
-            if (mea_flg)
+            if(Player != null)
             {
-                this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
-            }
-            else
-            {
-                this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
-            }
+                if (mea_flg)
+                {
+                    this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                }
+                else
+                {
+                    this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+                }
+            } 
         }
 
         if (HutagoS == true)
