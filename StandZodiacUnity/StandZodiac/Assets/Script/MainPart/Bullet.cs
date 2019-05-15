@@ -24,6 +24,10 @@ public class Bullet : MonoBehaviour
 
     private Vector2 Position;
 
+    //ジグザグ移動
+    public bool meander;
+    bool mea_flg;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +49,11 @@ public class Bullet : MonoBehaviour
             //transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, 0), speed);
             //Debug.Log(rad);
         }
-        
+
+        if (Random.Range(1, 3) == 1)
+            mea_flg = true;
+        else
+            mea_flg = false;
     }
 
 
@@ -59,7 +67,23 @@ public class Bullet : MonoBehaviour
             transform.position = Position;
             //rad = Mathf.Atan2((player.transform.position.y - transform.position.y), (player.transform.position.x - transform.position.x));
         }
-        
+
+        if (meander == true)
+            Meandermove();
     }
 
+    void Meandermove()
+    {
+        //Bulletの現在地
+        Vector2 bullet_pos = this.transform.position;
+
+        if (bullet_pos.x >= 720) mea_flg = true;
+
+        if (bullet_pos.x <= 0) mea_flg = false;
+
+        if (mea_flg)
+            this.transform.position = new Vector2(bullet_pos.x - 5, bullet_pos.y);
+        else
+            this.transform.position = new Vector2(bullet_pos.x + 5, bullet_pos.y);
+    }
 }

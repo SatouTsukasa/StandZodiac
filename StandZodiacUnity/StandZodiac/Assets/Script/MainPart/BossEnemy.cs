@@ -19,6 +19,7 @@ public class BossEnemy : MonoBehaviour
     public GameObject HutagoSister;
 
     private bool HutagoH;
+    private bool mea_flg;
 
     ///HutagoSister用--------------
     GameObject HSister;
@@ -27,10 +28,13 @@ public class BossEnemy : MonoBehaviour
     public float radius;
     ///----------------------------
 
-    //かに座
+    //かに座-----------------------
     public bool Kani;
     public GameObject Bubble;
     private float rate;
+    private float rate_span;
+    private float intense_rate;
+    //-----------------------------
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +43,7 @@ public class BossEnemy : MonoBehaviour
         HutagoH = true;
         Hp = enemy.hp;
         Player = GameObject.Find("Player");
+        intense_rate = 0.7f;
     }
 
     // Update is called once per frame
@@ -84,24 +89,27 @@ public class BossEnemy : MonoBehaviour
         }
         else
         {
-            //ふたご座（男）の現在地
-            Vector2 ufo_pos = this.transform.position;
-
-            if (ufo_pos.x >= 640) mea_flg = true;
-
-            if (ufo_pos.x <= 80) mea_flg = false;
-
-            if(Player != null)
+            if (Hutago == true)
             {
-                if (mea_flg)
+                //ふたご座（男）の現在地
+                Vector2 ufo_pos = this.transform.position;
+
+                if (ufo_pos.x >= 640) mea_flg = true;
+
+                if (ufo_pos.x <= 80) mea_flg = false;
+
+                if (Player != null)
                 {
-                    this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                    if (mea_flg)
+                    {
+                        this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+                    }
                 }
-                else
-                {
-                    this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
-                }
-            } 
+            }
         }
 
         if (HutagoS == true)
@@ -120,19 +128,31 @@ public class BossEnemy : MonoBehaviour
           
         }
 
+        //かに座の処理
         if (Kani == true)
         {
             rate += Time.deltaTime;
 
-            if (rate > 0.01f)
+            if (rate > intense_rate)
             {
                 Vector3 pos = this.transform.position;
-                Vector3 kani_pos = new Vector3(pos.x, pos.y - 10, pos.z);
-                Quaternion kani_rot = Quaternion.Euler(0, 0, Random.Range(0, 360));
-
-                Instantiate(Bubble, kani_pos, kani_rot);
-
+                Vector3 kani_pos = new Vector3(pos.x, pos.y - 30, pos.z);
+                Quaternion kani_qua = new Quaternion(0,0, 180, 0);
+                Instantiate(Bubble, kani_pos, kani_qua);
                 rate = 0;
+            }
+            //かに座の現在地
+            Vector2 ufo_pos = this.transform.position;
+            if (ufo_pos.x >= 640) mea_flg = true;
+
+            if (ufo_pos.x <= 80) mea_flg = false;
+
+            if (Player != null)
+            {
+                if (mea_flg)
+                    this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                else
+                    this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
             }
         }
 
@@ -152,5 +172,13 @@ public class BossEnemy : MonoBehaviour
         //DOTweenを使ったアニメ作成
         Tf.DOLocalPath(path, 0.5f, PathType.CatmullRom)
             .SetEase(Ease.OutQuad);
+    }
+
+    private void FixedUpdate()
+    {
+        rate_span += Time.fixedDeltaTime;
+        if(rate_span > 1)
+            intense_rate = Random.Range(0.5f, 1.0f);
+
     }
 }
