@@ -21,6 +21,8 @@ public class Boss : MonoBehaviour
     const float TACKLE_TIME_N = 8;
     private float Tackle_time = TACKLE_TIME_N;
 
+    Spaceship spaceship;
+
     enum STATUS {
         MOVE,
         ATTACK,
@@ -43,6 +45,7 @@ public class Boss : MonoBehaviour
         target.y = BossMove_Y;
 
         enemy = GetComponent<Enemy>();
+        spaceship = GetComponent<Spaceship>();
         //Player = GameObject.Find("Player").transform;
 
     }
@@ -72,6 +75,7 @@ public class Boss : MonoBehaviour
             target = player.transform.position;
             step = TACKLEMOVE;
             Status = STATUS.ATTACK;
+            spaceship.enabled = false;
 
         }
 
@@ -102,7 +106,7 @@ public class Boss : MonoBehaviour
             switch (Status)
             {
                 case STATUS.MOVE:
-                   
+                    spaceship.enabled = true;
                     BossMoveTarget();
                     
 
@@ -112,6 +116,8 @@ public class Boss : MonoBehaviour
                     target = TacklePos;
                     Status = STATUS.BACK;
                     Debug.Log("aaaaaaaaa");
+                    
+
                     break;
 
 
