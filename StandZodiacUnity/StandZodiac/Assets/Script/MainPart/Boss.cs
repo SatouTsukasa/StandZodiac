@@ -82,7 +82,7 @@ public class Boss : MonoBehaviour
 
 
 
-        Debug.Log(Tackle_time);
+        //Debug.Log(Tackle_time);
 
     }
 
