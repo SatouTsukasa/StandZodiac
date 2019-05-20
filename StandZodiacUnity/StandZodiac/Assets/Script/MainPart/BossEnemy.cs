@@ -31,11 +31,10 @@ public class BossEnemy : MonoBehaviour
     ///----------------------------
 
     //かに座-----------------------
-    public bool Kani;
     public GameObject Bubble;
     private float rate;
     private float rate_span;
-    private float intense_rate = 0.7f;
+    private float intense_rate;
     //-----------------------------
 
 
@@ -104,6 +103,10 @@ public class BossEnemy : MonoBehaviour
 
         ///-----------------------------------
         spaceship = GetComponent<Spaceship>();
+
+        ///かに座-----------------------------
+        intense_rate = 0.7f;
+        ///
     }
 
     // Update is called once per frame
@@ -175,7 +178,7 @@ public class BossEnemy : MonoBehaviour
 
 
             case SEZA_LIST.Kani:
-
+                /*
                 //現在地
                 Vector2 kani_pos = this.transform.position;
 
@@ -184,7 +187,21 @@ public class BossEnemy : MonoBehaviour
 
                 if (kani_pos.x <= 0)
                     GetComponent<Rigidbody2D>().velocity = transform.right;
+                */
+                Vector2 kani_pos = this.transform.position;
+                if (kani_pos.x >= 720) mea_flg = true;
+                if (kani_pos.x <= 0) mea_flg = false;
 
+                if (Player != null)
+                {
+                    if (mea_flg)
+                        this.transform.position = new Vector2(kani_pos.x - 5, kani_pos.y);
+                    else
+                        this.transform.position = new Vector2(kani_pos.x + 5, kani_pos.y);
+                }
+
+                rate += Time.deltaTime;
+                Kani_shot();
                 break;
 
 
@@ -246,7 +263,17 @@ public class BossEnemy : MonoBehaviour
 
         void Kani_shot()
         {
+            if (rate > intense_rate)
+            {
+                Vector3 pos = this.transform.position;
+                Vector3 n_pos = new Vector3(pos.x, pos.y - 30, pos.z);
+                Quaternion k_qua = new Quaternion(0, 0, 180, 0);
+                Instantiate(Bubble, n_pos, k_qua);
+                rate = 0;
 
+                random_rate();
+                Debug.Log("1");
+            }
         }
 
 
@@ -263,14 +290,7 @@ public class BossEnemy : MonoBehaviour
         }
 
 
-    void HutagoPower()
-    {
-        
-        HSister = (GameObject)Instantiate(HutagoSister, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
-        //HSister.transform.parent = transform;
-        Transform Tf = HSister.GetComponent<Transform>();
-        Vector3[] path =
-        {
+        void BossMove() { 
 
             transform.position = Vector2.MoveTowards(transform.position, target, step * Time.deltaTime);
 
@@ -308,6 +328,9 @@ public class BossEnemy : MonoBehaviour
 
         }
         /// --------------------------------------------------------------------------------------------
-
+    void random_rate()
+    {
+        intense_rate = Random.Range(0.5f, 1.0f);
     }
+}
 
