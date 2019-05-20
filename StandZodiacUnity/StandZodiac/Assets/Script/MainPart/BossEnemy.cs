@@ -30,9 +30,13 @@ public class BossEnemy : MonoBehaviour
     GameObject HutagoT;
     ///----------------------------
 
-    //かに座
+    //かに座-----------------------
     public bool Kani;
     public GameObject Bubble;
+    private float rate;
+    private float rate_span;
+    private float intense_rate = 0.7f;
+    //-----------------------------
 
 
 
@@ -259,7 +263,13 @@ public class BossEnemy : MonoBehaviour
         }
 
 
-        void BossMove()
+    void HutagoPower()
+    {
+        
+        HSister = (GameObject)Instantiate(HutagoSister, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
+        //HSister.transform.parent = transform;
+        Transform Tf = HSister.GetComponent<Transform>();
+        Vector3[] path =
         {
 
             transform.position = Vector2.MoveTowards(transform.position, target, step * Time.deltaTime);
