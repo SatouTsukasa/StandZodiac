@@ -7,6 +7,8 @@ using DG.Tweening;
 public class PowerUpItem : MonoBehaviour
 {
 
+    Spaceship spaceship;
+
     public bool Power = false;
     public bool Turret = false;
     public int TurretCount;
@@ -17,8 +19,9 @@ public class PowerUpItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spaceship = GameObject.Find("Player").GetComponent<Spaceship>();
 
-        TurretCount = 0;
+        //TurretCount = 0;
 
         rect = GetComponent<RectTransform>();
 
