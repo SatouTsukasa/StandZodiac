@@ -33,7 +33,7 @@ public class BossEnemy : MonoBehaviour
     public GameObject Bubble;
     private float rate;
     private float rate_span;
-    private float intense_rate;
+    private float intense_rate = 0.7f;
     //-----------------------------
 
 
