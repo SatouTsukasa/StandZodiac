@@ -92,8 +92,8 @@ public class BossEnemy : MonoBehaviour
         target.x = BossMove_X;
         target.y = BossMove_Y;
 
-        spaceship = GetComponent<Spaceship>();
         ///-----------------------------------
+        spaceship = GetComponent<Spaceship>();
     }
 
     // Update is called once per frame
@@ -106,6 +106,7 @@ public class BossEnemy : MonoBehaviour
 
                 if (enemy.hp <= Hp / 2)
                 {
+                    spaceship.PU2 = true;
                     if (HutagoH == true)
                     {
                         HutagoPower();
