@@ -1,25 +1,25 @@
-﻿@call file=wide/libs/utils
-[bg_new name="background" storage="room"]
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="Black"]
 [bg_show name="background"]
 
 ;---メッセージを表示---
 [showmessage]
-[call file=wide/system target="*system_setting_buttons"]
-[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-50" y=-120 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
 
 *select_a1 
 
 
 ;autoという変数にオートセーブのデータを代入
-@get_autosave var=auto
+;@get_autosave var=auto
 
 ;オートセーブされたデータが存在するなら
-[if exp="{auto.date}!=''"]
+;[if exp="{auto.date}!=''"]
 
-オートセーブファイル：{auto.name}[r]
-オートセーブ日時：{auto.date}[r]
-オートセーブタイトル：{auto.title}[r]
+;オートセーブファイル：{auto.name}[r]
+;オートセーブ日時：{auto.date}[r]
+;オートセーブタイトル：{auto.title}[r]
 
 
 ;---#牡羊座(自分)vs#牡牛座(相手)---

@@ -22,7 +22,6 @@ namespace Main
         void Start()
         {
             RefreshScore();
-            
         }
 
         // Update is called once per frame
