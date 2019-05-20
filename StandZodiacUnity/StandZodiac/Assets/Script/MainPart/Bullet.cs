@@ -21,6 +21,9 @@ public class Bullet : MonoBehaviour
 
     private Vector2 Position;
 
+    //ジグザグ移動
+    public bool meander;
+    bool mea_flg;
     // Spaceshipコンポーネント
     Spaceship spaceship;
 
@@ -42,7 +45,11 @@ public class Bullet : MonoBehaviour
 
 
         }
-        
+
+        if (Random.Range(1, 3) == 1)
+            mea_flg = true;
+        else
+            mea_flg = false;
     }
 
 
@@ -58,9 +65,25 @@ public class Bullet : MonoBehaviour
                 intervalTime = 0;
             }
         }
-        
+
+        if (meander == true)
+            Meandermove();
     }
 
+    void Meandermove()
+    {
+        //Bulletの現在地
+        Vector2 bullet_pos = this.transform.position;
+
+        if (bullet_pos.x >= 720) mea_flg = true;
+
+        if (bullet_pos.x <= 0) mea_flg = false;
+
+        if (mea_flg)
+            this.transform.position = new Vector2(bullet_pos.x - 5, bullet_pos.y);
+        else
+            this.transform.position = new Vector2(bullet_pos.x + 5, bullet_pos.y);
+    }
     void Cluster()
     {
         for (int i = 0; i < transform.childCount; i++)
