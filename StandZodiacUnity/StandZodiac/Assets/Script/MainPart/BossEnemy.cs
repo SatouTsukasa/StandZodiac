@@ -144,7 +144,7 @@ public class BossEnemy : MonoBehaviour
                 }
                 if(HSister == true)
                 {
-
+                    
                 }
                 if (enemy.hp <= 0)
                 {
@@ -237,6 +237,7 @@ public class BossEnemy : MonoBehaviour
             Tf.DOLocalPath(path, 0.5f, PathType.CatmullRom)
                 .SetEase(Ease.OutQuad);
             HutagoH = false;
+            
             
         }
 
