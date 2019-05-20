@@ -26,6 +26,11 @@ public class Spaceship : MonoBehaviour
     public GameObject bullet4;
     public GameObject bullet5;
 
+    public bool PU2 = false;
+    public bool PU3 = false;
+    public bool PU4 = false;
+    public bool PU5 = false;
+
     // 弾を撃つかどうか
     public bool canShot;
     //分裂するかどうか
@@ -84,7 +89,7 @@ public class Spaceship : MonoBehaviour
     }
 
     // パワーアップ弾の作成
-    public void ShotPU(Transform origin, bool PU3, bool PU4, bool PU5,int TurretCount)
+    public void ShotPU(Transform origin,bool PU2, bool PU3, bool PU4, bool PU5)
     {
         Instantiate(bullet2, origin.position, origin.rotation);
         if(PU3 == true)
