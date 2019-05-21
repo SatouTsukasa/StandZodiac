@@ -9,6 +9,8 @@ public class Stop : MonoBehaviour
     public GameObject pauseObject;
     public GameObject pausePlayer;
 
+    string Scenename;
+
     //private GameObject script;
 
     // Start is called before the first frame update
@@ -17,7 +19,8 @@ public class Stop : MonoBehaviour
         pauseObject.SetActive(false);
         pausePlayer.GetComponent<Player>().enabled = true;
         Time.timeScale = 1f;
-    
+
+        Scenename = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
@@ -43,7 +46,7 @@ public class Stop : MonoBehaviour
     public void Button_ReStart()
     {
 
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene(Scenename);
     }
 
     public void Button_OP_Title()

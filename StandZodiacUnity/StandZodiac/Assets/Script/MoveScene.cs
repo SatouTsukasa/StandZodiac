@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MoveScene : MonoBehaviour
 {
+
+    string Scenename;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        Scenename = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
@@ -40,7 +43,7 @@ public class MoveScene : MonoBehaviour
 
     public void Button_Continue()
     {
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene(Scenename);
     }
 
 }
