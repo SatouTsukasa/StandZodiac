@@ -26,6 +26,8 @@ public class BossEnemy : MonoBehaviour
     public bool HutagoS;
     //半径
     public float radius;
+
+    GameObject HutagoT;
     ///----------------------------
 
     //かに座
@@ -85,6 +87,10 @@ public class BossEnemy : MonoBehaviour
         Player = GameObject.Find("Player");
 
 
+        ///ふたご座---------------------------
+        HutagoT = GameObject.Find("EnemyHutago");
+        ///-----------------------------------
+
         ///おうし座---------------------------
         BossMove_X = Random.Range(650f, 45f);
         BossMove_Y = Random.Range(1040f, 850f);
@@ -104,6 +110,25 @@ public class BossEnemy : MonoBehaviour
         {
             case SEZA_LIST.Hutago:
 
+                //ふたご座（男）の現在地
+                Vector2 ufo_pos = this.transform.position;
+
+                if (ufo_pos.x >= 640) mea_flg = true;
+
+                if (ufo_pos.x <= 80) mea_flg = false;
+
+                if (Player != null)
+                {
+                    if (mea_flg)
+                    {
+                        this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+                    }
+                    else
+                    {
+                        this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+                    }
+                }
+
                 if (enemy.hp <= Hp / 2)
                 {
                     spaceship.PU2 = true;
@@ -114,25 +139,12 @@ public class BossEnemy : MonoBehaviour
                     }
                     //transform.position = new Vector3(transform.position.x + (Mathf.Sin(Time.time * enemy.speed) * 2f), transform.position.y, 0);
 
-                    //ふたご座（男）の現在地
-                    Vector2 ufo_pos = this.transform.position;
+                    
 
-                    if (ufo_pos.x >= 640) mea_flg = true;
-
-                    if (ufo_pos.x <= 80) mea_flg = false;
-
-                    if (Player != null)
-                    {
-                        if (mea_flg)
-                        {
-                            this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
-                        }
-                        else
-                        {
-                            this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
-                        }
-                    }
-
+                }
+                if(HSister == true)
+                {
+                    
                 }
                 if (enemy.hp <= 0)
                 {
@@ -140,32 +152,9 @@ public class BossEnemy : MonoBehaviour
                     Destroy(HSister);
                 }
 
-                else
-                {
-                    //ふたご座（男）の現在地
-                    Vector2 ufo_pos = this.transform.position;
-
-                    if (ufo_pos.x >= 640) mea_flg = true;
-
-                    if (ufo_pos.x <= 80) mea_flg = false;
-
-                    if (Player != null)
-                    {
-                        if (mea_flg)
-                        {
-                            this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
-                        }
-                        else
-                        {
-                            this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
-                        }
-                    }
-                }
-
                 if (HutagoS == true)
                 {
 
-                    GameObject HutagoT = GameObject.Find("EnemyHutago");
                     if (HutagoT == null)
                     {
                         Debug.Log("asdfghj");
@@ -233,20 +222,23 @@ public class BossEnemy : MonoBehaviour
 
         void HutagoPower()
         {
-            Debug.Log("asdfghj");
-            GameObject HSister = (GameObject)Instantiate(HutagoSister, new Vector2(transform.position.x, transform.position.y - 10), Quaternion.identity);
+            
+            GameObject HBrother = GameObject.Find("EnemyHutago");
+            GameObject HSister = (GameObject)Instantiate(HutagoSister, new Vector2(HBrother.transform.position.x// + (Mathf.Cos(Time.time * enemy.speed) * radius)
+                , HBrother.transform.position.y/* + (Mathf.Sin(Time.time * enemy.speed) * radius)*/), Quaternion.identity);
 
-            HSister = (GameObject)Instantiate(HutagoSister, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
-            //HSister.transform.parent = transform;
             Transform Tf = HSister.GetComponent<Transform>();
             Vector3[] path =
             {
-                new Vector3(Tf.localPosition.x,Tf.localPosition.y * 1.1f,0f),
+                new Vector3(Tf.localPosition.x + (Mathf.Cos(Time.deltaTime * enemy.speed)),Tf.localPosition.y + (Mathf.Sin(Time.deltaTime * enemy.speed)),0f),
                 //new Vector3(0f,150f,0f),
             };
             //DOTweenを使ったアニメ作成
             Tf.DOLocalPath(path, 0.5f, PathType.CatmullRom)
                 .SetEase(Ease.OutQuad);
+            HutagoH = false;
+            
+            
         }
 
         void Kani_shot()
