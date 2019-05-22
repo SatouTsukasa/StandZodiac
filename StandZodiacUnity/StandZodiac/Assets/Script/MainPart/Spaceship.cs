@@ -41,6 +41,7 @@ public class Spaceship : MonoBehaviour
     //蛇行するかどうか
     public bool meander;
     bool mea_flg;
+    private GameObject pler;
 
 
     public GameObject divEnemy;
@@ -62,6 +63,8 @@ public class Spaceship : MonoBehaviour
         animator = GetComponent<Animator>();
 
         enemy = GetComponent<Enemy>();
+
+        pler = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -69,9 +72,7 @@ public class Spaceship : MonoBehaviour
     {
         //UFOの時に実行
         if (meander == true)
-        {
             UFO_move();
-        }
     }
 
     // 爆発の作成
@@ -120,20 +121,23 @@ public class Spaceship : MonoBehaviour
     //UFOの移動処理
     public void UFO_move()
     {
-        //UFOの現在地
-        Vector2 ufo_pos = this.transform.position;
-
-        if (ufo_pos.x >= 720)  mea_flg = true;
-
-        if (ufo_pos.x <= 0)  mea_flg = false;
-
-        if (mea_flg)
+        if (pler != null)
         {
-            this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
-        }
-        else
-        {
-            this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+            //UFOの現在地
+            Vector2 ufo_pos = this.transform.position;
+
+            if (ufo_pos.x >= 720) mea_flg = true;
+
+            if (ufo_pos.x <= 0) mea_flg = false;
+
+            if (mea_flg)
+            {
+                this.transform.position = new Vector2(ufo_pos.x - 5, ufo_pos.y);
+            }
+            else
+            {
+                this.transform.position = new Vector2(ufo_pos.x + 5, ufo_pos.y);
+            }
         }
     }
 

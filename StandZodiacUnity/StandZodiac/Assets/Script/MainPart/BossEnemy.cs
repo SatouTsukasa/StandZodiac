@@ -273,7 +273,6 @@ public class BossEnemy : MonoBehaviour
                 rate = 0;
 
                 random_rate();
-                Debug.Log("1");
             }
         }
 
