@@ -151,7 +151,7 @@ public class BossEnemy : MonoBehaviour
                 }
                 if(HSister == true)
                 {
-
+                    
                 }
                 if (enemy.hp <= 0)
                 {
@@ -259,6 +259,7 @@ public class BossEnemy : MonoBehaviour
                 .SetEase(Ease.OutQuad);
             HutagoH = false;
             
+            
         }
 
         void Kani_shot()
@@ -290,7 +291,8 @@ public class BossEnemy : MonoBehaviour
         }
 
 
-        void BossMove() { 
+        void BossMove()
+        {
 
             transform.position = Vector2.MoveTowards(transform.position, target, step * Time.deltaTime);
 
