@@ -51,7 +51,6 @@ public class Emitter : MonoBehaviour
                     Debug.Log("qwedfgtghuj");
                     currentWave = 0;
                 }
-                SceneManager.LoadScene("BATTLE_1");
 
                 yield break;
             }
