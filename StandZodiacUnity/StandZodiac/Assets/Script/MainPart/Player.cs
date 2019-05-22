@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
@@ -32,6 +33,12 @@ public class Player : MonoBehaviour
     public int TurretCount = 0;
     // Start is called before the first frame update
     // Startメソッドをコルーチンとして呼び出す
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     IEnumerator Start()
     {
 
@@ -55,6 +62,11 @@ public class Player : MonoBehaviour
 
             // shotDelay秒待つ
             yield return new WaitForSeconds(spaceship.shotDelay);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            Destroy(gameObject);
         }
 
 

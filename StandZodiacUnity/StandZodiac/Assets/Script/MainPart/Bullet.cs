@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour
     //ジグザグ移動
     public bool meander;
     bool mea_flg;
+
     // Spaceshipコンポーネント
     Spaceship spaceship;
 
@@ -84,6 +85,7 @@ public class Bullet : MonoBehaviour
         else
             this.transform.position = new Vector2(bullet_pos.x + 5, bullet_pos.y);
     }
+
     void Cluster()
     {
         for (int i = 0; i < transform.childCount; i++)
