@@ -1,4 +1,5 @@
 ﻿@call file=tall/libs/utils
+;[change1 name="BATTLE_1"]
 [bg_new name="background" storage="王道12星座 (Coll)"]
 [bg_show name="background"]
 
@@ -7,6 +8,7 @@
 [call file=tall/system target="*system_setting_buttons"]
 [text_new name=_sp_chara_name layer=ui x="-50" y=-120 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
+
 
 ;-------ストーリー（始まり（プロローグ））
 
@@ -26,7 +28,7 @@ YYYY年/MM月/D日[p]
 
 ;--------北斗七星、登場
 ;キャラクターの宣言 
-[chara_new name=chara storage=remiria_c scale="0.5" x=-2 y=-1.5 z=-3.5 ]
+[chara_new name=chara storage=hokuto scale="0.5" x=-2 y=-1.5 z=-3.5 ]
 
 
 ;キャラクターを表示
@@ -74,8 +76,5 @@ YYYY年/MM月/D日[p]
 場所へと急ぐのだった[p]
 
 
-;[autosave]
-;@change name="Stage1_Boss"
-*select_a1
-@jump file=tall/Fold/バトル1/バトル1
+@change1 name="Stage1"
 

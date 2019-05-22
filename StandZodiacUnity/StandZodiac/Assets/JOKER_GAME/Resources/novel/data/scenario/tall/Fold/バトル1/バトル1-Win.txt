@@ -1,10 +1,10 @@
-﻿@call file=wide/libs/utils
-[bg_new name="background" storage="room"]
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="Black"]
 [bg_show name="background"]
 
 ;メッセージを表示
 [showmessage]
-[call file=wide/system target="*system_setting_buttons"]
+[call file=tall/system target="*system_setting_buttons"]
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
 
@@ -81,4 +81,4 @@
 [chara_remove name="chara2"]
 
 *select_b1
-@jump file="tall/Fold/バトル１/バトル１" target=select_b1
+@jump file="tall/Scene1(道中1)" target=select_b1
