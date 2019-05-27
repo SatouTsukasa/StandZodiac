@@ -25,6 +25,9 @@ public class Bullet : MonoBehaviour
     public bool meander;
     bool mea_flg;
 
+    //Playerオブジェクト
+    private GameObject pl;
+
     // Spaceshipコンポーネント
     Spaceship spaceship;
 
@@ -47,6 +50,8 @@ public class Bullet : MonoBehaviour
 
         }
 
+        //Bubble関係
+        pl = GameObject.FindGameObjectWithTag("Player");
         if (Random.Range(1, 3) == 1)
             mea_flg = true;
         else
@@ -73,17 +78,20 @@ public class Bullet : MonoBehaviour
 
     void Meandermove()
     {
-        //Bulletの現在地
-        Vector2 bullet_pos = this.transform.position;
+        if (pl != null)
+        {
+            //Bulletの現在地
+            Vector2 bullet_pos = this.transform.position;
 
-        if (bullet_pos.x >= 720) mea_flg = true;
+            if (bullet_pos.x >= 720) mea_flg = true;
 
-        if (bullet_pos.x <= 0) mea_flg = false;
+            if (bullet_pos.x <= 0) mea_flg = false;
 
-        if (mea_flg)
-            this.transform.position = new Vector2(bullet_pos.x - 5, bullet_pos.y);
-        else
-            this.transform.position = new Vector2(bullet_pos.x + 5, bullet_pos.y);
+            if (mea_flg)
+                this.transform.position = new Vector2(bullet_pos.x - 5, bullet_pos.y);
+            else
+                this.transform.position = new Vector2(bullet_pos.x + 5, bullet_pos.y);
+        }
     }
 
     void Cluster()
