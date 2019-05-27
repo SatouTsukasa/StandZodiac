@@ -91,7 +91,6 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = direction * speed;
         Move();
 
-
     }
 
     void Move()
