@@ -48,6 +48,7 @@ public class Emitter : MonoBehaviour
                     Debug.Log("qwedfgtghuj");
                     currentWave = 0;
                 }
+                
 
                 yield break;
             }
