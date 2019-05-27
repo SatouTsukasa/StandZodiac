@@ -28,7 +28,7 @@ YYYY年/MM月/D日[p]
 
 ;--------北斗七星、登場
 ;キャラクターの宣言 
-[chara_new name=chara storage=hokuto scale="0.5" x=-2 y=-1.5 z=-3.5 ]
+[chara_new name=chara storage=hokuto scale="0.3" x=-2 y=-1.5 z=-3.5 ]
 
 
 ;キャラクターを表示
