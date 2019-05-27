@@ -155,7 +155,8 @@ public class BossEnemy : MonoBehaviour
                 }
                 if (enemy.hp <= 0)
                 {
-                    //Destroy(GameObject.Find("EnemyHutagoSister"));
+                    Debug.Log("asdcfvgb");
+
                     Destroy(HSister);
                 }
 
@@ -164,7 +165,8 @@ public class BossEnemy : MonoBehaviour
 
                     if (HutagoT == null)
                     {
-                        Debug.Log("asdfghj");
+                        //Debug.Log("nbvhjkj");
+                        //Player.GetComponent<Player>().enabled = false;
                         Destroy(gameObject);
                     }
                     float x = HutagoT.transform.position.x + (Mathf.Cos(Time.time * enemy.speed) * radius);
