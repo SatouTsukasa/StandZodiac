@@ -37,6 +37,12 @@ public class Player : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     IEnumerator Start()
@@ -64,10 +70,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(spaceship.shotDelay);
         }
 
-        if (SceneManager.GetActiveScene().name == "Title")
-        {
-            Destroy(gameObject);
-        }
+        
 
 
     }
