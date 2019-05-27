@@ -101,4 +101,10 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnBecameInvisible()
+    {
+        Debug.Log("loiuekfjd");
+        Destroy(gameObject);
+    }
+
 }
