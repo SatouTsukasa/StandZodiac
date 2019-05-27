@@ -16,7 +16,11 @@ public class Tap : MonoBehaviour
     Vector2 tapStartPos;
     Vector2 nowTapPos;
 
+    Vector2 displayMin;
+    Vector2 displayMax;
+
     bool inside;
+    Vector2 CanvasScalse;
 
    public Vector2 outPutPos; // 最大1 基本0 最小-1
 
@@ -31,6 +35,15 @@ public class Tap : MonoBehaviour
         btnObjRect = ButtonObj.GetComponent<RectTransform>();
         btnBackObjRect = ButtonBackObj.GetComponent<RectTransform>();
 
+        displayMin = Camera.main.ViewportToScreenPoint(new Vector2(0,0));
+        displayMax = Camera.main.ViewportToScreenPoint(new Vector2(1, 1));
+
+        CanvasScaler canvasScaler = GetComponent<CanvasScaler>();
+        CanvasScalse = new Vector2(
+            displayMax.x / canvasScaler.referenceResolution.x,
+            displayMax.y / canvasScaler.referenceResolution.y
+            );
+        
         inside = true;
     }
 
@@ -46,7 +59,8 @@ public class Tap : MonoBehaviour
                 // 初回タップ
                 if (Input.GetMouseButtonDown(0))
                 {
-                    tapStartPos = Input.mousePosition;
+                    tapStartPos = ScreenToCanvasScale(Input.mousePosition);
+
                     //画面範囲内のみ反応
                     if (tapStartPos.y >= 1140 || tapStartPos.y <= 100) inside = false;
                     else inside = true;
@@ -56,6 +70,8 @@ public class Tap : MonoBehaviour
                         // 画像の表示切替と座標設定
                         ButtonObj.SetActive(true);
                         ButtonBackObj.SetActive(true);
+                        //btnObjRect.anchoredPosition = tapStartPos;
+                        //btnBackObjRect.anchoredPosition = tapStartPos;
                         btnObjRect.anchoredPosition = tapStartPos;
                         btnBackObjRect.anchoredPosition = tapStartPos;
                     }
@@ -64,7 +80,7 @@ public class Tap : MonoBehaviour
 
 
                 // 画像の座標設定と範囲制御
-                nowTapPos = Input.mousePosition;
+                nowTapPos = ScreenToCanvasScale(Input.mousePosition);
 
                 if (Vector2.Distance(tapStartPos, nowTapPos) < BUTTON_MAX_RANGE)
                 {
@@ -137,4 +153,10 @@ public class Tap : MonoBehaviour
 
         //}
     //}
+
+    Vector2 ScreenToCanvasScale(Vector2 pos)
+    {
+        Debug.Log("lksfdkjsdjg");
+        return new Vector2(pos.x / CanvasScalse.x, pos.y / CanvasScalse.y);
+    }
 }
