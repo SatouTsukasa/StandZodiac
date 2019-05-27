@@ -1,45 +1,84 @@
-﻿@call file=wide/libs/utils
-[bg_new name="background" storage="room"]
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="Black"]
 [bg_show name="background"]
 
 ;メッセージを表示
 [showmessage]
-[call file=wide/system target="*system_setting_buttons"]
-[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-50" y=-120 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
 
 ;---牡羊座、勝利。(勝利後会話)---
 
+;キャラクターの宣言 
+[chara_new name=chara1 storage=ohituzi scale="0.3" x=-2 y=-1 z=-3.5 ]
+[chara_face name=chara1 face="ai" storage="ohituzi_a" ]
+[chara_face name=chara1 face="do" storage="ohituzi_b" ]
+[chara_face name=chara1 face="ki" storage="ohituzi_c" ]
+[chara_new name=chara2 storage=hutago1 scale="0.3" x=2 y=-1 z=-4 ]
+[chara_face name=chara2 face="ai" storage="hutago1_a" ]
+[chara_face name=chara2 face="do" storage="hutago1_b" ]
+[chara_face name=chara2 face="ki" storage="hutago1_c" ]
+[chara_new name=chara3 storage=hutago2 scale="0.3" x=1 y=-1 z=-3.5 ]
+[chara_face name=chara3 face="ai" storage="hutago2_a" ]
+[chara_face name=chara3 face="do" storage="hutago2_b" ]
+[chara_face name=chara3 face="ki" storage="hutago2_c" ]
+
+
+[chara_mod name="chara2" face="ki"]
 #双子座
 （右）いやぁ、すごいや！[r]
+[chara_mod name="chara3" face="ki"]
 （左）牡羊座さん、お見事！[p]
 
+[chara_mod name="chara1" face="ai"]
 #牡羊座
 危なかった、正直ぎりぎりだったよ。[r]
-息が合いすぎたから、勝てないかと思った[p]
+ホントに息があってたね[p]
 
+[chara_mod name="chara2" face="ai"]
 #双子座
-（右）ちなみに誰かに頼まれたって話だけど、[r]
-（左）申し訳ないが答えることはできないよ。[p]
+（右）ちなみに誰かに頼まれたって話、[r]
+[chara_mod name="chara3" face="ai"]
+（左）ごめん、答えることはできない。[p]
 
 #牡羊座
 そうか。[r]
 やっぱり色々と事情が？[p]
 
 #双子座
-（右）まぁそんなところ、説明できなくてごめんね。[r]
-（左）お詫びにこれあげるね。[p]
+（右）まぁそんなところ、[r]
+（左）説明できなくてごめんね。[p]
 
 ;---双子座のマークを入手---(保留)
 
+[chara_mod name="chara1" face="ki"]
 #牡羊座
-ありがとうございます。[r]
-大切に使わせていただきます[p]
+いえいえ、[r]
+色々とありがとうございます。[p]
 
+[chara_mod name="chara2" face="ki"]
 #双子座
 （右）じゃあね！頑張って！[r]
+[chara_mod name="chara3" face="ki"]
 （左）じゃあね！また遊ぼうね！[p]
 
 #牡羊座
 うん！ありがとう！[r]
 （正直、双子との戦いは避けたい）[p]
+
+[wait time=1]
+
+;キャラクターを退場させる
+[chara_hide name=chara1]
+[chara_hide name=chara2]
+[chara_hide name=chara3]
+
+;キャラクターの削除
+[chara_remove name="chara1"]
+[chara_remove name="chara2"]
+[chara_remove name="chara3"]
+
+
+*select_b2
+@jump file="tall/Scene2(道中2)" target=select_b2

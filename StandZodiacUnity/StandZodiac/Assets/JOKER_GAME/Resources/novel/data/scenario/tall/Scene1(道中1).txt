@@ -23,5 +23,4 @@
 そう思いつつも第1地点を後にし[r]
 すぐさま第2地点へと運んだ[p]
 
-*select_b2
-@jump file="tall/Fold/バトル１/バトル１" target=select_b2
+@change1 name = "Stage2"

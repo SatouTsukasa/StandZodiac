@@ -1,0 +1,101 @@
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="Black"]
+[bg_show name="background"]
+
+;メッセージを表示
+[showmessage]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-50" y=-120 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"]
+
+
+;---#牡羊座(自分)vs#双子座(相手)---
+;---戦闘前会話---
+
+;キャラクターの宣言 
+[chara_new name=chara1 storage=ohituzi scale="0.3" x=-2 y=-1 z=-3.5 ]
+[chara_face name=chara1 face="ai" storage="ohituzi_a" ]
+[chara_face name=chara1 face="do" storage="ohituzi_b" ]
+[chara_face name=chara1 face="ki" storage="ohituzi_c" ]
+[chara_new name=chara2 storage=hutago1 scale="0.3" x=2 y=-1 z=-4 ]
+[chara_face name=chara2 face="ai" storage="hutago1_a" ]
+[chara_face name=chara2 face="do" storage="hutago1_b" ]
+[chara_face name=chara2 face="ki" storage="hutago1_c" ]
+[chara_new name=chara3 storage=hutago2 scale="0.3" x=1 y=-1 z=-3.5 ]
+[chara_face name=chara3 face="ai" storage="hutago2_a" ]
+[chara_face name=chara3 face="do" storage="hutago2_b" ]
+[chara_face name=chara3 face="ki" storage="hutago2_c" ]
+
+
+
+[show name=chara2]
+#双子座
+（右）おお。[l]
+[show name=chara3]
+（左）来たようだね。[p]
+
+[show name=chara1]
+#牡羊座
+次は、双子座さんか...。[r]
+相変わらず仲いいね。[p]
+
+
+[chara_mod name="chara2" face="ki"]
+#双子座
+（右）それはそうだよ！[r]
+[chara_mod name="chara3" face="ki"]
+（左）僕たちは仲がいいんだよ！[p]
+
+[chara_mod name="chara1" face="ai"]
+#牡羊座
+僕としても仲良くしてもらってるから[r]
+できれば戦いたくないんだけど...。[p]
+
+[chara_mod name="chara3" face="ai"]
+[chara_mod name="chara2" face="ai"]
+#双子座
+（右）僕たちも同じ気持ちなんだよね[r]
+できるならこのまま通したいけど[p]
+
+#牡羊座
+それはできないんでしょ？[r]
+誰かに頼まれているから[p]
+
+[chara_mod name="chara3" face="ki"]
+[chara_mod name="chara2" face="ki"]
+#双子座
+（左）あったりー！！[r]
+まぁ誰であろうとただでは通さないけど[p]
+
+#牡羊座
+まぁそうなるよね...。[r]
+やっぱり、戦うのか[p]
+
+[chara_mod name="chara3" face="default"]
+[chara_mod name="chara2" face="default"]
+#双子座
+（右）まぁそういうこと。[r]（左）それじゃぁ[r]
+（右/左）僕たちのコンビネーション、[r]見せてあげる！[p]
+
+[chara_mod name="chara1" face="do"]
+#牡羊座
+双子の息の合い方は異常だからなぁ。[r]
+気を抜かないよう気をつけよう[p]
+
+[wait time=1]
+
+;キャラクターを退場させる
+[chara_hide name=chara1]
+[chara_hide name=chara3]
+[chara_hide name=chara2]
+
+;キャラクターの削除
+[chara_remove name="chara1"]
+[chara_remove name="chara3"]
+[chara_remove name="chara2"]
+
+@change1 name="Stage2_Boss"
+
+;---戦闘開始---
+;//--------------------------------
+;---戦闘終了---
