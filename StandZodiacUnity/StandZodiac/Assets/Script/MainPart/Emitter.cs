@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Novel;
+using UnityEngine.SceneManagement;
+
 
 public class Emitter : MonoBehaviour
 {
@@ -45,14 +48,13 @@ public class Emitter : MonoBehaviour
             {
                 if(Boss == true)
                 {
-                    Debug.Log("qwedfgtghuj");
+                    //Debug.Log("qwedfgtghuj");
                     currentWave = 0;
                 }
-                
-
+                SceneManager.LoadScene("BATTLE_1");
                 yield break;
             }
-
+            
         }
     }
     // Start is called before the first frame update

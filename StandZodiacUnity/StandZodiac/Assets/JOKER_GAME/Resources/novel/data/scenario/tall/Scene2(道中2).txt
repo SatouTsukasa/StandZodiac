@@ -8,6 +8,7 @@
 [text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"] 
 
+*select_b2
 ;バトル2が終わってバトル3に行く道中
 
 #ナレーション
@@ -20,3 +21,5 @@
 
 しぶしぶ考えながらも、[r]
 次の相手がいる第3地点と急いだ[p]
+
+@change1 name="Stage3"

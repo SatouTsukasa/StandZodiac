@@ -6,20 +6,24 @@ using UnityEngine.SceneManagement;
 namespace Novel
 {
 
-    public class ChangeComponent : AbstractComponent
+    public class Change1Component : AbstractComponent
     {
         // Start is called before the first frame update
-        public ChangeComponent()
+        public Change1Component()
         {
             this.arrayVitalParam = new List<string>
             {
                 "name"};
+
         }
 
         public override void start()
         {
             SceneManager.LoadScene(this.param["name"]);
+            
         }
+
+
     }
 
 }
