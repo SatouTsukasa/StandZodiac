@@ -43,10 +43,51 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
+        
+
     }
 
     IEnumerator Start()
     {
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_1")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("abba");
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_1")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("abba");
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_1_WIN")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_2")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_2_WIN")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_3")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+
+        //gameObject.SetActive(true);
 
         // Spaceshipコンポーネントを取得
         spaceship = GetComponent<Spaceship>();
@@ -90,6 +131,13 @@ public class Player : MonoBehaviour
       
         GetComponent<Rigidbody2D>().velocity = direction * speed;
         Move();
+
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_1")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("abba");
+        }
 
     }
 
