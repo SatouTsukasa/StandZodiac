@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     public bool PU4 = false;
     public bool PU5 = false;
 
-    private GameObject Gameover;
+    public GameObject Gameover;
 
     public int TurretCount = 0;
     // Start is called before the first frame update
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     IEnumerator Start()
     {
 
-        Gameover = GameObject.Find("Gameover_parent");
+        //Gameover = GameObject.Find("Gameover_parent");
 
         if (SceneManager.GetActiveScene().name == "BATTLE_1")
         {
@@ -130,6 +130,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(Gameover);
         if (SceneManager.GetActiveScene().name == "BATTLE_1")
         {
             gameObject.SetActive(false);
