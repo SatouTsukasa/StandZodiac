@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class Stop : MonoBehaviour
 {
 
-    public GameObject pauseObject;
-    public GameObject pausePlayer;
+    private GameObject pauseObject;
+    private GameObject pauseTap;
 
     string Scenename;
 
@@ -16,8 +16,10 @@ public class Stop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pauseObject = transform.Find("OptionPanel").gameObject;
+        pauseTap = GameObject.Find("Canvas");
         pauseObject.SetActive(false);
-        pausePlayer.GetComponent<Player>().enabled = true;
+        pauseTap.GetComponent<Tap>().enabled = true;
         Time.timeScale = 1f;
 
         Scenename = SceneManager.GetActiveScene().name;
@@ -32,14 +34,14 @@ public class Stop : MonoBehaviour
     public void Button_Stop() {
 
         pauseObject.SetActive(true);
-        pausePlayer.GetComponent<Player>().enabled = false;
+        pauseTap.GetComponent<Tap>().enabled = false;
         Time.timeScale = 0f;
     }
 
     public void Button_Start() {
 
         pauseObject.SetActive(false);
-        pausePlayer.GetComponent<Player>().enabled = true;
+        pauseTap.GetComponent<Tap>().enabled = true;
         Time.timeScale = 1f;
     }
 

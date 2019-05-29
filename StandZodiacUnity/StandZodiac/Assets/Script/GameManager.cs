@@ -18,15 +18,35 @@ namespace Main
 
         public int SceneNumber;
 
+        private GameObject Player;
+
+        void Awake()
+        {
+            Player = GameObject.Find("Player");
+
+        }
+
         // Start is called before the first frame update
         void Start()
         {
             RefreshScore();
+
         }
 
         // Update is called once per frame
         void Update()
         {
+            /*timer += Time.deltaTime;
+            if(timer > 3 && timerbool == true)
+            {
+                Time.timeScale = 0;
+                Debug.Log("asdfghjkl");
+                messageStart.enabled = false;
+                timerbool = false;
+                timer = 0;
+                //Time.timeScale = 1;
+            }*/
+
             if (score > displayScore)
             {
                 displayScore += 10;
@@ -81,7 +101,7 @@ namespace Main
             SceneManager.LoadScene("Player");
         }
 
-        
+
 
     }
 }
