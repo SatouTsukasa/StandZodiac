@@ -41,7 +41,7 @@ public class BossEnemy : MonoBehaviour
 
     /// おうし座---------------------------------
 
-    public GameObject player;
+//    private GameObject player;
     private float BossMove_X;
     private float BossMove_Y;
     private float step = 100f;
@@ -59,8 +59,6 @@ public class BossEnemy : MonoBehaviour
         ATTACK,
         BACK
     };
-
-
 
 
     private STATUS Status = STATUS.MOVE;
@@ -221,7 +219,7 @@ public class BossEnemy : MonoBehaviour
                     Debug.Log("ababa");
 
                     TacklePos = transform.position;
-                    target = player.transform.position;
+                    target = Player.transform.position;
                     step = TACKLEMOVE;
                     Status = STATUS.ATTACK;
                     spaceship.enabled = false;
@@ -275,7 +273,6 @@ public class BossEnemy : MonoBehaviour
                 rate = 0;
 
                 random_rate();
-                Debug.Log("1");
             }
         }
 
@@ -334,7 +331,7 @@ public class BossEnemy : MonoBehaviour
         /// --------------------------------------------------------------------------------------------
     void random_rate()
     {
-        intense_rate = Random.Range(0.5f, 1.0f);
+        intense_rate = Random.Range(0.3f, 0.7f);
     }
 }
 
