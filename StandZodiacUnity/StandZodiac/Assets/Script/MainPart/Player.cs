@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
-        
+
 
     }
 
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(spaceship.shotDelay);
         }
 
-        
+
 
 
     }
@@ -130,15 +130,46 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "BATTLE_1")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("abba");
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_1")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("abba");
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_1_WIN")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_2")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_2_WIN")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_3")
+        {
+            gameObject.SetActive(false);
+
+        }
+
         Vector2 direction = tapController.outPutPos;
-
-
         spaceship.Move(direction);
-      
         GetComponent<Rigidbody2D>().velocity = direction * speed;
         Move();
-
-
         if (SceneManager.GetActiveScene().name == "BATTLE_1")
         {
             gameObject.SetActive(false);
@@ -149,7 +180,7 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        
+
         // 画面左下のワールド座標をビューポートから取得
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0.02f, 0.11f));
 

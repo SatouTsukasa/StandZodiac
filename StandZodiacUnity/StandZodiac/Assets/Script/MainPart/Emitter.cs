@@ -16,10 +16,13 @@ public class Emitter : MonoBehaviour
     //現在のWave
     private int currentWave;
 
+    string Scenename;
+
     IEnumerator Start()
     {
+        Scenename = SceneManager.GetActiveScene().name;
         //Waveが存在しなければコルーチンを終了する
-        if(waves.Length == 0)
+        if (waves.Length == 0)
         {
             yield break;
         }
@@ -51,7 +54,7 @@ public class Emitter : MonoBehaviour
                     //Debug.Log("qwedfgtghuj");
                     currentWave = 0;
                 }
-                SceneManager.LoadScene("BATTLE_1");
+                Invoke("MoveJoker", 5);
                 yield break;
             }
             
@@ -67,5 +70,12 @@ public class Emitter : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void MoveJoker()
+    {
+        if (Scenename == "Stage1") SceneManager.LoadScene("BATTLE_1");
+        if (Scenename == "Stage2") SceneManager.LoadScene("BATTLE_2");
+        if (Scenename == "Stage3") SceneManager.LoadScene("BATTLE_3");
     }
 }
