@@ -50,41 +50,7 @@ public class Player : MonoBehaviour
     IEnumerator Start()
     {
 
-        if (SceneManager.GetActiveScene().name == "BATTLE_1")
-        {
-            gameObject.SetActive(false);
-            Debug.Log("abba");
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_1")
-        {
-            gameObject.SetActive(false);
-            Debug.Log("abba");
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_1_WIN")
-        {
-            gameObject.SetActive(false);
-
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_2")
-        {
-            gameObject.SetActive(false);
-
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_2_WIN")
-        {
-            gameObject.SetActive(false);
-
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_3")
-        {
-            gameObject.SetActive(false);
-
-        }
+        
 
 
         //gameObject.SetActive(true);
@@ -124,15 +90,46 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "BATTLE_1")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("abba");
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_1")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("abba");
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_1_WIN")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_2")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_2_WIN")
+        {
+            gameObject.SetActive(false);
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "BATTLE_3")
+        {
+            gameObject.SetActive(false);
+
+        }
+
         Vector2 direction = tapController.outPutPos;
-
-
-        spaceship.Move(direction);
-      
+        spaceship.Move(direction);     
         GetComponent<Rigidbody2D>().velocity = direction * speed;
         Move();
-
-
         if (SceneManager.GetActiveScene().name == "BATTLE_1")
         {
             gameObject.SetActive(false);
