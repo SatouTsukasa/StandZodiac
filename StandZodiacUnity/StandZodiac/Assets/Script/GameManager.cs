@@ -18,18 +18,18 @@ namespace Main
 
         public int SceneNumber;
 
-        float timer;
-        bool timerbool;
+        private GameObject Player;
 
-        //public Text messageStart;
+        void Awake()
+        {
+            Player = GameObject.Find("Player");
+
+        }
 
         // Start is called before the first frame update
         void Start()
         {
             RefreshScore();
-            /*timer = 0;
-            timerbool = true;
-            messageStart.enabled = true;*/
 
         }
 
@@ -101,7 +101,7 @@ namespace Main
             SceneManager.LoadScene("Player");
         }
 
-        
+
 
     }
 }
