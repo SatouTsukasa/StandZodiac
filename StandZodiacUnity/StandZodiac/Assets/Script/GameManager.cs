@@ -18,10 +18,19 @@ namespace Main
 
         public int SceneNumber;
 
+        private GameObject Player;
+
+        void Awake()
+        {
+            Player = GameObject.Find("Player");
+            
+        }
+
         // Start is called before the first frame update
         void Start()
         {
             RefreshScore();
+            
         }
 
         // Update is called once per frame

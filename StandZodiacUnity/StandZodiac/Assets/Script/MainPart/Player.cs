@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     public bool PU4 = false;
     public bool PU5 = false;
 
+    private GameObject Gameover;
+
     public int TurretCount = 0;
     // Start is called before the first frame update
     // Startメソッドをコルーチンとして呼び出す
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
+        gameObject.SetActive(true);
 
         if (SceneManager.GetActiveScene().name == "Title")
         {
@@ -49,6 +53,8 @@ public class Player : MonoBehaviour
 
     IEnumerator Start()
     {
+
+        Gameover = GameObject.Find("Gameover_parent");
 
         if (SceneManager.GetActiveScene().name == "BATTLE_1")
         {
@@ -211,6 +217,10 @@ public class Player : MonoBehaviour
         // レイヤー名がBullet (Enemy)またはEnemyの場合は爆発
         if (layerName == "Bullet(Enemy)" || layerName == "Enemy")
         {
+
+            Time.timeScale = 0;
+            Gameover.SetActive(true);
+
             // 爆発する
             spaceship.Explosion();
 
