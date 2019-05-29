@@ -81,7 +81,7 @@ public class Tap : MonoBehaviour
 
                 // 画像の座標設定と範囲制御
                 nowTapPos = ScreenToCanvasScale(Input.mousePosition);
-                Debug.Log(nowTapPos);
+                //Debug.Log(nowTapPos);
                 if (Vector2.Distance(tapStartPos, nowTapPos) < BUTTON_MAX_RANGE)
                 {
                     // ボタンの移動処理
