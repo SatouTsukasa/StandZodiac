@@ -1,39 +1,56 @@
-﻿@call file=wide/libs/utils
-[bg_new name="background" storage="room"]
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="Black"]
 [bg_show name="background"]
 
 ;メッセージを表示
 [showmessage]
-[call file=wide/system target="*system_setting_buttons"]
-[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-50" y=-120 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
 [text_show name="_sp_chara_name"]
 
 ;---牡羊座、勝利。(勝利後会話)---
 
-#蟹座
-へぇー、やるじゃん...あんた。
-正直ここまでとは思わなかった。
+;キャラクターの宣言 
+[chara_new name=chara1 storage=ohituzi scale="0.3" x=-2 y=-1 z=-3.5 ]
+[chara_face name=chara1 face="ai" storage="ohituzi_a" ]
+[chara_face name=chara1 face="do" storage="ohituzi_b" ]
+[chara_face name=chara1 face="ki" storage="ohituzi_c" ]
+[chara_new name=chara2 storage=kani scale="0.3" x=2 y=-1 z=-3.5 ]
+[chara_face name=chara2 face="ai" storage="kani_a" ]
+[chara_face name=chara2 face="do" storage="kani_b" ]
+[chara_face name=chara2 face="ki" storage="kani_c" ]
 
-＃牡羊座
+[show name=chara2]
+#蟹座
+へぇー、やるじゃん...あんた。[r]
+正直ここまでとは思わなかった。[p]
+
+[show name=chara1]
+#牡羊座
 蟹座さんもですよ。[r]
 自分も甘く見ていました。[p]
 
+[chara_mod name="chara2" face="ai"]
 #蟹座
 まぁ、お互いがお互いを[r]
 甘く見てってことで。[p]
 
+[chara_mod name="chara1" face="ki"]
 #牡羊座
 そうですね。[r]
 お互い様というのでしょうか？[p]
 
+[chara_mod name="chara2" face="ki"]
 #蟹座
 まぁそういう感じ！[r]
 あーでも悔しいなぁ[p]
 
+[chara_mod name="chara1" face="ai"]
 #牡羊座
 ん？何がですか？[r]
 私に負けたことですか？[p]
 
+[chara_mod name="chara2" face="ai"]
 #蟹座
 違う、私には家族がいてね。[r]
 今回動いた意思が家族の関係で。[p]
@@ -42,36 +59,45 @@
 分かった、それ以上はいい。[r]
 君も大変なんだな。[p]
 
+[chara_mod name="chara2" face="ki"]
 #蟹座
 ありがとう。[r]
 もう大丈夫、平気よ。[p]
 
+[chara_mod name="chara1" face="ai"]
 #牡羊座
 そっかそれでだけど、[r]
 聞きたいことがあるんだが...。[p]
 
+[chara_mod name="chara2" face="do"]
 #蟹座
 誰に頼まれたかでしょ？[r]
 生憎のところ言うなといわれてるからね[p]
 
+[chara_mod name="chara1" face="do"]
 #牡羊座
 そっか、でもありがとう。[r]
 教えてくれるだけでも助かる。[p]
 
-#蟹座
-あ、そうだ！[r]
-忘れものよ、受け取りなさい！[p]
-
-;---蟹座のマークを入手---(保留)
-
-#牡羊座
-ありがとうございます。[r]
-大切に使わせていただきます[p]
-
+[chara_mod name="chara2" face="ki"]
 #蟹座
 それじゃぁ、あたしはこれで。[r]
 頑張れよ！[p]
 
+[chara_mod name="chara1" face="ki"]
 #牡羊座
 はい！[r]
 ありがとう、頑張ります！[p]
+
+[wait time=1]
+
+;キャラクターを退場させる
+[chara_hide name=chara1]
+[chara_hide name=chara2]
+
+;キャラクターの削除
+[chara_remove name="chara1"]
+[chara_remove name="chara2"]
+
+*select_b3
+@jump file="tall/Scene3(道中3)" target=select_b3
