@@ -31,6 +31,7 @@ public class Gauge : MonoBehaviour {
     
     void Update()
     {
+        Debug.Log("n_Gauge: " + n_gauge + " gaugeMax: " + gaugeMAX);
         //ADDgauge();
 
         //ゲージの初期化
@@ -60,11 +61,12 @@ public class Gauge : MonoBehaviour {
     //必殺技の処理
     public void Specialskil()
     {
+        
         if (n_gauge >= gaugeMAX)
         {
             //バリア生成
             Vector3 p_pos = GameObject.Find("Player").transform.position;
-
+            Debug.Log("zdfghnjikjhgf");
             GameObject sc_barrier = Instantiate(barrier);
             sc_barrier.transform.position = new Vector3(p_pos.x, p_pos.y, p_pos.z);
             
