@@ -19,18 +19,26 @@ namespace Main
         public int SceneNumber;
 
         private GameObject Player;
-
-        void Awake()
-        {
-            Player = GameObject.Find("Player");
-
-        }
+        private GameObject PlayerSave;
+        private Save save;
+        private GameObject Savedata;
 
         // Start is called before the first frame update
         void Start()
         {
-            RefreshScore();
 
+            RefreshScore();
+            /*
+            Player = GameObject.Find("Player");
+            PlayerSave = GameObject.Find("PlayerSave");
+            save = PlayerSave.GetComponent<Save>();
+            Savedata = save.SavePlayer;
+
+
+            if (Player == null) {
+                Instantiate(Savedata);
+            }
+            */
         }
 
         // Update is called once per frame

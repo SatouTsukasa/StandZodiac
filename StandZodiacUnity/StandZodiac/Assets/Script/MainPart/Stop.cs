@@ -8,6 +8,7 @@ public class Stop : MonoBehaviour
 
     private GameObject pauseObject;
     private GameObject pauseTap;
+    private GameObject Stop_Player;
 
     string Scenename;
 
@@ -18,6 +19,7 @@ public class Stop : MonoBehaviour
     {
         pauseObject = transform.FindChild("OptionPanel").gameObject;
         pauseTap = GameObject.Find("Canvas");
+        Stop_Player = GameObject.Find("Player");
         pauseObject.SetActive(false);
         pauseTap.GetComponent<Tap>().enabled = true;
         Time.timeScale = 1f;
@@ -47,7 +49,7 @@ public class Stop : MonoBehaviour
 
     public void Button_ReStart()
     {
-
+        Destroy(Stop_Player);
         SceneManager.LoadScene(Scenename);
     }
 
