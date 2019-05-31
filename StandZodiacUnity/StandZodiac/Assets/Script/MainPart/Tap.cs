@@ -156,7 +156,7 @@ public class Tap : MonoBehaviour
 
     Vector2 ScreenToCanvasScale(Vector2 pos)
     {
-        Debug.Log(CanvasScalse.x);
+        //Debug.Log(CanvasScalse.x);
         return new Vector2(pos.x / CanvasScalse.x, pos.y / CanvasScalse.y);
     }
 }

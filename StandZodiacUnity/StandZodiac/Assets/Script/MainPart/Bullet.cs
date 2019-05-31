@@ -100,10 +100,11 @@ public class Bullet : MonoBehaviour
         {
             if (i == 0) continue;
             Transform shotPosition = transform.GetChild(i);
+            Vector3 placePosition = new Vector3(shotPosition.position.x, shotPosition.position.y + 50, shotPosition.position.z);
 
             // ShotPosition
             //spaceship.Shot(shotPosition);
-            GameObject ClusterBrret = Instantiate(clusterBullet, shotPosition.position, shotPosition.rotation);
+            GameObject ClusterBrret = Instantiate(clusterBullet, placePosition/*shotPosition.position*/, shotPosition.rotation);
             //Debug.Log(ClusterBrret);
         }
         Destroy(gameObject);
@@ -112,6 +113,7 @@ public class Bullet : MonoBehaviour
     private void OnBecameInvisible()
     {
         //Debug.Log("loiuekfjd");
+        gameObject.SetActive(false);
         Destroy(gameObject);
     }
 
