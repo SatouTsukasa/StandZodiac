@@ -21,7 +21,8 @@ public class Player : MonoBehaviour
     public AudioClip ShotSound;
     public AudioClip ItemAcquisition;
 
-    public Tap tapController;
+    private GameObject tapController;
+    private Tap script;
 
     //パワーアップbool関数
 
@@ -30,73 +31,34 @@ public class Player : MonoBehaviour
     public bool PU4 = false;
     public bool PU5 = false;
 
-    public GameObject Gameover;
+    private Transform Gameover;
 
     public int TurretCount = 0;
     // Start is called before the first frame update
     // Startメソッドをコルーチンとして呼び出す
 
+        /*
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
-
-        gameObject.SetActive(true);
-
-        if (SceneManager.GetActiveScene().name == "Title")
-        {
-            Destroy(gameObject);
-        }
-
-
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
     }
+    */
 
     IEnumerator Start()
     {
 
-        //Gameover = GameObject.Find("Gameover_parent");
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_1")
-        {
-            gameObject.SetActive(false);
-            Debug.Log("abba");
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_1")
-        {
-            gameObject.SetActive(false);
-            Debug.Log("abba");
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_1_WIN")
-        {
-            gameObject.SetActive(false);
-
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_2")
-        {
-            gameObject.SetActive(false);
-
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_2_WIN")
-        {
-            gameObject.SetActive(false);
-
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_3")
-        {
-            gameObject.SetActive(false);
-
-        }
+        tapController = GameObject.Find("Canvas");
+        script = tapController.GetComponent<Tap>();
+        Gameover = tapController.transform.Find("Gameover_parent");
 
 
         //gameObject.SetActive(true);
 
         // Spaceshipコンポーネントを取得
         spaceship = GetComponent<Spaceship>();
+
         while (true)
         {
             // 弾をプレイヤーと同じ位置/角度で作成
@@ -130,54 +92,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Gameover);
-        if (SceneManager.GetActiveScene().name == "BATTLE_1")
-        {
-            gameObject.SetActive(false);
-            Debug.Log("abba");
-        }
 
-        if (SceneManager.GetActiveScene().name == "BATTLE_1")
-        {
-            gameObject.SetActive(false);
-            Debug.Log("abba");
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_1_WIN")
-        {
-            gameObject.SetActive(false);
-
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_2")
-        {
-            gameObject.SetActive(false);
-
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_2_WIN")
-        {
-            gameObject.SetActive(false);
-
-        }
-
-        if (SceneManager.GetActiveScene().name == "BATTLE_3")
-        {
-            gameObject.SetActive(false);
-
-        }
-
-        Vector2 direction = tapController.outPutPos;
+        Vector2 direction = script.outPutPos;
         spaceship.Move(direction);
         GetComponent<Rigidbody2D>().velocity = direction * speed;
         Move();
-        if (SceneManager.GetActiveScene().name == "BATTLE_1")
-        {
-            gameObject.SetActive(false);
-            Debug.Log("abba");
-        }
+
+
 
     }
+
+    /*
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+        spaceship = GetComponent<Spaceship>();
+
+        tapController = GameObject.Find("Canvas");
+        script = tapController.GetComponent<Tap>();
+        Gameover = tapController.transform.Find("Gameover_parent");
+
+    }
+    */
 
     void Move()
     {
@@ -251,7 +188,7 @@ public class Player : MonoBehaviour
         {
 
             Time.timeScale = 0;
-            Gameover.SetActive(true);
+            Gameover.gameObject.SetActive(true);
 
             // 爆発する
             spaceship.Explosion();
