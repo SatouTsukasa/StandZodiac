@@ -60,7 +60,7 @@ YYYY年/MM月/D日[p]
 [bg_remove name="background"time=2]
 
 ;背景を新しく宣言する
-[bg_new name="background1" storage="Black"]
+[bg_new name="background1" storage="haikei_1"]
 
 ;背景を表示する
 [bg_show name="background1"time=2]
