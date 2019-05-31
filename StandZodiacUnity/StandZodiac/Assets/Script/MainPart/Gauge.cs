@@ -31,7 +31,7 @@ public class Gauge : MonoBehaviour {
     
     void Update()
     {
-        Debug.Log("n_Gauge: " + n_gauge + " gaugeMax: " + gaugeMAX);
+        //Debug.Log("n_Gauge: " + n_gauge + " gaugeMax: " + gaugeMAX);
         //ADDgauge();
 
         //ゲージの初期化
