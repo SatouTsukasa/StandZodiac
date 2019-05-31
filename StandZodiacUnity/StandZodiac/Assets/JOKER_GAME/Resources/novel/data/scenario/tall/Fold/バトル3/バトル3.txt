@@ -30,7 +30,7 @@
 [chara_mod name="chara1" face="ai"][wait time=1]
 [show name=chara1]
 #牡羊座
-やっとって、あんたもですか[r]
+やっとって、あなたもですか[r]
 蟹座さん[p]
 
 #蟹座
@@ -58,7 +58,7 @@
 [chara_mod name="chara1" face="do"]
 #牡羊座
 みんな自らの意思...ですか。[r]
-だからといって頼まれたのには変わりないです！[p]
+だからって頼まれたのには変わりないです！[p]
 
 [chara_mod name="chara2" face="do"]
 #蟹座

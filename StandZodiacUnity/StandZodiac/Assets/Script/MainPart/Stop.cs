@@ -17,7 +17,7 @@ public class Stop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pauseObject = transform.FindChild("OptionPanel").gameObject;
+        pauseObject = transform.Find("OptionPanel").gameObject;
         pauseTap = GameObject.Find("Canvas");
         Stop_Player = GameObject.Find("Player");
         pauseObject.SetActive(false);

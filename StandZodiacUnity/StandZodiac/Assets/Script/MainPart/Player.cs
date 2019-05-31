@@ -92,13 +92,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         Vector2 direction = script.outPutPos;
         spaceship.Move(direction);
         GetComponent<Rigidbody2D>().velocity = direction * speed;
         Move();
 
-        
+
 
     }
 
