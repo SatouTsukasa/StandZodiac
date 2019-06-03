@@ -1,0 +1,25 @@
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="room"]
+[bg_show name="background"]
+
+;メッセージを表示
+[showmessage]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+*select_b2
+;バトル2が終わってバトル3に行く道中
+
+#ナレーション
+双子座の見事なコンビネーション[r]
+苦戦を強いられたが、見事に勝利[p]
+
+そのまま第2地点を突破した。[r]
+何故他の星座が邪魔をするのか、[r]
+そういう疑問を思ってしまった[p]
+
+しぶしぶ考えながらも、[r]
+次の相手がいる第3地点と急いだ[p]
+
+@change1 name="Stage3"

@@ -1,0 +1,86 @@
+﻿@call file=wide/libs/utils
+[bg_new name="background" storage="room"]
+[bg_show name="background"]
+
+;メッセージを表示
+[showmessage]
+[call file=wide/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+*select_a6
+
+;---#牡羊座(自分)vs#天秤座(相手)---
+;---戦闘前会話---
+
+;キャラクターの宣言 
+[chara_new name=chara1 storage=ohituzi scale="0.3" x=-2 y=-1 z=-3.5 ]
+[chara_face name=chara1 face="ai" storage="ohituzi_a" ]
+[chara_face name=chara1 face="do" storage="ohituzi_b" ]
+[chara_face name=chara1 face="ki" storage="ohituzi_c" ]
+[chara_new name=chara2 storage=tenbin scale="0.3" x=2 y=-1 z=-3.5 ]
+[chara_face name=chara2 face="ai" storage="tenbin_a" ]
+[chara_face name=chara2 face="do" storage="tenbin_b" ]
+[chara_face name=chara2 face="ki" storage="tenbin_c" ]
+
+[show name=chara2]
+#天秤座
+あら？来たんですか。[r]
+思ったよりも早かったですね。[p]
+
+[show name=chara1]
+#牡羊座
+次はあなたですか。[r]
+天秤座さん[p]
+
+[chara_mod name="chara2" face="ki"]
+#天秤座
+何を言っていますか。[r]
+私の中では全て計算通りです。[p]
+
+[chara_mod name="chara1" face="ai"]
+#牡羊座
+え？計算？[r]
+私がここまで来ることが？[p]
+
+[chara_mod name="chara2" face="default"]
+#天秤座
+ええ。全て計算通り[r]
+そして牡羊座、あなたはここで終わる[p]
+
+#牡羊座
+何故それが言いきれるのですか？[r]
+そもそもあなたはこういうのは好みではないはず[p]
+
+[chara_mod name="chara2" face="do"]
+#天秤座
+確かに私は争いは好きではありません。[r]
+ですが！それでもあなたには勝てる自信があります！[p]
+
+[chara_mod name="chara1" face="do"]
+#牡羊座
+どこからその自信が来るかは分かりませんが、[r]
+それでもそこを通らなければならないのです！[p]
+
+#天秤座
+ならば力ずくで通るがいい！[r]
+無論、あなたが勝てるのであればの話ですが。[p]
+
+[chara_mod name="chara1" face="default"]
+#牡羊座
+勝てるかどうかじゃなく、[r]
+勝ちます！あなたを倒して！[p]
+
+[wait time=1]
+
+;キャラクターを退場させる
+[chara_hide name=chara1]
+[chara_hide name=chara2]
+
+;キャラクターの削除
+[chara_remove name="chara1"]
+[chara_remove name="chara2"]
+
+;---戦闘開始---
+//--------------------------------
+;---戦闘終了---

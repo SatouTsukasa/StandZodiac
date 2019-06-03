@@ -1,0 +1,23 @@
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="room"]
+[bg_show name="background"]
+
+;メッセージを表示
+[showmessage]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+;バトル5が終わってバトル6に行く道中
+
+#ナレーション
+乙女座の舞により翻弄されるが[r]
+辛うじて、勝利することができた[p]
+
+乙女座からヒントを貰った[r]
+「共通の者」[r]
+それが指す意味とは。[p]
+
+ヒントの意味を考察しつつ[r]
+天秤座が待つ[r]
+第6地点へと足を運んだ[p]

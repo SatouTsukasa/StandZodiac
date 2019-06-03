@@ -1,0 +1,23 @@
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="room"]
+[bg_show name="background"]
+
+;メッセージを表示
+[showmessage]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+;バトル4が終わってバトル5に行く道中
+
+#ナレーション
+獅子座の奥義に苦しめられるが[r]
+間一髪で、牡羊座の勝利[p]
+
+プライドの高い獅子座ですら[r]
+その者の要求を呑んでしまう[r]
+それはなぜなのだろうか[p]
+
+獅子座すら動かせる者とは[r]
+次は第5地点[r]
+乙女座の待つところへ向かった[p]

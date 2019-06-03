@@ -18,6 +18,7 @@ public class DestroyArea : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D c)
     {
+        //Debug.Log("qwrthbgfdrg");
         Destroy(c.gameObject);
     }
 }

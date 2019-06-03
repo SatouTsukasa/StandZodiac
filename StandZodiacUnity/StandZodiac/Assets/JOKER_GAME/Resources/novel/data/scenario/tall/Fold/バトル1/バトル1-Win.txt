@@ -1,0 +1,84 @@
+﻿@call file=tall/libs/utils
+[bg_new name="background" storage="haikei_1"]
+[bg_show name="background"]
+
+;メッセージを表示
+[showmessage]
+[call file=tall/system target="*system_setting_buttons"]
+[text_new name=_sp_chara_name layer=ui x="-50" y=-120 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"] 
+
+*select_a2
+
+;キャラクターの宣言 
+[chara_new name=chara1 storage=ohituzi scale="0.3" x=-2 y=-1 z=-3.5 ]
+[chara_face name=chara1 face="ai" storage="ohituzi_a" ]
+[chara_face name=chara1 face="do" storage="ohituzi_b" ]
+[chara_face name=chara1 face="ki" storage="ohituzi_c" ]
+[chara_new name=chara2 storage=oushi scale="0.3" x=2 y=-1 z=-3.5 ]
+[chara_face name=chara2 face="ai" storage="oushi_a" ]
+[chara_face name=chara2 face="do" storage="oushi_b" ]
+[chara_face name=chara2 face="ki" storage="oushi_c" ]
+
+;---牡羊座、勝利。(勝利後会話)---
+
+[show name=chara2]
+#牡牛座
+へぇ、やるねぇ。[r]
+牡羊座さん、結構強いね。[p]
+
+[show name=chara1]
+#牡羊座
+ありがとうございます。[r]
+それとできればでいいのですが[p]
+
+#牡牛座
+うん？どうしたの？[r]
+何か聞きたいことでも？[p]
+
+#牡羊座
+はい、聞きたいことですが、[r]
+誰に止めるよう頼まれたのですか？[p]
+
+[chara_mod name="chara2" face="ai"]
+#牡牛座
+残念ながら[r]
+それは言わないという約束なの。[p]
+
+[chara_mod name="chara1" face="ki"]
+#牡羊座
+分かりました。[r]
+牡牛座さんの意思でないことはわかりました[p]
+
+[chara_mod name="chara2" face="ki"]
+#牡牛座
+ありがとう。[r]
+[chara_mod name="chara2" face="ai"]
+でも気を付けるんだよ？[p]
+
+
+[chara_mod name="chara1" face="default"]
+#牡羊座
+大丈夫ですよ。[r]
+色々とありがとうございます。[p]
+
+[chara_mod name="chara2" face="default"]
+#牡牛座
+うん、それじゃ[r]
+大変だと思うけど、頑張ってね。[p]
+
+#牡羊座
+はい、ありがとうございます！[p]
+
+[wait time=1]
+
+;キャラクターを退場させる
+[chara_hide name=chara1]
+[chara_hide name=chara2]
+
+;キャラクターの削除
+[chara_remove name="chara1"]
+[chara_remove name="chara2"]
+
+*select_b1
+@jump file="tall/Scene1(道中1)" target=select_b1
