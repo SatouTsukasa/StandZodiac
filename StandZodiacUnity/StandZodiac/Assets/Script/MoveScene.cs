@@ -12,7 +12,7 @@ public class MoveScene : MonoBehaviour
     void Start()
     {
         Scenename = SceneManager.GetActiveScene().name;
-        Debug.Log(Scenename);
+        //Debug.Log(Scenename);
     }
 
     // Update is called once per frame

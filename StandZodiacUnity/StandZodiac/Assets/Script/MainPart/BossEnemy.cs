@@ -331,7 +331,7 @@ public class BossEnemy : MonoBehaviour
         /// --------------------------------------------------------------------------------------------
     void random_rate()
     {
-        intense_rate = Random.Range(0.3f, 0.7f);
+        intense_rate = Random.Range(0.2f, 0.6f);
     }
 }
 
