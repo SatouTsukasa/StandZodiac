@@ -46,7 +46,7 @@ public class BossEnemy : MonoBehaviour
     private float BossMove_Y;
     private float step = 100f;
 
-    const float NOMALMOVE = 100f;
+    const float NOMALMOVE = 200f;
     const float TACKLEMOVE = 500f;
     const float TACKLE_TIME_N = 8;
     private float Tackle_time = TACKLE_TIME_N;
@@ -72,7 +72,8 @@ public class BossEnemy : MonoBehaviour
         Kani,
         Oushi,
         Hutago,
-        Yagi
+        Yagi,
+        Hokuto
     };
 
     public SEZA_LIST Seza = SEZA_LIST.Hutago;
