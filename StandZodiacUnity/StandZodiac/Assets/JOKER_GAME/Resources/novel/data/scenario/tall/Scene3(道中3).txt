@@ -1,5 +1,5 @@
 ﻿@call file=tall/libs/utils
-[bg_new name="background" storage="room"]
+[bg_new name="background" storage="haikei_3"]
 [bg_show name="background"]
 
 ;メッセージを表示
@@ -23,4 +23,4 @@
 第3地点を後にし、[r]
 第4地点へと足を運んだ[p]
 
-To be...[p]
+@change1 name = "ToBeContinued"
