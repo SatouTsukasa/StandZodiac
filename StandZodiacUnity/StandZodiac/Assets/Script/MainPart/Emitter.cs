@@ -10,7 +10,8 @@ public class Emitter : MonoBehaviour
     //Waveプレハブの格納
     public GameObject[] waves;
 
-
+    BattleStartManager BTM;
+    int btm;
 
     //現在のWave
     private int currentWave;
@@ -20,13 +21,17 @@ public class Emitter : MonoBehaviour
     IEnumerator Start()
     {
         Scenename = SceneManager.GetActiveScene().name;
+        BTM = GetComponent<BattleStartManager>();
+        btm = BTM.BattleStatus;
         //Waveが存在しなければコルーチンを終了する
         if (waves.Length == 0)
         {
             yield break;
         }
 
-        while (true)
+        while(btm == BattleStartManager.BATTLE_START) { yield return null; }
+
+        while (btm == BattleStartManager.BATTLE_PLAY)
         {
             
                 // Waveを作成する
@@ -50,6 +55,7 @@ public class Emitter : MonoBehaviour
                 if (waves.Length <= ++currentWave)
                 {
                     Debug.Log("asdfghcvx");
+                    //BTM.BattleStatus = BattleStartManager.BATTLE_END;
                     Invoke("MoveJoker", 5);
                     yield break;
                 }
@@ -68,7 +74,9 @@ public class Emitter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        btm = BTM.BattleStatus;
+        //BTM =  GameObject.Find("Emitter").GetComponent<BattleStartManager>().BattleStatus;
+        //Debug.Log(BTM.BattleStatus);
     }
 
     void MoveJoker()
