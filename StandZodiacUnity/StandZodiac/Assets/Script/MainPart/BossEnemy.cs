@@ -77,7 +77,7 @@ public class BossEnemy : MonoBehaviour
 
     public SEZA_LIST Seza = SEZA_LIST.Hutago;
 
-
+    Transform Tf;
 
     // Start is called before the first frame update
     void Start()
@@ -105,6 +105,23 @@ public class BossEnemy : MonoBehaviour
         ///かに座-----------------------------
         intense_rate = 0.7f;
         ///
+
+
+        Tf = GetComponent<Transform>();
+
+
+
+        //アイテムの軌跡設定
+        Vector3[] path =
+        {
+            new Vector3(Tf.localPosition.x,Tf.localPosition.y * 0.7f,0f),
+            //new Vector3(0f,150f,0f),
+
+        };
+
+        //DOTweenを使ったアニメ作成
+        GetComponent<Transform>().DOLocalPath(path, 2f, PathType.CatmullRom)
+            .SetEase(Ease.OutQuad);
     }
 
     // Update is called once per frame
