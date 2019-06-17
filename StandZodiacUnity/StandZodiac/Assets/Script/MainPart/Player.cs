@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
         // Spaceshipコンポーネントを取得
         spaceship = GetComponent<Spaceship>();
 
+       
         while (true)
         {
             // 弾をプレイヤーと同じ位置/角度で作成
