@@ -51,6 +51,11 @@ public class BossEnemy : MonoBehaviour
     const float TACKLE_TIME_N = 8;
     private float Tackle_time = TACKLE_TIME_N;
 
+    ///北斗七星----------------------------------
+    //北斗七星ブロック
+    public GameObject HokutoMagic;
+    bool HoBlockflg = true;
+
     Spaceship spaceship;
 
     enum STATUS
@@ -253,6 +258,33 @@ public class BossEnemy : MonoBehaviour
             case SEZA_LIST.Yagi:
 
 
+                break;
+
+            case SEZA_LIST.Hokuto:
+
+                
+                
+                BossMove();
+
+                Tackle_time -= Time.deltaTime;
+
+                if (Tackle_time < 0 && Status == STATUS.MOVE)
+                {
+                    Debug.Log("ababa");
+
+                    TacklePos = transform.position;
+                    target = Player.transform.position;
+                    step = TACKLEMOVE;
+                    Status = STATUS.ATTACK;
+                    spaceship.enabled = false;
+
+                }
+                if (HoBlockflg == true)
+                {
+                    Debug.Log("asxcfgvgtrd");
+                    Instantiate(HokutoMagic, new Vector3(360, 450, 0), Quaternion.identity);
+                    HoBlockflg = false;
+                }
                 break;
 
 
