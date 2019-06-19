@@ -1,5 +1,5 @@
 ﻿@call file=tall/libs/utils
-[bg_new name="background" storage="room"]
+[bg_new name="background" storage="haikei0"]
 [bg_show name="background"]
 
 ;メッセージを表示
